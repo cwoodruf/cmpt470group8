@@ -1,230 +1,231 @@
 -----------------------------------------------------
-ab -n 100 -c 10 http://localhost/~group8/cal/test.pl
+ab -n 1000 -c 10 http://localhost/~group8/cal/perl/test.pl
 
 This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking localhost (be patient).....done
+Benchmarking localhost (be patient)
 
 
 Server Software:        Apache/2.2.14
 Server Hostname:        localhost
 Server Port:            80
 
-Document Path:          /~group8/cal/test.pl
-Document Length:        1042 bytes
+Document Path:          /~group8/cal/perl/test.pl
+Document Length:        1078 bytes
 
 Concurrency Level:      10
-Time taken for tests:   1.912 seconds
-Complete requests:      100
+Time taken for tests:   19.998 seconds
+Complete requests:      1000
 Failed requests:        0
 Write errors:           0
-Total transferred:      121766 bytes
-HTML transferred:       104200 bytes
-Requests per second:    52.30 [#/sec] (mean)
-Time per request:       191.204 [ms] (mean)
-Time per request:       19.120 [ms] (mean, across all concurrent requests)
-Transfer rate:          62.19 [Kbytes/sec] received
+Total transferred:      1253176 bytes
+HTML transferred:       1078000 bytes
+Requests per second:    50.00 [#/sec] (mean)
+Time per request:       199.983 [ms] (mean)
+Time per request:       19.998 [ms] (mean, across all concurrent requests)
+Transfer rate:          61.20 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    1   4.1      0      25
-Processing:   116  187  21.6    187     234
-Waiting:      114  178  20.2    177     225
-Total:        116  188  21.4    190     235
+Connect:        0    0   1.7      0      30
+Processing:    87  199  16.5    199     259
+Waiting:       83  190  16.0    190     253
+Total:         87  199  16.6    199     259
 
 Percentage of the requests served within a certain time (ms)
-  50%    190
-  66%    194
-  75%    199
-  80%    204
-  90%    217
+  50%    199
+  66%    205
+  75%    208
+  80%    210
+  90%    218
   95%    225
-  98%    229
-  99%    235
- 100%    235 (longest request)
+  98%    234
+  99%    241
+ 100%    259 (longest request)
 -----------------------------------------------------
-ab -n 100 -c 10 http://localhost/~group8/cal/test.plrun
+ab -n 1000 -c 10 http://localhost/~group8/cal/perl/test.plrun
 
 This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking localhost (be patient).....done
+Benchmarking localhost (be patient)
 
 
 Server Software:        Apache/2.2.14
 Server Hostname:        localhost
 Server Port:            80
 
-Document Path:          /~group8/cal/test.plrun
-Document Length:        1110 bytes
+Document Path:          /~group8/cal/perl/test.plrun
+Document Length:        1146 bytes
 
 Concurrency Level:      10
-Time taken for tests:   0.203 seconds
-Complete requests:      100
+Time taken for tests:   3.095 seconds
+Complete requests:      1000
 Failed requests:        0
 Write errors:           0
-Total transferred:      128500 bytes
-HTML transferred:       111000 bytes
-Requests per second:    492.23 [#/sec] (mean)
-Time per request:       20.316 [ms] (mean)
-Time per request:       2.032 [ms] (mean, across all concurrent requests)
-Transfer rate:          617.69 [Kbytes/sec] received
+Total transferred:      1323642 bytes
+HTML transferred:       1148292 bytes
+Requests per second:    323.11 [#/sec] (mean)
+Time per request:       30.949 [ms] (mean)
+Time per request:       3.095 [ms] (mean, across all concurrent requests)
+Transfer rate:          417.66 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    5   5.5      4      31
-Processing:     2   13  22.0      9     159
-Waiting:        0   12  22.0      7     158
-Total:          4   18  23.3     15     173
+Connect:        0    5   6.3      3      31
+Processing:     5   25  38.5     21     536
+Waiting:        0   22  37.6     17     531
+Total:          5   31  38.8     25     536
 
 Percentage of the requests served within a certain time (ms)
-  50%     15
-  66%     17
-  75%     18
-  80%     18
-  90%     36
-  95%     36
-  98%    167
-  99%    173
- 100%    173 (longest request)
+  50%     25
+  66%     30
+  75%     35
+  80%     38
+  90%     45
+  95%     50
+  98%     64
+  99%     92
+ 100%    536 (longest request)
 -----------------------------------------------------
-ab -n 100 -c 10 http://localhost/~group8/cal/test.plreg
+ab -n 1000 -c 10 http://localhost/~group8/cal/perl/test.plreg
 
 This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking localhost (be patient).....done
+Benchmarking localhost (be patient)
 
 
 Server Software:        Apache/2.2.14
 Server Hostname:        localhost
 Server Port:            80
 
-Document Path:          /~group8/cal/test.plreg
-Document Length:        1110 bytes
+Document Path:          /~group8/cal/perl/test.plreg
+Document Length:        1150 bytes
 
 Concurrency Level:      10
-Time taken for tests:   0.103 seconds
-Complete requests:      100
-Failed requests:        0
+Time taken for tests:   1.264 seconds
+Complete requests:      1000
+Failed requests:        561
+   (Connect: 0, Receive: 0, Length: 561, Exceptions: 0)
 Write errors:           0
-Total transferred:      134925 bytes
-HTML transferred:       116550 bytes
-Requests per second:    975.08 [#/sec] (mean)
-Time per request:       10.256 [ms] (mean)
-Time per request:       1.026 [ms] (mean, across all concurrent requests)
-Transfer rate:          1284.79 [Kbytes/sec] received
+Total transferred:      1326420 bytes
+HTML transferred:       1151070 bytes
+Requests per second:    791.15 [#/sec] (mean)
+Time per request:       12.640 [ms] (mean)
+Time per request:       1.264 [ms] (mean, across all concurrent requests)
+Transfer rate:          1024.80 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    4   2.3      4      10
-Processing:     3    6   2.4      6      12
-Waiting:        0    4   2.6      4      11
-Total:          7   10   2.1      9      14
+Connect:        1    5   2.1      5      14
+Processing:     3    7   2.3      7      26
+Waiting:        0    6   2.4      6      23
+Total:          7   12   2.6     12      32
 
 Percentage of the requests served within a certain time (ms)
-  50%      9
-  66%     10
-  75%     11
-  80%     12
-  90%     13
-  95%     13
-  98%     14
-  99%     14
- 100%     14 (longest request)
+  50%     12
+  66%     13
+  75%     13
+  80%     14
+  90%     16
+  95%     18
+  98%     19
+  99%     20
+ 100%     32 (longest request)
 -----------------------------------------------------
-ab -n 100 -c 10 http://localhost/~group8/cal/test.fcgi
+ab -n 1000 -c 10 http://localhost/~group8/cal/perl/test.fcgi
 
 This is ApacheBench, Version 2.3 <$Revision: 655654 $>
 Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
 Licensed to The Apache Software Foundation, http://www.apache.org/
 
-Benchmarking localhost (be patient).....done
+Benchmarking localhost (be patient)
 
 
 Server Software:        Apache/2.2.14
 Server Hostname:        localhost
 Server Port:            80
 
-Document Path:          /~group8/cal/test.fcgi
-Document Length:        1106 bytes
+Document Path:          /~group8/cal/perl/test.fcgi
+Document Length:        1121 bytes
 
 Concurrency Level:      10
-Time taken for tests:   0.073 seconds
-Complete requests:      100
+Time taken for tests:   0.791 seconds
+Complete requests:      1000
 Failed requests:        0
 Write errors:           0
-Total transferred:      128100 bytes
-HTML transferred:       110600 bytes
-Requests per second:    1364.20 [#/sec] (mean)
-Time per request:       7.330 [ms] (mean)
-Time per request:       0.733 [ms] (mean, across all concurrent requests)
-Transfer rate:          1706.58 [Kbytes/sec] received
+Total transferred:      1299888 bytes
+HTML transferred:       1124363 bytes
+Requests per second:    1264.51 [#/sec] (mean)
+Time per request:       7.908 [ms] (mean)
+Time per request:       0.791 [ms] (mean, across all concurrent requests)
+Transfer rate:          1605.20 [Kbytes/sec] received
 
 Connection Times (ms)
               min  mean[+/-sd] median   max
-Connect:        0    3   1.1      3       8
-Processing:     3    4   1.0      4       9
-Waiting:        2    3   0.9      3       6
-Total:          5    7   1.6      6      14
+Connect:        0    3   1.1      3       7
+Processing:     2    5   1.6      5      13
+Waiting:        1    4   1.6      4      11
+Total:          5    8   1.7      7      16
 
 Percentage of the requests served within a certain time (ms)
-  50%      6
-  66%      7
-  75%      8
-  80%      8
-  90%      9
-  95%     10
-  98%     14
-  99%     14
- 100%     14 (longest request)
------------------------------------------------------
-ab -n 100 -c 10 http://localhost/~group8/cal/test.php
-
-This is ApacheBench, Version 2.3 <$Revision: 655654 $>
-Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
-Licensed to The Apache Software Foundation, http://www.apache.org/
-
-Benchmarking localhost (be patient).....done
-
-
-Server Software:        Apache/2.2.14
-Server Hostname:        localhost
-Server Port:            80
-
-Document Path:          /~group8/cal/test.php
-Document Length:        860 bytes
-
-Concurrency Level:      10
-Time taken for tests:   0.068 seconds
-Complete requests:      100
-Failed requests:        0
-Write errors:           0
-Total transferred:      111488 bytes
-HTML transferred:       89440 bytes
-Requests per second:    1481.35 [#/sec] (mean)
-Time per request:       6.751 [ms] (mean)
-Time per request:       0.675 [ms] (mean, across all concurrent requests)
-Transfer rate:          1612.82 [Kbytes/sec] received
-
-Connection Times (ms)
-              min  mean[+/-sd] median   max
-Connect:        0    3   2.0      2      10
-Processing:     2    4   2.3      3      13
-Waiting:        0    3   2.3      2      12
-Total:          4    6   2.7      6      14
-
-Percentage of the requests served within a certain time (ms)
-  50%      6
-  66%      6
-  75%      7
+  50%      7
+  66%      8
+  75%      9
   80%      9
-  90%     12
-  95%     13
+  90%     10
+  95%     11
   98%     13
-  99%     14
- 100%     14 (longest request)
+  99%     13
+ 100%     16 (longest request)
+-----------------------------------------------------
+ab -n 1000 -c 10 http://localhost/~group8/cal/perl/test.php
+
+This is ApacheBench, Version 2.3 <$Revision: 655654 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        Apache/2.2.14
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /~group8/cal/perl/test.php
+Document Length:        880 bytes
+
+Concurrency Level:      10
+Time taken for tests:   0.600 seconds
+Complete requests:      1000
+Failed requests:        0
+Write errors:           0
+Total transferred:      1096368 bytes
+HTML transferred:       883520 bytes
+Requests per second:    1665.74 [#/sec] (mean)
+Time per request:       6.003 [ms] (mean)
+Time per request:       0.600 [ms] (mean, across all concurrent requests)
+Transfer rate:          1783.46 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    2   1.1      2      13
+Processing:     1    3   1.5      3      15
+Waiting:        0    3   1.3      2      15
+Total:          2    6   1.9      5      26
+
+Percentage of the requests served within a certain time (ms)
+  50%      5
+  66%      5
+  75%      6
+  80%      6
+  90%      8
+  95%      9
+  98%     11
+  99%     16
+ 100%     26 (longest request)
