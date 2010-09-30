@@ -46,6 +46,10 @@ class Login {
 		return;
 	}
 
+	public static function encode($pw) {
+		require(SALTFILE);
+		return sha1($pw.SALT);
+	}
 
 	private static function save_login($this_login,$ldata) {
 		self::$ldata = $ldata;
@@ -53,10 +57,5 @@ class Login {
 		$_SESSION['login']['login'] = $this_login;
 		$_SESSION['login']['time'] = $time = time();
 		return $_SESSION['login'];
-	}
-
-	private static function encode($pw) {
-		require(SALTFILE);
-		return sha1($pw.SALT);
 	}
 }

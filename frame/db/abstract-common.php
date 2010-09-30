@@ -57,7 +57,7 @@ class Entity extends AbstractDB {
 				throw new Exception("missing valid table name in ins!");
 			$idata = array();
 			foreach ($this->schema as $field => $fdata) {
-				if ($this->iskey($field,$fdata)) continue;
+				if ($this->isauto($fdata)) continue;
 				if (!isset($data[$field])) continue;
 				$idata[$field] = $this->quote($data[$field],"'");
 			}
@@ -78,7 +78,6 @@ class Entity extends AbstractDB {
 				throw new Exception("missing valid table name in upd!");
 			$udata = array();
 			foreach ($this->schema as $field => $fdata) {
-				if ($this->iskey($field,$fdata)) continue;
 				if (!isset($data[$field])) continue;
 				$udata[] = "$field=".$this->quote($data[$field],"'");
 			}
@@ -156,6 +155,10 @@ class Entity extends AbstractDB {
 			$this->err($e);
 			return false;
 		}
+	}
+
+	public function isauto($fdata) {
+		if ($fdata['auto']) return true;
 	}
 
 	public function iskey($field,$fdata) {

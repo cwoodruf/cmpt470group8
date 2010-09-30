@@ -1,12 +1,6 @@
-{include file=xmljunk.tpl}
-<head>
-<title>Login</title>
-{$this->css()}
-{$this->js()}
-</head>
-<body>
-<center>
-<h3>log in required</h3>
+{include file=top.tpl}
+{include file=menu.tpl}
+
 <div>
 {literal}
 <form name="form_login" action="index.php" method="get"
@@ -29,7 +23,7 @@ $.get(
 ">
 {/literal}
 {login_params}
-<table cellpadding="3" cellspacing="0" border="0" class="toplevel">
+<table cellpadding="3" cellspacing="0" border="0">
 <tr><td><b>Login:</b></td>
     <td><input name="login" size="64" maxlength="64" value="{$login}">
     <script>document.form_login.login.focus()</script></td></tr>
@@ -40,8 +34,5 @@ $.get(
 </table>
 </form>
 </div>
-{$contactlink}
-</center>
-</body>
-</html>
 
+{include file=bottom.tpl}

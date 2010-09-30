@@ -1,6 +1,11 @@
 <?php
 
 class User extends UserEntity implements PW {
+	public function __construct() {
+		parent::__construct();
+		$this->schema['password']['type'] = 'password';
+	}
+
 	public function valid_login($login) {
 		return preg_match('#^\S{1,128}$#',$login);
 	}

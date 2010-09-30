@@ -5,8 +5,13 @@ require_once('.settings.php');
 
 # debug output
 if (!defined('QUIET')) {
-	if (file_exists('DEBUG')) define('QUIET',false);
+	if (file_exists('DEBUG')) {
+		define('QUIET',false);
+		error_reporting(E_ALL & ~E_NOTICE);
+		ini_set('display_errors',true);
+	}
 }
+
 # for the Login::encode function
 if (!defined('SALTFILE')) {
 	if (file_exists('.salt.php')) define('SALTFILE','.salt.php');
@@ -21,14 +26,14 @@ if (!defined('CONTROLLERSDIR')) define('CONTROLLERSDIR','controllers');
 # default page to show if we don't know what visitor wants to do
 if (!defined('DEFCONTROLLER')) define('DEFCONTROLLER','home');
 # object that manages password retrieval
-if (!defined('LOGINMODEL')) define('LOGINMODEL','LoginsBase');
+if (!defined('LOGINMODEL')) define('LOGINMODEL','User');
 # object that manages login forms
 if (!defined('LOGINCONTROLLER')) define('LOGINCONTROLLER','Loginform');
 
 require_once('db/abstract-mysql.php');
 require_once('db/abstract-common.php');
-require_once('db/check.php');
 require_once('views/init.php');
+require_once('lib/check.php');
 require_once('lib/controller.php');
 require_once('lib/pw.php');
 require_once('lib/login.php');

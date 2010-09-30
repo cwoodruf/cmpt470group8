@@ -1,5 +1,5 @@
 <?php
-require_once('views/smarty/Smarty.class.php');
+require_once(VIEWDIR.'/smarty/Smarty.class.php');
 
 # base view class
 class View {
@@ -14,10 +14,10 @@ class View {
 
 	public static function init($ext='tpl') {
 		$smarty = new Smarty();
-		$smarty->template_dir = 'views/templates';
-		$smarty->compile_dir = 'views/templates_c';
-		$smarty->cache_dir = 'views/cache';
-		$smarty->plugins_dir[] = 'views/plugins';
+		$smarty->template_dir = VIEWDIR.'/templates';
+		$smarty->compile_dir = VIEWDIR.'/templates_c';
+		$smarty->cache_dir = VIEWDIR.'/cache';
+		$smarty->plugins_dir[] = VIEWDIR.'/plugins';
 		self::$smarty = $smarty;
 		self::$tplext = $ext;
 	}

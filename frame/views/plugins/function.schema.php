@@ -4,11 +4,8 @@
  */
 function smarty_function_schema($params,&$smarty) {
 
-	if (($table = Check::isvar($params['table'],false)) == false) return;
-	$class = ucfirst($table);
-	$o = @new $class;
-	if (!isset($o)) $o = new $class.'Base';
-	$schema = $o->schema;
+	$schema = $params['schema'];
+	if (!is_array($schema)) return;
 	schema_data($schema);
 
 	if (preg_match('#^\w+$#',$params['assign'])) 

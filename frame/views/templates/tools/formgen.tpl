@@ -1,6 +1,9 @@
-{basic data entry form scaffold}
-{schema table=$this->table}
-
+{* 
+   basic data entry form scaffold - 
+   use the $schema array to determine how 
+   information is input into the form 
+*}
+{schema schema=$schema}
 <form name=formgen id=formgen action=index.php method=post>
 <table cellspacing=0 cellpadding=5 border=0 class="formgen">
 <tr class="formgen formbuttons">
@@ -8,8 +11,11 @@
 <input type=reset value="reset">
 </td>
 <td class="formgen formbuttons" align=right>
-<input type=hidden name="action" value="{$this->action}">
-<input type=submit name="step" value="save">
+
+{* you can use an array instead of action=controller/modifier form *}
+<input type=hidden name="action[0]" value="{$this->controller}">
+<input type=submit name="action[1]" value="save">
+
 </td>
 </tr>
 
@@ -21,13 +27,7 @@
 <td class="formgen"><b>{$field}</b></td>
 <td class="formgen">
 
-{if $fdata.plugin}
-{$fdata.plugin field=$field data=$fdata}
-
-{elseif $fdata.template}
-{include file=$fdata.template field=$field data=$fdata}
-
-{elseif $fdata.key}
+{if $fdata.auto}
  {if $this->input($field)}
   {$this->input($field)}
   <input type=hidden name="{$field}" value="{$this->input($field)}">
@@ -35,6 +35,14 @@
   <i>{$fdata.alt}</i>
  {/if}
 &nbsp;
+{php}continue;{/php}
+{/if}
+
+{if $fdata.plugin}
+{$fdata.plugin field=$field data=$fdata}
+
+{elseif $fdata.template}
+{include file=$fdata.template field=$field data=$fdata}
 
 {elseif $fdata.type == 'text'}
 <textarea name="{$field}" rows="{$fdata.rows}" cols="{$fdata.cols}">{$this->input($field)}</textarea>

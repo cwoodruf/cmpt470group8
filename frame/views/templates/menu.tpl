@@ -5,31 +5,21 @@
 </div>
 
 <div class="menuitem">
-<a href="index.php?action=boxes/search">List vm boxes</a>
-</div>
-
-<div class="menuitem">
-<a href="index.php?action=workers/edit">Add new vm box</a>
-</div>
-
-<div class="menuitem">
-<form name=search id=search action="index.php" method=get>
-<input type=hidden name=action value="workers/search">
-<input name=terms size=20 value="{$terms}">
-<input type=submit value="Search">
-</form>
+<a href="index.php?action=restricted">Restricted</a>
 </div>
 
 <div class="menuitem">
 
 {if $smarty.session.login}
 <nobr>
-Welcome 
+Welcome <b>{$smarty.session.login.login}</b>
 <a href="index.php?action=logout">Log out</a>
 </nobr>
 
 {else}
 <a href="index.php?action=loginform">Log in</a>
+&nbsp;&nbsp;
+<a href="index.php?action=register">Register</a>
 {/if}
 
 </div>
