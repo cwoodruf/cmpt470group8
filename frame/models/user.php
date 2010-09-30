@@ -1,8 +1,8 @@
 <?php
 
-class Users extends UsersEntity implements PW {
+class User extends UserEntity implements PW {
 	public function valid_login($login) {
-		return preg_match('#^\S{1,64}$#',$login);
+		return preg_match('#^\S{1,128}$#',$login);
 	}
 	public function valid_pw($pw) {
 		return preg_match('#.{6,64}#',$pw);
