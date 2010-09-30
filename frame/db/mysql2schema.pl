@@ -23,6 +23,7 @@ while (<>) {
 				$size = 20;
 			}
 			$schema{$field} =  { type => "'$type'", size => $size };
+			$schema{$field}{auto} = 1 if /AUTO_INCREMENT/i;
 			if ($field =~ /text/) {
 				@schema{qw/rows cols/} = (5, 60);
 			}
@@ -59,7 +60,7 @@ while (<>) {
 sub printschema {
 	foreach my $field (@fields) {
 		print "\t'$field' => array( ";
-		foreach my $prop (qw/type size rows cols key/) {
+		foreach my $prop (qw/type size rows cols key auto/) {
 			next unless defined $schema{$field}{$prop};
 			print "'$prop' => $schema{$field}{$prop}, ";
 		}
