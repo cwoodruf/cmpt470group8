@@ -10,7 +10,7 @@ if ($_SESSION['login'] and !strcasecmp($controller,LOGINCONTROLLER)) {
 	$controller = DEFCONTROLLER;
 }
 
-require_once("controllers/$controller.php");
+require_once(Controller::path($controller));
 $context = new $controller($actions);
 
 # if we are logging in remember our controller

@@ -1,4 +1,4 @@
-#!/usr/local/bin/php
+#!/usr/bin/php
 <?php
 print "run both mysql2schema.pl and makeclasses.php to build out classes for a database\n";
 print "usage {$_SERVER['PHP_SELF']} {database name} [model directory: defaults to models/base]\n";

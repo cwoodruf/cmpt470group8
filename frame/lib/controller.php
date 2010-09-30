@@ -11,6 +11,12 @@ class Controller {
 		$this->actions = $actions;
 	}
 	
+	# find a controller - should probably make a path making function
+	public function path($controller) {
+		return CONTROLLERSDIR."/$controller.php";
+	}
+
+	# check for and set up login
 	public function login() {
 		$ldata = Login::check();
 		if (is_array($ldata)) return;

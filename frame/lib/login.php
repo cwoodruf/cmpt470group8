@@ -54,4 +54,9 @@ class Login {
 		$_SESSION['login']['time'] = $time = time();
 		return $_SESSION['login'];
 	}
+
+	private static function encode($pw) {
+		require(SALTFILE);
+		return sha1($pw.SALT);
+	}
 }

@@ -8,7 +8,7 @@ class User extends UserEntity implements PW {
 		return preg_match('#.{6,64}#',$pw);
 	}
 	public function encode_pw($pw) {
-		return md5($pw);
+		return Login::encode($pw);
 	}
 	public function get_login($id) {
 		return $this->getone($id);
