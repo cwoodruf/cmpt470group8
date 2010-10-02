@@ -43,18 +43,9 @@ class Controller {
 		return CONTROLLERSDIR."/".strtolower($controller).".php";
 	}
 
-	# check for and set up login
-	public function login() {
-		$ldata = Login::check();
-		if (is_array($ldata)) return;
-
-		# this will force a login
-		$this->flag('login',true);
-		include('index.php');
-		exit;
-	}
-
 	# flags are a way to provide stateful interprocess communications
+	# any controller can check the state of any flag set by any other 
+	# controller
 	public function flag($flag,$value=null) {
 		@session_start();
 		if (isset($value)) $_SESSION['flags'][$flag] = $value;
@@ -75,6 +66,7 @@ class Controller {
 		return $flags;
 	}
 
+	# this is used by the tools/formgen.tpl template right now
 	public function input($field=null) {
 		if (!is_array($this->input)) return;
 		if (isset($this->input[$field])) return $this->input[$field];
