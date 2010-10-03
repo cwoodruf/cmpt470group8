@@ -34,6 +34,7 @@ require_once('db/abstract-mysql.php');
 require_once('db/abstract-common.php');
 require_once('views/init.php');
 require_once('lib/check.php');
+Check::$emptyok = false; # this seems to work better with the frame
 require_once('lib/controller.php');
 require_once('lib/pw.php');
 require_once('lib/login.php');

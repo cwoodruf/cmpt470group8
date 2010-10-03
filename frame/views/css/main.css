@@ -44,6 +44,23 @@ h1 {
 }
 
 /* for calendars */
+.calendar-title,.calendar-form {
+	font-family: helvetica,arial,sans-serif;
+	text-align: center;
+}
+.calendar-form a {
+	color: black;
+	text-decoration: none;
+}
+.calendar-form a:hover {
+	text-decoration: underline;
+}
+.calendar-title {
+	font-size: large;
+	margin-bottom: 10px;
+	border: 1px black solid;
+	width: 750px;
+}
 .calendar {
 	font-family: garamond,serif;
 	font-size: small;
@@ -63,6 +80,9 @@ h1 {
 }
 .calendar.month.weekend.dom {
 	background: lightgray;
+}
+.calendar.month.selected.dom {
+	background: pink;
 }
 .calendar.month.eow {
 	width: 0;

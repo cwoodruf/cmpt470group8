@@ -9,6 +9,10 @@
 </div>
 
 <div class="menuitem">
+<a href="index.php?action=calendars/month">Calendar</a>
+</div>
+
+<div class="menuitem">
 
 {if $smarty.session.login}
 <nobr>
