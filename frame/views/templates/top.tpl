@@ -1,6 +1,6 @@
 {include file=xmljunk.tpl}
 <head>
-<title>{$this->name}</title>
+<title>{$this->name|default:"example site"}</title>
 {$this->css()}
 {$this->js()}
 </head>
