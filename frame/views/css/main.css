@@ -10,7 +10,7 @@ body {
 	margin: 10px;
 	padding: 10px;
 	background: lightyellow;
-	width: 700px;
+	width: 800px;
 }
 
 li {
@@ -43,4 +43,29 @@ h1 {
 	float: left;
 }
 
-
+/* for calendars */
+.calendar {
+	font-family: garamond,serif;
+	font-size: small;
+	height: 634px;
+	width: 750px;
+}
+.calendar.month {
+	background: lightyellow;
+	height: 100px;
+	width: 100px;
+	float: left;
+	border: 1px black solid;
+	margin: 2px;
+}
+.calendar.month.dom {
+	background: lavender;
+}
+.calendar.month.weekend.dom {
+	background: lightgray;
+}
+.calendar.month.eow {
+	width: 0;
+	border: 0;
+	clear: both;
+}
