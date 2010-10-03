@@ -181,6 +181,40 @@ class Entity extends AbstractDB {
 	public function query() {
 		return $this->query;
 	}
+
+	/**
+	 * function to manage paging db results
+	 */
+	# the backbone for pagination - uses getall on the supplied model - 
+	# ie won't work with other types of models - this is bad as we'd like a general way to do this
+	# alternatively check what model is and then do something appropriate
+	public static function getpage($pageid,$model,$offset=0,$limit=10,$criterion=null) {
+
+		if (!is_object($model)) return "Model is not an object!";
+
+		if (!$pageid) return "Bad page id!";
+		if (is_array($_SESSION['paged'][$pageid])) {
+			# probably should redo this every time but this saves some resources
+			$howmany = $_SESSION['paged'][$pageid]['howmany'];
+			$criterion = $_SESSION['paged'][$pageid]['criterion'];
+		} else {
+			$howmany = $model->howmany($criterion);
+		}
+
+		if (!Check::digits($limit)) return "limit is not a number!";
+		if (!Check::digits($offset)) $offset = 0;
+
+		$rows = $model->getall("$criterion limit $limit offset $offset");
+
+		if (count($rows)) {
+			$_SESSION['paged'][$pageid] = array(
+				'criterion' => $criterion,
+				'howmany' => $howmany,
+			);
+		}
+		return array('limit' => $limit, 'howmany' => $howmany, 'offset' => $offset, 'rows' => $rows);
+	}
+
 }
 
 /**

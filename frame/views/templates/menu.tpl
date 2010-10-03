@@ -5,7 +5,7 @@
 </div>
 
 <div class="menuitem">
-<a href="index.php?action=restricted">Restricted</a>
+<a href="index.php?action=restricted">Add Note</a> (requires login)
 </div>
 
 <div class="menuitem">

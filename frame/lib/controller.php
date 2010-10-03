@@ -69,8 +69,8 @@ class Controller {
 	# this is used by the tools/formgen.tpl template right now
 	public function input($field=null) {
 		if (!is_array($this->input)) return;
-		if (isset($this->input[$field])) return $this->input[$field];
-		return $this->input;
+		if (isset($this->input[$field])) return htmlentities($this->input[$field]);
+		return;
 	}
 
 	public function css() {

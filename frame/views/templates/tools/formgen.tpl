@@ -23,7 +23,7 @@
 
 {if $fdata.hide}{php}continue;{/php}{/if}
 
-<tr class="formgen">
+<tr class="formgen" valign="top">
 <td class="formgen"><b>{$field}</b></td>
 <td class="formgen">
 
