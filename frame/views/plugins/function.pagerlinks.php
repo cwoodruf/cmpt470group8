@@ -17,7 +17,8 @@ function smarty_function_pagerlinks($params,&$smarty) {
 	else $prev = 0;
 	if ($offset + $limit > $howmany) $next = $howmany - $limit;
 	else $next = $offset + $limit;
-	$last = $howmany - $limit + 1;
+	$last = $howmany - ($howmany % $limit);
+	if ($last == $howmany) $last -= $limit;
 
 	$action = $_REQUEST['action'];
 	if (is_array($action)) $action = implode('/',$action);
