@@ -13,9 +13,9 @@ It is intended to be easy to port and extend.
 
 Usage:
 	[in the frame directory]
-	db/buildmodels.php models/mydb mydb 
+	db/buildmodels.php mydb 
 
-	[will build class *-base.php files for tables in mydb]
+	[will build class *-base.php files for tables in mydb in models/base]
 	
 	vim models/mydb/MydbDB.php 
 	[add login details]
@@ -24,7 +24,15 @@ Usage:
 
 You can also rebuild individual tables:
 
-	db/buildmodels.php models/mydb mydb mytable
+	db/buildmodels.php mydb mytable
+
+You can also change the output directory:
+
+	db/buildmodels.php mydb mytable othermodels/base
+
+for all tables:
+
+	db/buildmodels.php mydb "" othermodels/base
 
 Each class file contains schema information in a public $schema variable
 that can be used as an aid for automatically making forms etc based on 
