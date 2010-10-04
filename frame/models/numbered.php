@@ -16,7 +16,7 @@ class Numbered extends NumberedEntity {
 				$start,$start,$email,
 			)
 		);
-		$events = array();
+		if (!$rawevents) return array();
 		foreach ($rawevents as $event) {
 			$edate = preg_replace('# .*#','',$event['created']);
 			$id = $event['numbered_id'];
