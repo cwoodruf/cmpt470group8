@@ -54,7 +54,7 @@ function __autoload($class) {
 		return;
 	} 
 
-	foreach (array(MODELSDIR,CONTROLLERSDIR) as $dir) {
+	foreach (array(MODELSDIR,CONTROLLERSDIR,VIEWDIR) as $dir) {
 		$path = "$dir/".strtolower($class).'.php';
 		@include_once($path);
 	}

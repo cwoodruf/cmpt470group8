@@ -25,12 +25,20 @@ function smarty_function_pagerlinks($params,&$smarty) {
 	$script = $_SERVER['PHP_SELF']."?action=$action&limit=$limit&";
 	if ($params['pagerid']) $script .= "pagerid=".urlencode($params['pagerid']);
 
+	if (strpos($params['options'],'pages') !== false) {
+		$pages = array();
+		for ($o = 0; $o <= $last; $o += $limit) {
+			$pages[$o] = "$script&offset=$o";
+		}
+	}
+
 	$smarty->assign('pagerlinks', 
 		array(
 			'first' => "$script&offset=0",
 			'last' => "$script&offset=$last",
 			'next' => "$script&offset=$next",
 			'prev' => "$script&offset=$prev",
+			'pages' => $pages,
 		)
 	);
 }

@@ -19,7 +19,8 @@ body {
 }
 
 div.notenav {
-	text-align: center;
+	text-align: right;
+	margin-right: 35px;
 	margin-bottom: 10px;
 }
 

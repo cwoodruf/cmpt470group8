@@ -2,25 +2,8 @@
 {include file=menu.tpl}
 
 <h1>Notes:</h1>
-
-{pagerlinks howmany=$howmany offset=$offset limit=$limit}
-<div class="notenav">
-{if $offset > 0}
-<a href="{$pagerlinks.first}">&lt;&lt; start</a> &nbsp;&nbsp;
-<a href="{$pagerlinks.prev}">&lt; prev</a> &nbsp;&nbsp;
-{else}
-&lt;&lt; start &nbsp;&nbsp;
-&lt; prev &nbsp;&nbsp;
-{/if}
-
-{if $offset <= $howmany - $limit}
-<a href="{$pagerlinks.next}">next &gt;</a> &nbsp;&nbsp;
-<a href="{$pagerlinks.last}">last &gt;&gt;</a> &nbsp;&nbsp;
-{else}
-next &gt; &nbsp;&nbsp;
-last &gt;&gt; &nbsp;&nbsp;
-{/if}
-</div>
+{include file=tools/navcapture.tpl}
+{$smarty.capture.nav}
 {assign var=count value=$offset}
 
 {foreach from=$notes key=i item=note}
@@ -40,6 +23,8 @@ edit</a>
 <hr>
 
 {/foreach}
+
+{$smarty.capture.nav}
 
 {include file=bottom.tpl}
 

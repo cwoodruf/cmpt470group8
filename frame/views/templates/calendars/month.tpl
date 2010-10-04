@@ -26,6 +26,7 @@ Highlight date: {html_select_date start_year=2009 end_year=2011}
 {/if}
 
 {if $dom > 0 and $dom <= $eom}
+	{capture assign=date}{$year}-{$mon}-{$dom|string_format:"%02d"}{/capture}
 	{if $dom == $startday}
 	<div class="calendar month selected dom">
 	{elseif $dow == 7 or $dow == 6}
@@ -33,7 +34,9 @@ Highlight date: {html_select_date start_year=2009 end_year=2011}
 	{else}
 	<div class="calendar month dom">
 	{/if}
-		{$day|capitalize}<br>{$year}-{$mon}-{$dom|string_format:"%02d"} &nbsp;
+		
+		{$day|capitalize}<br>{$date} &nbsp;
+		{foreach from=$events[$date] key=id item=link}{$link}<br>{/foreach}
 	</div>
 	{assign var=dom value=`$dom+1`}
 

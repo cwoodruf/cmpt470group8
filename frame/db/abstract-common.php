@@ -188,7 +188,9 @@ class Entity extends AbstractDB {
 	# the backbone for pagination - uses getall on the supplied model - 
 	# ie won't work with other types of models - this is bad as we'd like a general way to do this
 	# alternatively check what model is and then do something appropriate
-	public static function getpageid($pageid) {
+	public static function getpageid($pageid,$field=null) {
+		if ($field and isset($_SESSION['paged'][$pageid][$field])) 
+			return $_SESSION['paged'][$pageid][$field];
 		return $_SESSION['paged'][$pageid];
 	}
 
