@@ -35,10 +35,11 @@ class Entity extends AbstractDB {
 
 	public function findprimary() {
 		# note that for some tables there may not be a primary key
-		if (isset($schema['PRIMARY KEY'])) {
+		if (isset($this->schema['PRIMARY KEY'])) {
 			$this->primary = $schema['PRIMARY KEY'];
+			unset($this->schema['PRIMARY KEY']);
 
-		} else if (isset($schema[$table.'_id'])) {
+		} else if (isset($this->schema[$table.'_id'])) {
 			$this->primary = $table.'_id';
 
 		} else {
@@ -58,7 +59,7 @@ class Entity extends AbstractDB {
 			$idata = array();
 			foreach ($this->schema as $field => $fdata) {
 				if ($this->isauto($fdata)) continue;
-				if ($field == 'PRIMARY KEY') continue;
+				# if ($field == 'PRIMARY KEY') continue;
 				if (!isset($data[$field])) continue;
 				$idata[$field] = $this->quote($data[$field],"'");
 			}
