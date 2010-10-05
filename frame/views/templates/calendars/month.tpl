@@ -36,11 +36,12 @@ Highlight date: {html_select_date start_year=2009 end_year=2011}
 	{/if}
 		
 		{$day|capitalize}<br>{$date} &nbsp;
-		{foreach from=$events[$date] key=id item=link}{$link}<br>{/foreach}
+		{include file=calendars/showevents.tpl events=$events[$date]}
 	</div>
 	{assign var=dom value=`$dom+1`}
 
 {else}
+	{* hack to put the correct date in days not in the month in question *}
 	<div class="calendar month">
 		{$day}<br>
 	{if $dom == 0}

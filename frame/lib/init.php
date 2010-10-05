@@ -18,21 +18,24 @@ if (!defined('SALTFILE')) {
 	else define('SALTFILE',false);
 }
 # where the base models are (ie the ones that are automatically made by scripts)
-if (!defined('MODELSBASE')) define('MODELSBASE','models/base');
+if (!defined('MODELSBASE')) 	define('MODELSBASE','models/base');
 # where the model subclasses are (hand written)
-if (!defined('MODELSDIR')) define('MODELSDIR','models');
+if (!defined('MODELSDIR')) 	define('MODELSDIR','models');
 # where the controllers are
 if (!defined('CONTROLLERSDIR')) define('CONTROLLERSDIR','controllers');
+# where the view logic is
+if (!defined('VIEWDIR')) 	define('VIEWDIR','views');
 # default page to show if we don't know what visitor wants to do
-if (!defined('DEFCONTROLLER')) define('DEFCONTROLLER','home');
+if (!defined('DEFCONTROLLER')) 	define('DEFCONTROLLER','home');
 # object that manages password retrieval
-if (!defined('LOGINMODEL')) define('LOGINMODEL','User');
+if (!defined('LOGINMODEL')) 	define('LOGINMODEL','User');
 # object that manages login forms
 if (!defined('LOGINCONTROLLER')) define('LOGINCONTROLLER','Loginform');
 
 require_once('db/abstract-mysql.php');
 require_once('db/abstract-common.php');
-require_once('views/init.php');
+require_once(VIEWDIR.'/init.php');
+require_once('lib/run.php');
 require_once('lib/check.php');
 Check::$emptyok = false; # this seems to work better with the frame
 require_once('lib/controller.php');

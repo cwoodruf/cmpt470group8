@@ -7,22 +7,21 @@ class Numbered extends NumberedEntity {
 	}
 
 	# get a chronologically grouped set of events relating to a login
-	public function calendar($start,$email) {
+	public function calendar($start,$action) {
 		$rawevents = $this->getall(
 			array(
 				"where created between '%s' - interval 4 week ".
-				"and '%s' + interval 4 week ".
-				"and email = '%s'", 
-				$start,$start,$email,
+				"and '%s' + interval 4 week ",
+				$start,$start
 			)
 		);
 		if (!$rawevents) return array();
 		foreach ($rawevents as $event) {
 			$edate = preg_replace('# .*#','',$event['created']);
 			$id = $event['numbered_id'];
-			$events[$edate][$id] = <<<HTML
-<a href="?action=restricted&numbered_id=$id">{$event['email']} $id</a>
-HTML;
+			$event['_action_'] = $action;
+			$event['_id_'] = 'numbered_id';
+			$events[$edate][$id] = $event;
 		}
 		return $events;
 	}

@@ -5,6 +5,14 @@ body {
 	font-size: 11pt;
 }
 
+.bordered {
+	border: 1px black solid;
+}
+.white {
+	background: white;
+	color: black;
+}
+
 .toplevel {
 	border: 1px black solid;
 	margin: 10px;
@@ -85,6 +93,7 @@ h1 {
 	float: left;
 	border: 1px black solid;
 	margin: 2px;
+	overflow: hidden;
 }
 .calendar.month.dom {
 	background: lavender;
