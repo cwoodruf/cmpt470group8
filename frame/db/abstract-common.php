@@ -58,6 +58,7 @@ class Entity extends AbstractDB {
 			$idata = array();
 			foreach ($this->schema as $field => $fdata) {
 				if ($this->isauto($fdata)) continue;
+				if ($field == 'PRIMARY KEY') continue;
 				if (!isset($data[$field])) continue;
 				$idata[$field] = $this->quote($data[$field],"'");
 			}
@@ -244,7 +245,7 @@ class Entity extends AbstractDB {
 class Relation extends Entity {
 
 	public function __construct($db,$schema,$table) {
-		parent::__construct($db);
+		parent::__construct($db,$schema,$table);
 	}
 
 	/**

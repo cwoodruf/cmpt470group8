@@ -12,9 +12,11 @@ class Restricted extends Controller {
 		if ($ldata = Login::check()) {
 			$id = $_REQUEST['numbered_id'];
 			$n = new Numbered;
+
 			switch($this->actions[1]) {
 			case 'save':
 				if (!$id) {
+					$_REQUEST['email'] = $ldata['login'];
 					$n->ins($_REQUEST);
 					$id = $n->getid();
 				} else {
@@ -22,8 +24,19 @@ class Restricted extends Controller {
 				}
 				if (!$n->err()) View::assign('topmsg',"saved $id");
 				break;
+			case 'confirmdelete':
+				$this->flag('note_to_delete',$id);
+				View::assign('confirm',"Really delete note?");
+				View::assign('action','delete');
+				View::display("confirm.tpl");
+				return;
+			case 'delete':
+				$id = $this->delflag('note_to_delete');
+				$n->del($id);
+				View::assign('confirm',"Note $id deleted!");
+				View::display("confirm.tpl");
+				return;
 			default:
-				$this->input['email'] = $ldata['login'];
 				$this->input['created'] = date('Y-m-d H:i:s');
 			}
 			if ($id) $this->input = $n->getone($id);

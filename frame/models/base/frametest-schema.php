@@ -17,3 +17,9 @@ $schema['user'] = array(
 	'perms' => array( 'type' => 'varchar', 'size' => 64, ),
 );
 
+$schema['viewers'] = array(
+	'PRIMARY KEY' => array('email' => '', 'numbered_id' => 'numbered', ),
+	'email' => array( 'type' => 'varchar', 'size' => 128, ),
+	'numbered_id' => array( 'type' => 'int', 'size' => 11, ),
+);
+

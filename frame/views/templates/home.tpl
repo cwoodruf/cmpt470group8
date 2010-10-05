@@ -15,6 +15,8 @@
 {if $note.email==$smarty.session.login.login}
 <a href="index.php?action=restricted&numbered_id={$note.numbered_id}">
 edit</a>
+<a href="index.php?action=restricted/confirmdelete&numbered_id={$note.numbered_id}">
+delete</a>
 {/if}
 
 {$note.email|@htmlentities} - {$note.created|@htmlentities}

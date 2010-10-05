@@ -16,15 +16,15 @@ class Run {
 	 * singleton equivalent: cache the class unless refresh is set
 	 * use Run::cache if you want to save the results for reuse
 	 */
-	public static function me($class,$func,$arg) {
+	public static function me() {
 		try {
+			$args = func_get_args();
+			$class = array_shift($args);
+			$func = array_shift($args);
 			if (self::$refresh or !isset(self::$o[$class])) {
 				self::$o[$class] = new $class;
 			}
-			if (!is_array($arg)) {
-				return call_user_func_array(array(self::$o[$class], $func,),array(&$arg));
-			}
-			return call_user_func_array(array(self::$o[$class], $func,),$arg);
+			return call_user_func_array(array(self::$o[$class], $func),$args);
 
 		} catch (Exception $e) {
 			self::err($e);

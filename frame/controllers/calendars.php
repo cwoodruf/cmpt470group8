@@ -10,7 +10,7 @@ class Calendars extends Controller {
 		# typical one page grid calendar layout
 		case 'month':
 			$start = Calendar::startdate();
-			$events = Run::me('numbered','calendar',array($start,'note'));
+			$events = Run::me('numbered','calendar',$start,'note');
 			View::assign('ldata',Login::check());
 			View::assign('events',$events);
 			# this will check for date input independently

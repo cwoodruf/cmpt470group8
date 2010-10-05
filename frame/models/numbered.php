@@ -4,6 +4,7 @@ class Numbered extends NumberedEntity {
 		parent::__construct();
 		# add any modifications to the schema in NumberedEntity here
 		$this->schema['numbered_id']['alt'] = '#';
+		$this->schema['email']['hide'] = true;
 	}
 
 	# get a chronologically grouped set of events relating to a login
