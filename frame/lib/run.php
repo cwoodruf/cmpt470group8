@@ -18,11 +18,13 @@ class Run {
 	 */
 	public static function me($class,$func,$arg) {
 		try {
-			if (self::$refresh or !isset($o[$class])) 
-				$o[$class] = new $class;
-			if (!is_array($arg)) 
-				return call_user_func_array(array($o[$class], $func,),array(&$arg));
-			return call_user_func_array(array($o[$class], $func,),$arg);
+			if (self::$refresh or !isset(self::$o[$class])) {
+				self::$o[$class] = new $class;
+			}
+			if (!is_array($arg)) {
+				return call_user_func_array(array(self::$o[$class], $func,),array(&$arg));
+			}
+			return call_user_func_array(array(self::$o[$class], $func,),$arg);
 
 		} catch (Exception $e) {
 			self::err($e);
@@ -35,11 +37,14 @@ class Run {
 	 * uses sha1 to make the signature
 	 */
 	public static function cached($class,$func,$args) {
-		$sig = sha1($class.$func.serialize($args));
-		if (!self::$refresh and isset($results[$sig])) 
-			return $results[$sig];
-		$results[$sig] = self::me($class,$func,$args);
-		return $results[$sig];
+		$sig = $class.'.'.$func.'.'.sha1(serialize($args));
+
+		if (!self::$refresh and isset(self::$results[$sig])) {
+			return self::$results[$sig];
+		}
+
+		self::$results[$sig] = self::me($class,$func,$args);
+		return self::$results[$sig];
 	}
 	/**
 	 * set or return the last error
