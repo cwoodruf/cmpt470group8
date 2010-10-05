@@ -1,4 +1,6 @@
 {pagerlinks howmany=$howmany offset=$offset limit=$limit options=pages}
+
+{* the following will be captured into a smarty variable *}
 {capture name=nav}
 <div class="notenav">
 {if $offset > 0}
@@ -10,9 +12,10 @@
 {/if}
 &nbsp;
 
+{assign var=sidelinks value=3}
 {foreach from=$pagerlinks.pages key=o item=link}
-	{if $o < $offset - 2 * $limit or $o > $offset + 2 * $limit}{php}continue;{/php}{/if}
-	{if $o+$limit > $howmany}{assign var=eo value=$howmany}{else}{assign var=eo value=`$o+$limit`}{/if}
+	{if $o < $offset - $sidelinks * $limit or $o > $offset + $sidelinks * $limit}{php}continue;{/php}{/if}
+	{if $o+$limit > $howmany}{assign var=eo value=$howmany+1}{else}{assign var=eo value=`$o+$limit`}{/if}
 	{if $offset >= $o and $offset < $eo}
 [{$o+1}-{$eo}]
 	{else}
