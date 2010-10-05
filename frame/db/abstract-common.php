@@ -66,6 +66,7 @@ class Entity extends AbstractDB {
 
 		} catch(Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -81,12 +82,13 @@ class Entity extends AbstractDB {
 				if (!isset($data[$field])) continue;
 				$udata[] = "$field=".$this->quote($data[$field],"'");
 			}
-			$update = "update {$this->table} set ".implode(",", $udata)." where {$this->primary}=%u";
+			$update = "update {$this->table} set ".implode(",", $udata)." where {$this->primary}='%s'";
 			$this->run($update,$id);
 			return $this->result;
 
 		} catch(Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -97,10 +99,11 @@ class Entity extends AbstractDB {
 				throw new Exception("no primary key defined!");
 			if (!preg_match('#^\w+$#', $this->table)) 
 				throw new Exception("missing valid table name in upd!");
-			$this->run("delete from {$this->table} where {$this->primary}=%u", $id);
+			$this->run("delete from {$this->table} where {$this->primary}='%s'", $id);
 			return $this->result;
 		} catch(Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -113,6 +116,7 @@ class Entity extends AbstractDB {
 			return $this->resultarray();
 		} catch (Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -127,6 +131,7 @@ class Entity extends AbstractDB {
 			return $row['howmany'];
 		} catch (Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -153,6 +158,7 @@ class Entity extends AbstractDB {
 
 		} catch (Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -262,6 +268,7 @@ class Relation extends Entity {
 
 		} catch (Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -275,6 +282,7 @@ class Relation extends Entity {
 
 		} catch (Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}
@@ -290,6 +298,7 @@ class Relation extends Entity {
 
 		} catch (Exception $e) {
 			$this->err($e);
+			if (!QUIET) die($this->err());
 			return false;
 		}
 	}

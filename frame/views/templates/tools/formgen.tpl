@@ -13,8 +13,13 @@
 <td class="formgen formbuttons" align=right>
 
 {* you can use an array instead of action=controller/modifier form *}
-<input type=hidden name="action[0]" value="{$this->controller}">
-<input type=submit name="action[1]" value="save">
+<input type=hidden name="action[]" value="{$this->controller}">
+
+{foreach from=$this->hidden key=field item=value}
+<input type=hidden name="{$field}" value="{$value}">
+{/foreach}
+
+<input type=submit name="action[]" value="save">
 
 </td>
 </tr>

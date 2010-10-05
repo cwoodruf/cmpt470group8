@@ -16,13 +16,18 @@
 
 {if $smarty.session.login}
 <nobr>
-Welcome <b>{$smarty.session.login.login}</b>
+Welcome
+<a href="?action=register/edit&email={$smarty.session.login.login}">
+<b>{$smarty.session.login.login}</b></a>
+&nbsp;
+&nbsp;
 <a href="index.php?action=logout">Log out</a>
 </nobr>
 
 {else}
 <a href="index.php?action=loginform">Log in</a>
-&nbsp;&nbsp;
+&nbsp;
+&nbsp;
 <a href="index.php?action=register">Register</a>
 {/if}
 
