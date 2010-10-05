@@ -1,7 +1,7 @@
 <?php
 require_once('.settings.php');
 
-# change these in .settings.php if you want another page to be home
+# change the following in .settings.php (above)
 
 # debug output
 if (!defined('QUIET')) {
@@ -17,6 +17,8 @@ if (!defined('SALTFILE')) {
 	if (file_exists('.salt.php')) define('SALTFILE','.salt.php');
 	else define('SALTFILE',false);
 }
+
+#directories
 # where the base models are (ie the ones that are automatically made by scripts)
 if (!defined('MODELSBASE')) 	define('MODELSBASE','models/base');
 # where the model subclasses are (hand written)
@@ -25,6 +27,12 @@ if (!defined('MODELSDIR')) 	define('MODELSDIR','models');
 if (!defined('CONTROLLERSDIR')) define('CONTROLLERSDIR','controllers');
 # where the view logic is
 if (!defined('VIEWDIR')) 	define('VIEWDIR','views');
+# where these libraries are
+if (!defined('LIBDIR')) 	define('LIBDIR',dirname(__FILE__));
+# where the base db libraries are
+if (!defined('DBDIR')) 		define('DBDIR','db');
+
+#components
 # default page to show if we don't know what visitor wants to do
 if (!defined('DEFCONTROLLER')) 	define('DEFCONTROLLER','home');
 # object that manages password retrieval
@@ -32,15 +40,16 @@ if (!defined('LOGINMODEL')) 	define('LOGINMODEL','User');
 # object that manages login forms
 if (!defined('LOGINCONTROLLER')) define('LOGINCONTROLLER','Loginform');
 
-require_once('db/abstract-mysql.php');
-require_once('db/abstract-common.php');
+require_once(DBDIR.'/abstract-mysql.php');
+require_once(DBDIR.'/abstract-common.php');
 require_once(VIEWDIR.'/init.php');
-require_once('lib/run.php');
-require_once('lib/check.php');
-Check::$emptyok = false; # this seems to work better with the frame
-require_once('lib/controller.php');
-require_once('lib/pw.php');
-require_once('lib/login.php');
+require_once(LIBDIR.'/run.php');
+require_once(LIBDIR.'/check.php');
+# require that there be something in the input variable when running a Check::* method
+Check::$emptyok = false; 
+require_once(LIBDIR.'/controller.php');
+require_once(LIBDIR.'/pw.php');
+require_once(LIBDIR.'/login.php');
 
 function __autoload($class) {
 	# changes typeable file names to camel case class names
@@ -57,7 +66,7 @@ function __autoload($class) {
 		return;
 	} 
 
-	foreach (array(MODELSDIR,CONTROLLERSDIR,VIEWDIR) as $dir) {
+	foreach (array(MODELSDIR,CONTROLLERSDIR,VIEWDIR,LIBDIR) as $dir) {
 		$path = "$dir/".strtolower($class).'.php';
 		@include_once($path);
 	}
