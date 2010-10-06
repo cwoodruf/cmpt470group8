@@ -5,6 +5,8 @@
 
 {if $smarty.session.login.login == $note.email}
 <a href="?action=restricted&numbered_id={$note.numbered_id}">edit</a>
+&nbsp;&nbsp;
+<a href="?action=restricted/confirmdelete&numbered_id={$note.numbered_id}">delete</a>
 <br>
 <br>
 {/if}
