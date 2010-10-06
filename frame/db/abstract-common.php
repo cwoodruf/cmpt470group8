@@ -202,6 +202,21 @@ class Entity extends AbstractDB {
 		return $_SESSION['paged'][$pageid];
 	}
 
+	public static function setpageid($pageid,$field,$value) {
+		if ($field and isset($_SESSION['paged'][$pageid][$field])) 
+			$_SESSION['paged'][$pageid][$field] = $value;
+		return $_SESSION['paged'][$pageid][$field];
+	}
+
+	public static function setpageidhowmany($pageid) {
+		if (isset($_SESSION['paged'][$pageid]['model'])) {
+			$model = $_SESSION['paged'][$pageid]['model'];
+			$criterion = $_SESSION['paged'][$pageid]['criterion'];
+			$_SESSION['paged'][$pageid]['howmany'] = $model->howmany($criterion);
+		}
+		return $_SESSION['paged'][$pageid][$field];
+	}
+
 	public static function delpageid($pageid) {
 		$pagerdata = $_SESSION['paged'][$pageid];
 		unset($_SESSION['paged'][$pageid]);

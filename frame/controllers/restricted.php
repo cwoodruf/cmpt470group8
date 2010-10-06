@@ -22,7 +22,10 @@ class Restricted extends Controller {
 				} else {
 					$n->upd($id,$_REQUEST);
 				}
-				if (!$n->err()) View::assign('topmsg',"saved $id");
+				if (!$n->err()) {
+					View::assign('topmsg',"saved $id");
+					Entity::setpageidhowmany('numbered');
+				}
 				break;
 			case 'confirmdelete':
 				$this->flag('note_to_delete',$id);
@@ -33,6 +36,7 @@ class Restricted extends Controller {
 			case 'delete':
 				$id = $this->delflag('note_to_delete');
 				$n->del($id);
+				Entity::setpageidhowmany('numbered');
 				View::assign('confirm',"Note $id deleted!");
 				View::display("confirm.tpl");
 				return;

@@ -24,13 +24,15 @@ abstract class AbstractDB {
 
 	public function __construct($dbdata) {
 		$this->connect($dbdata);
-		$this->db = $dbdata;
 	}
 
 	/**
 	 * each group of entities should have a common way to connect to the db
 	 */
-	public function connect($d) {
+	public function connect($d=null) {
+		if (!is_array($d)) $d = $this->db;
+		else $this->db = $d;
+
 		$this->conn = mysql_connect($d['host'],$d['login'],$d['pw']);
 		if (!$this->conn) throw new Exception("can't connect: ".mysql_error($this->conn));
 
@@ -70,8 +72,8 @@ abstract class AbstractDB {
 			$query = vsprintf($query,$this->quote($args));
 		} 
 		$this->query = $query;
-		$this->result = mysql_query($this->query,$this->conn);
-		if (!$this->result) throw new Exception("query run error: ".mysql_error($this->conn));
+		$this->result = mysql_query($this->query,$this->connect());
+		if (!$this->result) throw new Exception("query run error: ".mysql_error($this->connect()));
 		return $this->result;
 	}
 
@@ -124,11 +126,11 @@ abstract class AbstractDB {
 		if (is_array($str)) {
 			$quoted = array();
 			foreach ($str as $s) {
-				$quoted[] = $quote.mysql_real_escape_string($s,$this->conn).$quote;
+				$quoted[] = $quote.mysql_real_escape_string($s,$this->connect()).$quote;
 			}
 			return $quoted;
 		}
-		return $quote.mysql_real_escape_string($str,$this->conn).$quote;
+		return $quote.mysql_real_escape_string($str,$this->connect()).$quote;
 	}
 }
 
