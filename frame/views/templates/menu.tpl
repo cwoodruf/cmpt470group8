@@ -20,17 +20,19 @@ Welcome
 <a href="?action=register/edit&email={$smarty.session.login.login}">
 <b>{$smarty.session.login.login}</b></a>
 &nbsp;
-&nbsp;
 <a href="index.php?action=logout">Log out</a>
 </nobr>
 
 {else}
 <a href="index.php?action=loginform">Log in</a>
 &nbsp;
-&nbsp;
-<a href="index.php?action=register">Register</a>
+<a href="index.php?action=register">Create a log in</a>
 {/if}
 
+</div>
+
+<div class="menuitem">
+<a href="/group8wiki/index.php/Framework_Docs">Framework docs</a>
 </div>
 
 </div>
