@@ -32,6 +32,5 @@ next &gt; &nbsp;&nbsp;
 last &gt;&gt; 
 {/if}
 </div>
-{assign var=count value=$offset}
 {/capture}
 

@@ -1,4 +1,8 @@
 {assign var=dom value=0}
+{if $showevents == ''}
+	{assign var=showevents value=calendars/showevents.tpl}
+{/if}
+
 <div class="calendar-title">{$month} {$year}</div>
 
 <div class="calendar-form">
@@ -36,7 +40,7 @@ Highlight date: {html_select_date start_year=2009 end_year=2011}
 	{/if}
 		
 		{$day|capitalize}<br>{$date} &nbsp;
-		{include file=calendars/showevents.tpl events=$events[$date]}
+		{include file=$showevents date=$date events=$events[$date]}
 	</div>
 	{assign var=dom value=`$dom+1`}
 
