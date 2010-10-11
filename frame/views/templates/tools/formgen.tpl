@@ -61,7 +61,7 @@
 </select>
 
 {elseif $fdata.type == 'password'}
-<input type="password" name="{$field}" value="{$this->input($field)}"> 
+<input type="password" name="{$field}" size="{$fdata.size}" value="{$this->input($field)}"> 
 
 {elseif $fdata.type == 'hidden'}
 <input type=hidden name="{$field}" value="{$this->input($field)}">

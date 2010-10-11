@@ -4,6 +4,7 @@ class User extends UserEntity implements PW {
 	public function __construct() {
 		parent::__construct();
 		$this->schema['password']['type'] = 'password';
+		$this->schema['password']['size'] = 60;
 	}
 
 	public function valid_login($login) {
