@@ -9,11 +9,14 @@ class Numbered extends NumberedEntity {
 
 	# get a chronologically grouped set of events relating to a login
 	public function calendar($start,$action) {
+		if (!preg_match('#^(\d\d\d\d)-(\d\d)-\d\d$#', $start, $m)) {
+			if (!QUIET) die("bad date in Numbered::calendar: $start");
+		}
+		
 		$rawevents = $this->getall(
 			array(
-				"where created between '%s' - interval 4 week ".
-				"and '%s' + interval 4 week ",
-				$start,$start
+				"where year(created) = %u and month(created) = %u ",
+				$m[1], $m[2]
 			)
 		);
 		if (!$rawevents) return array();
