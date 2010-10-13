@@ -1,0 +1,23 @@
+div.user {
+	margin-top: 30px;
+	border: 1px black solid;
+	width: 650px;
+	padding: 10px;
+}
+
+div.contacts {
+	margin-top: 20px;
+}
+
+ul.contacts {
+	margin-top: 10px;
+}
+
+ul.contacts li {
+	list-style: none;
+	padding-bottom: 5px;
+}
+	
+div.formgen {
+	margin-top: 10px;
+}
