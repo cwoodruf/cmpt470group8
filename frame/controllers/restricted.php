@@ -30,7 +30,8 @@ class Restricted extends Controller {
 			case 'confirmdelete':
 				$this->flag('note_to_delete',$id);
 				View::assign('confirm',"Really delete note?");
-				View::assign('action','delete');
+				View::assign('action','restricted/delete');
+				View::assign('submit','delete');
 				View::display("tools/confirm.tpl");
 				return;
 			case 'delete':
