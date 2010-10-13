@@ -10,8 +10,9 @@
 <h3>Example site</h3>
 
 {if $errors}
-errors:
-<h3 class="errors">{$errors}</h3>
+<div class="errors">
+{$errors}
+</div>
 {/if}
 
 {if $topmsg}

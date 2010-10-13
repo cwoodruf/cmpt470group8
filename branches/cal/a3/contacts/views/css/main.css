@@ -5,6 +5,12 @@ body {
 	font-size: 11pt;
 }
 
+.errors {
+	color: red;
+	font-weight: bold;
+	font-size: 12pt;
+}
+
 .bordered {
 	border: 1px black solid;
 }
