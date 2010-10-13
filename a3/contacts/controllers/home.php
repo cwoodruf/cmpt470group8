@@ -57,9 +57,11 @@ class Home extends Controller {
 				View::display('contact.tpl');
 				return;
 			case 'save':
-				# avoid foreign key errors
-				$u->ins(array('email'=>$cid));
-				$c->ins(array('email'=>$id,'contact_email'=>$cid));
+				if ($c->ins(array('email'=>$id,'contact_email'=>$cid)) == false) {
+					View::assign('errors',
+						"Insert failed. Does ".htmlentities($cid)." have a login?" 
+					);
+				}
 				break;
 			case 'confirmdelete':
 				View::assign(
