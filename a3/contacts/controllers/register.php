@@ -34,7 +34,7 @@ class Register extends Controller {
 		case 'edit':
 			$ldata = Login::check();
 			if ($ldata['login'] == $email) {
-				$this->input = Run::me('user','getone',$ldata['login']);
+				$this->input = Run::me(LOGINMODEL,'getone',$ldata['login']);
 				$this->input['password'] = '';
 				$this->hidden['oldemail'] = $ldata['login'];
 			}
