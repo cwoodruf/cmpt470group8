@@ -11,6 +11,7 @@ class Controller {
 	public function __construct($actions=null) {
 		View::assign('this',$this);
 		$this->controller = strtolower(get_class($this));
+		$this->action = $_REQUEST['action'];
 		$this->actions = $actions;
 	}
 	

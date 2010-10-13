@@ -53,7 +53,7 @@ require_once(LIBDIR.'/login.php');
 
 function __autoload($class) {
 	# changes typeable file names to camel case class names
-	$class = preg_replace('#(?:^|_)(.)#e',"strtoupper($1)",$class);
+	# $class = preg_replace('#(?:^|_)(.)#e',"strtoupper($1)",$class);
 
 	if (preg_match('#(.*)(?:Relation|Entity)$#',$class,$m)) {
 		$path = MODELSBASE."/".strtolower($m[1]).'_base.php';
