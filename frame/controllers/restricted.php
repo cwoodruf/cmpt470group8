@@ -31,14 +31,14 @@ class Restricted extends Controller {
 				$this->flag('note_to_delete',$id);
 				View::assign('confirm',"Really delete note?");
 				View::assign('action','delete');
-				View::display("confirm.tpl");
+				View::display("tools/confirm.tpl");
 				return;
 			case 'delete':
 				$id = $this->delflag('note_to_delete');
 				$n->del($id);
 				Entity::setpageidhowmany('numbered');
 				View::assign('confirm',"Note $id deleted!");
-				View::display("confirm.tpl");
+				View::display("tools/confirm.tpl");
 				return;
 			default:
 				$this->input['created'] = date('Y-m-d H:i:s');
@@ -48,7 +48,7 @@ class Restricted extends Controller {
 			View::display('restricted.tpl');
 
 		} else {
-			View::display('login.tpl');
+			View::display('tools/login.tpl');
 		}
 	}
 }

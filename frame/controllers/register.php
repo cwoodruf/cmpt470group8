@@ -3,8 +3,10 @@
  * basic login creation form - test of formgen scaffold
  */
 class Register extends Controller {
+	private static $LOGINMODEL = LOGINMODEL;
+
 	public function execute() {
-		$r = new Users;
+		$r = new self::$LOGINMODEL;
 
 		$this->schema = $r->schema;
 		$email = $_REQUEST['email'];
@@ -34,7 +36,7 @@ class Register extends Controller {
 		case 'edit':
 			$ldata = Login::check();
 			if ($ldata['login'] == $email) {
-				$this->input = Run::me(LOGINMODEL,'getone',$ldata['login']);
+				$this->input = Run::me(self::$LOGINMODEL,'getone',$ldata['login']);
 				$this->input['password'] = '';
 				$this->hidden['oldemail'] = $ldata['login'];
 			}
