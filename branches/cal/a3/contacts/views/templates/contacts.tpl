@@ -9,8 +9,10 @@
 </div>
 
 <div class="contacts">
-<b>My contacts</b>
+<b>My contacts</b> 
 <a href="index.php?action=home/contact/add">add</a>
+<br>
+<i>"share" means I have not yet shared contact details. "unshare" means I have.</i>
 <ul class="contacts">
 {include file=tools/dumpall.tpl list=$contacts dumptpl=contactlinks.tpl}
 </ul>

@@ -8,6 +8,9 @@ div.user {
 div.contacts {
 	margin-top: 20px;
 }
+div.contacts i {
+	font-size: small;
+}
 
 ul.contacts {
 	margin-top: 10px;
