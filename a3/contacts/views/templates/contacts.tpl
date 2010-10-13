@@ -15,4 +15,11 @@
 {include file=tools/dumpall.tpl list=$contacts dumptpl=contactlinks.tpl}
 </ul>
 </div>
+
+<div class="contacts">
+<b>People who have shared their contact info with me</b>
+<ul class="contacts">
+{include file=tools/dumpall.tpl list=$sharers dumptpl=sharerlinks.tpl}
+</ul>
+</div>
 {include file=bottom.tpl}

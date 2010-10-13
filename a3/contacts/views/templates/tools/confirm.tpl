@@ -1,5 +1,4 @@
-{include file=top.tpl}
-{include file=menu.tpl}
+{include file=tools/top.tpl}
 
 <h3>{$confirm}<h3>
 
@@ -10,4 +9,4 @@
 {/if}
 </form>
 
-{include file=bottom.tpl}
+{include file=tools/bottom.tpl}
