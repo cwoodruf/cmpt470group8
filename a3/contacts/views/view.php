@@ -44,13 +44,13 @@ class View {
 	public static function addCSS($css) {
 		if (!@filetype($css)) $css = "views/css/$css";
 		if (!@filetype($css)) return;
-		self::$css .= "<link rel=stylesheet type=text/css href=\"$css\">\n";
+		self::$css .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$css\" />\n";
 	}
 
 	public static function addJS($js) {
 		if (!@filetype($js)) $js = "views/js/$js";
 		if (!@filetype($js)) return;
-		self::$js .= "<script type=text/javascript src=\"$js\" ></script>\n";
+		self::$js .= "<script type=\"text/javascript\" src=\"$js\" ></script>\n";
 	}
 }
 

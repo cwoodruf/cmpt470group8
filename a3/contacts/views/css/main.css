@@ -102,13 +102,13 @@ h1 {
 	overflow: hidden;
 }
 .calendar.month.dom {
-	background: lavender;
+	background: #E3E4FA;
 }
 .calendar.month.weekend.dom {
 	background: #F0F0F0;
 }
 .calendar.month.selected.dom {
-	background: pink;
+	background: #800080;
 }
 .calendar.month.eow {
 	width: 0;
