@@ -291,6 +291,8 @@ class Relation extends Entity {
 		try {
 			$args = $this->splitid($id);
 			$key = array_shift($args);
+			$set = array();
+			$vals = array();
 			foreach ($this->schema as $field => $fdata) {
 				if ($this->iskey($field,$fdata)) continue;
 				if (!isset($data[$field])) continue;

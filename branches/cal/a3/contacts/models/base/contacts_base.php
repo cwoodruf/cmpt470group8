@@ -10,6 +10,7 @@ class ContactsRelation extends Relation {
 				'PRIMARY KEY' => array ( 'email' => '', 'contact_email' => '', ), 
 				'email' => array ( 'type' => 'varchar', 'size' => 128, ), 
 				'contact_email' => array ( 'type' => 'varchar', 'size' => 128, ), 
+				'shared' => array ( 'type' => 'int', 'size' => 11, ), 
 			),
 			'contacts'
 		);

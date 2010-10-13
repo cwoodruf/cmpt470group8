@@ -1,5 +1,4 @@
-{include file=top.tpl}
-{include file=menu.tpl}
+{include file=tools/top.tpl}
 
 <div>
 {literal}
@@ -35,4 +34,4 @@ $.get(
 </form>
 </div>
 
-{include file=bottom.tpl}
+{include file=tools/bottom.tpl}
