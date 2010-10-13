@@ -13,7 +13,7 @@ $.get(
 	},
 	function (data) {
 		if (data == 'OK') {
-			window.location = 'index.php?action=loginform/ajaxcheck';
+			window.location = 'index.php?action=loginform';
 		} else {
 			alert('Login failed. '+data);
 		}
