@@ -9,8 +9,7 @@
 {if $smarty.session.login}
 <nobr>
 Welcome
-<a href="?action=register/edit&email={$smarty.session.login.login}">
-<b>{$smarty.session.login.login}</b></a>
+<b>{$smarty.session.login.login}</b>
 &nbsp;
 <a href="index.php?action=logout">Log out</a>
 </nobr>
