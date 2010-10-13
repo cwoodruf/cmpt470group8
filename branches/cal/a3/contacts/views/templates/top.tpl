@@ -1,13 +1,13 @@
 {include file=tools/xmljunk.tpl}
 <head>
-<title>{$this->name|default:"example site"}</title>
+<title>{$this->name|default:"contacts"}</title>
 {$this->css()}
 {$this->js()}
 </head>
 <body>
 
 <div class="toplevel">
-<h3>Example site</h3>
+<h3>Contact manager</h3>
 
 {if $errors}
 <div class="errors">
