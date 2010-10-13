@@ -47,7 +47,7 @@ abstract class AbstractDB {
 	 * we'll need to check and recreate the connection
 	 */
 	public function conn() {
-		if (!mysql_ping($this->conn)) {
+		if (!is_resource($this->conn) or !mysql_ping($this->conn)) {
 			$this->connect();
 		}
 		return $this->conn;

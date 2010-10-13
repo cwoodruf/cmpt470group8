@@ -21,7 +21,7 @@ Welcome
 </div>
 
 <div class="menuitem">
-<a href="/group8wiki/index.php/Framework_Docs">Framework docs</a>
+<a href="/group8wiki/index.php/Framework_Docs" target="docs">Framework docs</a>
 </div>
 
 </div>
