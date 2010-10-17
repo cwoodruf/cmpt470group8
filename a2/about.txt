@@ -1,0 +1,24 @@
+Cmpt470 Assignment 2 Cal Woodruff cwoodruf@sfu.ca 301013983
+
+http://cmpt470.csil.sfu.ca:8008/~group8/a2/atomical.cgi
+
+There are two source files: 
+
+atomical.cgi - perl script that does parsing and display
+atomical.css - css file to go with atomical.cgi
+
+I have tested this with a couple of urls:
+http://localhost/~group8/a2/feed.xml (google news)
+http://www.cs.sfu.ca/CC/470/ggbaker/assign/a2-sample.xml
+http://news.google.com/news?ned=us&hl=en&topic=h&output=atom
+http://kjdragon.smugmug.com/hack/feed.mg?Type=nickname&Data=kjdragon&format=atom10
+
+Its quite difficult to find atom feeds let alone ones in foreign script - having an
+example to test would have helped. 
+
+I did check the plain form for css and html errors.
+
+Cheers
+
+Cal
+
