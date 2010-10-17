@@ -1,0 +1,16 @@
+http://cmpt470.csil.sfu.ca:8008/~group8/a3/contacts/index.php
+
+You can find the database schema in this directory
+contacts/models/base/a3_cal.mysql
+
+This project is a test / debug session for my final project frame work. 
+There is a link to the framework docs. Most likely these pages will not 
+validate (as they are mediawiki) and should not be considered part of 
+the actual assignment. They are there to give an overview of how the code 
+works.
+
+Most of the "guts" of the application can be found in 
+contacts/controllers/home.php 
+and also
+models/contacts.php
+contains some of the custom sql functions used by the controller.
