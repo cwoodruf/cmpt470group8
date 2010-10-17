@@ -6,7 +6,7 @@ use Data::Dumper;
 use Date::Parse;
 use Date::Format;
 use HTML::Entities;
-use CGI qw/header pre param end_html/;
+use CGI qw/pre param end_html/;
 use CGI::Carp qw/fatalsToBrowser/;
 use strict;
 my (@content);
@@ -24,7 +24,7 @@ my %metahandlers = (
 # handlers for parsing articles
 my %entryhandlers = (
 	 title => \&html,
-	 author => \&text,
+	 author => \&author,
 	 id => \&url,
 	 updated => \&date,
 	 link => \&get_href,
@@ -49,7 +49,7 @@ $feed =~ s#<entry#\n<entry#ig;
 foreach (split "\n", $feed) {
 
 	# this will find chunks with entries 
-	if (m#<entry>#i...m#</entry>#) {
+	if (m#<entry#i...m#</entry#) {
 		# looking for an entry
 		$entries .= "$_\n";
 
@@ -68,6 +68,7 @@ foreach (split "\n", $feed) {
 	}
 }
 
+# parse document metadata
 my $meta = readme($meta,\%metahandlers);
 
 # presentation section
@@ -133,7 +134,7 @@ HTML
 
 print end_html;
 
-# subs
+# subs ------------------------------------------------------------------------
 # readme does basic parsing for a subsection of a document using given handlers
 # because we specify the tags we are interested in ahead of time we can ignore 
 # extraneous junk quite easily
@@ -151,6 +152,7 @@ sub readme {
 }
 
 # these are all handler routines for grabbing and processing specific document pieces 
+# use readme to split out the subfields for the author
 sub author {
 	return readme($_[1],{name=>\&text,email=>\&url});
 }
@@ -160,7 +162,7 @@ sub author {
 sub content {
 	my ($attrs,$text) = @_;
 	my $type;
-	if ($attrs =~ m#type\s*=\s*"([^"]*)"#) {
+	if ($attrs =~ m#type\s*=\s*["']([^'"]*)['"]#i) {
 		$type = $1;
 	}
 	# delete CDATA and PCDATA tags
@@ -171,12 +173,13 @@ sub content {
 	# for html in a real deployment removing scripts would be an idea
 	if ($type eq 'xhtml') {
 		# remove the namespaces in the html
+		decode_entities($text);
 		$text =~ s#(</?)\w+:#$1#g;
 		$text =~ s#(<[^>]*)xmlns="[^"]*"([^>]*>)#$1$2#g;
 
 	} elsif ($type eq 'html') {
-
 		$text = decode_entities($text);
+
 	} else {
 		# this would be the default behavior for plain text
 		$text = encode_entities($text);
@@ -190,6 +193,7 @@ sub text {
 	$text;
 }
 
+# for fields that may have html in them
 sub html {
 	my ($attrs,$text) = @_;
 	decode_entities($text);
