@@ -1,0 +1,43 @@
+body {
+	font-family: helvetica,arial,sans-serif;
+}
+blockquote {
+	font-size: small;
+	font-style: italic;
+}
+div {
+	margin-bottom: 10px;
+	padding: 10px;
+	overflow: hidden;
+}
+
+.top {
+	width: 1000px;
+	margin-bottom: 20px;
+}
+
+.urlform {
+	width: 1000px;
+	background: #F6F6F6;
+}
+
+.meta {
+	width: 1000px;
+	background: #FFFFE0;
+}
+
+.entry {
+	width: 1000px;
+	border: 1px solid #000000;
+}
+
+.entry-meta {
+	width: 98%;
+	background: #F6F6F6;
+}
+
+.entry-content {
+	width: 98%;
+	border-left: 1px solid #000000;
+	overflow: scroll;
+}
