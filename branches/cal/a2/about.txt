@@ -7,11 +7,19 @@ There are two source files:
 atomical.cgi - perl script that does parsing and display
 atomical.css - css file to go with atomical.cgi
 
+The code works by sniffing out the entries first and then grabbing anything 
+else between, before or after articles to be searched for relevant metadata.
+The entries are processed via a series of tag / callback pairs. We only look 
+for what we are interested in and ignore anything else. The metadata is 
+processed in the same way as are author fields (which have multiple tags).
+
 I have tested this with a couple of urls:
 http://localhost/~group8/a2/feed.xml (google news)
 http://www.cs.sfu.ca/CC/470/ggbaker/assign/a2-sample.xml
 http://news.google.com/news?ned=us&hl=en&topic=h&output=atom
 http://kjdragon.smugmug.com/hack/feed.mg?Type=nickname&Data=kjdragon&format=atom10
+http://www.cs.sfu.ca/CC/470/ggbaker/assign/a2-samples/1.xml
+http://www.cs.sfu.ca/CC/470/ggbaker/assign/a2-samples/2.xml
 
 Its quite difficult to find atom feeds let alone ones in foreign script - having an
 example to test would have helped. 
