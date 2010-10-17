@@ -25,8 +25,8 @@
 </div><!-- end menu -->
 
 <div id="content">
-    [%# Status and error messages %]
-    <span class="message">[% status_msg || c.request.params.status_msg %]</span>
+    [%# Status and error messages - status_msg is now loaded via flash as well as stash %]
+    <span class="message">[% status_msg %]</span>
     <span class="error">[% error_msg %]</span>
     [%# This is where TT will stick all of your template's contents. -%]
     [% content %]
