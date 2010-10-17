@@ -98,8 +98,9 @@ print end_html and exit unless $feed;
 print <<HTML;
 <div class="meta">
 <h3>Feed: $meta->{title}</h3>
+<p>
 <b>$meta->{subtitle}</b>
-<br />
+</p>
 <a href="$meta->{link}">link</a> 
 $meta->{author}->{name} <a href="mailto:$meta->{author}->{email}">email</a>
 last updated $meta->{updated}->{str}
@@ -121,7 +122,9 @@ foreach my $entry (@content) {
 <blockquote>
 $entry->{summary}
 </blockquote>
+<p>
 $entry->{content}
+</p>
 </div>
 </div>
 
