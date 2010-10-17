@@ -10,6 +10,22 @@ BEGIN { extends 'Catalyst::Controller' }
 #
 __PACKAGE__->config(namespace => '');
 
+# check for a login
+sub auto :Private {
+	my ($self, $c) = @_;
+
+	# anybody can go to the login page
+	if ($c->controller eq $c->controller('Login')) {
+		return 1;
+	}
+	if (!$c->user_exists) {
+		$c->log->debug('***Root::auto User not found, redirect to /login');
+		$c->response->redirect($c->uri_for('/login'));
+		return 0;
+	}
+	1;
+}
+
 =head1 NAME
 
 catalyst::Controller::Root - Root Controller for catalyst

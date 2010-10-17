@@ -79,7 +79,11 @@ sub object :Chained('base') :PathPart('id') :CaptureArgs(1) {
 sub delete :Chained('object') :PathPart('delete') :Args(0) {
 	my ($self, $c) = @_;
 	$c->stash->{object}->delete;
-	$c->response->redirect($c->uri_for($self->action_for('list'), {status_msg => "Book deleted."}));
+
+	# flash is like stash but uses the catalyst session plugin to keep data between page loads
+	$c->flash->{status_msg} = 'Book deleted';
+
+	$c->response->redirect($c->uri_for($self->action_for('list')));
 }
 
 sub list_recent :Chained('base') :PathPart('list_recent') :Args(1) {
