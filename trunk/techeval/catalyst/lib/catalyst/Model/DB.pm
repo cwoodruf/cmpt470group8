@@ -3,11 +3,18 @@ package catalyst::Model::DB;
 use strict;
 use base 'Catalyst::Model::DBIC::Schema';
 
+# to use a test database put the dsn in a TESTCATDSN environment variable
+# use it like this:
+# $ cp myapp.db myappTEST.db
+# $ CATALYST_DEBUG=0 MYAPP_DSN="dbi:SQLite:myappTEST.db" prove -vwl t/live_app01.t
+
+my $dsn = $ENV{TESTCATDSN} ||= 'dbi:SQLite:/var/www/catalyst/books.db';
+
 __PACKAGE__->config(
     schema_class => 'Catalyst::Schema',
     
     connect_info => {
-        dsn => 'dbi:SQLite:/var/www/catalyst/books.db',
+        dsn => $dsn,
         user => '',
         password => '',
         on_connect_do => q{PRAGMA foreign_keys=ON},
