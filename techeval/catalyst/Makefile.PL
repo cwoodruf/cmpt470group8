@@ -18,6 +18,7 @@ requires 'Catalyst::Plugin::Authentication';
 requires 'Catalyst::Plugin::Session';
 requires 'Catalyst::Plugin::Session::Store::FastMmap';
 requires 'Catalyst::Plugin::Session::State::Cookie';
+requires 'Catalyst::Plugin::Authorization::Roles';
 requires 'Moose';
 requires 'namespace::autoclean';
 requires 'Config::General'; # This should reflect the config file format you've chosen

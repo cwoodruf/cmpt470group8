@@ -25,6 +25,6 @@ with a rating of [% book.rating %].</p>
 
 [% # Try out the TT Dumper (for development only!) -%]
 <pre>
-Dump of the 'book' variable:
-[% Dumper.dump(book) %]
+[% # Dump of the 'book' variable: -%]
+[% # Dumper.dump(book) -%]
 </pre>

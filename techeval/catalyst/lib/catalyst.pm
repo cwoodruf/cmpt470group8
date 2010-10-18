@@ -20,6 +20,8 @@ use Catalyst qw/
     StackTrace
 
     Authentication
+    Authorization::Roles
+
     Session
     Session::State::Cookie
     Session::Store::FastMmap
