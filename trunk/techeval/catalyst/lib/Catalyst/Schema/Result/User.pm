@@ -123,6 +123,12 @@ __PACKAGE__->add_columns( 'password' => {
 	},
 );
 
+use Perl6::Junction qw/any/;
+sub has_role {
+	my ($self, $role) = @_;
+	return any(map { $_->role } $self->roles) eq $role;
+}
+
 # You can replace this text with custom content, and it will be preserved on regeneration
 __PACKAGE__->meta->make_immutable;
 1;

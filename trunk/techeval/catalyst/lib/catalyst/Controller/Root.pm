@@ -26,6 +26,12 @@ sub auto :Private {
 	1;
 }
 
+# complain that we don't have enough permissions
+sub error_noperms :Chained('/') :PathPart('error_noperms') :Args(0) {
+	my ($self, $c) = @_;
+	$c->stash(template => 'books/error_noperms.tt');
+}
+
 =head1 NAME
 
 catalyst::Controller::Root - Root Controller for catalyst
@@ -51,7 +57,6 @@ sub index :Path :Args(0) {
 
 sub hello :Global {
 	my ( $self, $c ) = @_;
-	# Catalyst Sucks
 	$c->stash( template => 'hello.tt' );
 }
 
@@ -63,7 +68,7 @@ Standard 404 error page
 
 sub default :Path {
     my ( $self, $c ) = @_;
-    $c->response->body( 'Catalyst Sucks! Page not found.' );
+    $c->response->body( 'Page not found.' );
     $c->response->status(404);
 }
 

@@ -41,16 +41,23 @@ sub base :Chained('/') :PathPart('books') :CaptureArgs(0) {
 
 sub url_create :Chained('base') :PathPart('url_create') :Args(3) {
 	my ($self, $c, $title, $rating, $author_id) = @_;
-	my $book = $c->model('DB::Book')->create({
-		title => $title,
-		rating => $rating,
-	});
-	$book->add_to_book_authors({author_id => $author_id});
-	$c->stash(book => $book, template => 'books/create_done.tt');
+	if ($c->check_user_roles('admin')) {
+		my $book = $c->model('DB::Book')->create({
+			title => $title,
+			rating => $rating,
+		});
+		$book->add_to_book_authors({author_id => $author_id});
+		# also works: $book->create_related('book_authors', {author_id => $author_id});
+
+		$c->stash(book => $book, template => 'books/create_done.tt');
+	} else {
+		$c->response->body("You do not have sufficient permissions to create a book");
+	}
 }
 
 sub form_create :Chained('base') :PathPart('form_create') :Args(0) {
 	my ($self, $c) = @_;
+	$c->detach('/error_noperms') and return unless $c->check_user_roles('admin');
 	$c->stash(template => 'books/form_create.tt');
 }
 
@@ -78,6 +85,11 @@ sub object :Chained('base') :PathPart('id') :CaptureArgs(1) {
 
 sub delete :Chained('object') :PathPart('delete') :Args(0) {
 	my ($self, $c) = @_;
+	# check that we are allowed to delete - in this case the check is implemented in the model
+	# see lib/Catalyst/Schema/Result/ Book.pm and User.pm
+	$c->detach('/error_noperms')
+		unless $c->stash->{object}->delete_allowed_by($c->user->get_object);
+
 	$c->stash->{object}->delete;
 
 	# flash is like stash but uses the catalyst session plugin to keep data between page loads
