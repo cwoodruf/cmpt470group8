@@ -7,7 +7,7 @@ __PACKAGE__->config(
     schema_class => 'Catalyst::Schema',
     
     connect_info => {
-        dsn => 'dbi:SQLite:books.db',
+        dsn => 'dbi:SQLite:/var/www/catalyst/books.db',
         user => '',
         password => '',
         on_connect_do => q{PRAGMA foreign_keys=ON},
