@@ -1,0 +1,10 @@
+[% META title = 'Manual Form Book Create' -%]
+<form method="post" action="books.cgi?action=list">
+<input type="hidden" name="action" value="save">
+<table>
+  <tr><td>Title:</td><td><input type="text" name="title"></td></tr>
+  <tr><td>Rating:</td><td><input type="text" name="rating"></td></tr>
+  <tr><td>Author ID:</td><td><input type="text" name="author_id"></td></tr>
+</table>
+<input type="submit" name="Submit" value="Submit">
+</form>
