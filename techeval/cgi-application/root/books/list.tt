@@ -1,0 +1,16 @@
+<a href="?action=create">Create a new book</a>
+<br>
+<table border=1 cellpadding=5 cellspacing=0>
+<tr><th>Title</th><th>Rating</th><th>Author(s)</th><th>&nbsp;</th></tr>
+[% FOREACH book IN books -%]
+<tr>
+<td>[% book.title %]</td>
+<td>[% book.rating %]</td>
+    <td>[% book.authors.join(', ') %]</td>
+    <td>
+      <a href="?action=del&book_id=[%book.id%]">Delete</a>
+    </td>
+</tr>
+[% END -%]
+</table>
+
