@@ -33,6 +33,8 @@ if (!defined('LIBDIR')) 	define('LIBDIR',dirname(__FILE__));
 if (!defined('DBDIR')) 		define('DBDIR','db');
 
 #components
+# parameter to use to determine controller "action"
+if (!defined('ACTION')) define('ACTION','action');
 # default page to show if we don't know what visitor wants to do
 if (!defined('DEFCONTROLLER')) 	define('DEFCONTROLLER','home');
 # object that manages password retrieval

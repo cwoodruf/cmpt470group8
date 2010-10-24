@@ -11,17 +11,17 @@ class Controller {
 	public function __construct($actions=null) {
 		View::assign('this',$this);
 		$this->controller = strtolower(get_class($this));
-		$this->action = $_REQUEST['action'];
+		$this->action = $_REQUEST[ACTION];
 		$this->actions = $actions;
 	}
 	
 	# figure out which controller you want to run
 	public static function init() {
 
-		if (is_array($_REQUEST['action'])) {
-			$actions = $_REQUEST['action'];
+		if (is_array($_REQUEST[ACTION])) {
+			$actions = $_REQUEST[ACTION];
 		} else {
-			$actions = explode("/", $_REQUEST['action']);
+			$actions = explode("/", $_REQUEST[ACTION]);
 		}
 		$controller = $actions[0];
 
