@@ -9,6 +9,7 @@ define('DBPW','db password');
 # define('QUIET',false);
 
 # salt file for the Login class
+# see example.salt.php for structure
 # if (file_exists('.salt.php')) define('SALTFILE','.salt.php');
 
 #directories
