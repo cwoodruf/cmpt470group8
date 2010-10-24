@@ -1,4 +1,0 @@
-2010-10-04
-http://search.cpan.org/~hkclark/Catalyst-Manual-5.8004/lib/Catalyst/Manual/Tutorial/02_CatalystBasics.pod
-http://search.cpan.org/~hkclark/Catalyst-Manual-5.8004/lib/Catalyst/Manual/Tutorial/03_MoreCatalystBasics.pod
-http://search.cpan.org/~hkclark/Catalyst-Manual-5.8004/lib/Catalyst/Manual/Tutorial/04_BasicCRUD.pod
