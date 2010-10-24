@@ -5,7 +5,7 @@ require_once('.settings.php');
 
 # debug output
 if (!defined('QUIET')) {
-	if (file_exists('DEBUG')) {
+	if (file_exists('DEBUG') or $_ENV['DEBUG']) {
 		define('QUIET',false);
 		error_reporting(E_ALL & ~E_NOTICE);
 		ini_set('display_errors',true);
