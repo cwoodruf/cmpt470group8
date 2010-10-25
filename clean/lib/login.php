@@ -87,10 +87,10 @@ class Login {
 	private static function save_login($this_login,$ldata) {
 		unset($ldata['password']);
 		self::$ldata = $ldata;
-		$_SESSION['login'] = $ldata;
-		$_SESSION['login']['login'] = $this_login;
-		$_SESSION['login']['time'] = $time = time();
-		return $_SESSION['login'];
+		$_SESSION[LOGINSESSION] = $ldata;
+		$_SESSION[LOGINSESSION]['login'] = $this_login;
+		$_SESSION[LOGINSESSION]['time'] = $time = time();
+		return $_SESSION[LOGINSESSION];
 	}
 
 	public static function err($error=null,$refresh=false) {

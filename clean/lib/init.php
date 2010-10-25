@@ -34,13 +34,15 @@ if (!defined('DBDIR')) 		define('DBDIR','db');
 
 #components
 # parameter to use to determine controller "action"
-if (!defined('ACTION')) define('ACTION','action');
+if (!defined('ACTION')) 	define('ACTION','action');
 # default page to show if we don't know what visitor wants to do
 if (!defined('DEFCONTROLLER')) 	define('DEFCONTROLLER','home');
 # object that manages password retrieval
 if (!defined('LOGINMODEL')) 	define('LOGINMODEL','User');
 # object that manages login forms
 if (!defined('LOGINCONTROLLER')) define('LOGINCONTROLLER','Loginform');
+# key in the $_SESSION array for this login - this should be different for each site
+if (!defined('LOGINSESSION')) 	define('LOGINSESSION',dirname(__FILE__));
 
 require_once(DBDIR.'/abstract-mysql.php');
 require_once(DBDIR.'/abstract-common.php');

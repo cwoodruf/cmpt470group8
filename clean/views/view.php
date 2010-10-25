@@ -28,11 +28,11 @@ class View {
 	}
 
 	public static function wrap($tpl,$wrapper=VIEWWRAPPER) {
-		if ($smarty->template_exists($wrapper)) {
-			$smarty->assign('content',$smarty->fetch($tpl));
-			$smarty->display($wrapper);
+		if (self::$smarty->template_exists($wrapper)) {
+			self::$smarty->assign('content',self::$smarty->fetch($tpl));
+			self::$smarty->display($wrapper);
 		} else {
-			$smarty->display($tpl);
+			self::$smarty->display($tpl);
 		}
 	}
 

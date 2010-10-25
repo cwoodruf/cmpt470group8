@@ -1,5 +1,3 @@
-{include file=tools/top.tpl}
-
 <h3>{$confirm}<h3>
 
 <form name="confirm" method="post">
@@ -8,5 +6,3 @@
 <input type="submit" value="{$submit}">
 {/if}
 </form>
-
-{include file=tools/bottom.tpl}
