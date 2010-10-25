@@ -14,7 +14,7 @@ class Login {
 
 	public static function logout() {
 		self::$ldata = null;
-		unset($_SESSION['login']);
+		unset($_SESSION[LOGINSESSION]);
 		unset($_COOKIE['from']);
 		setcookie('from',null,mktime(0,0,0,1,1,1970));
 	}
@@ -26,7 +26,7 @@ class Login {
 
 	private static function authenticate($pwclass) {
 		# if already logged in then 
-		if (is_array($_SESSION['login'])) return $_SESSION['login'];
+		if (is_array($_SESSION[LOGINSESSION])) return $_SESSION[LOGINSESSION];
 
 		$pw = new $pwclass;
 		$login = $_REQUEST['login'];
