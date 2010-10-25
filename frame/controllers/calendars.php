@@ -2,7 +2,7 @@
 /**
  * Display various calendars
  */
-class Calendars extends Controller {
+class Calendars extends BaseController {
 	public function execute() {
 		$this->calendar = $this->actions[1];
 

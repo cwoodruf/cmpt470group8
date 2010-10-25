@@ -2,7 +2,7 @@
 /**
  * basic login creation form - test of formgen scaffold
  */
-class Register extends Controller {
+class Register extends BaseController {
 	private static $LOGINMODEL = LOGINMODEL;
 
 	public function execute() {

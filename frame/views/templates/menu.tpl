@@ -14,11 +14,11 @@
 
 <div class="menuitem">
 
-{if $smarty.session.login}
+{if $ldata}
 <nobr>
 Welcome
-<a href="?action=register/edit&email={$smarty.session.login.login}">
-<b>{$smarty.session.login.login}</b></a>
+<a href="?action=register/edit&email={$ldata.login}">
+<b>{$ldata.login}</b></a>
 &nbsp;
 <a href="index.php?action=logout">Log out</a>
 </nobr>

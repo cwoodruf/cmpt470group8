@@ -2,7 +2,7 @@
 /**
  * basic note display
  */
-class Note extends Controller {
+class Note extends BaseController {
 	public function execute() {
 		if ($ldata = Login::check()) {
 			$view = array(

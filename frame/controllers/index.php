@@ -6,7 +6,7 @@
  *
  * this is a demo / test of the paging tools - these may need to be further refined
  */
-class Index extends Controller {
+class Index extends BaseController {
 	const PAGESIZE = 11;
 
 	public function execute() {

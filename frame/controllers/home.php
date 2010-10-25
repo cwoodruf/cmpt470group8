@@ -12,7 +12,7 @@
  * View::display - display the template
  * View::wrap - display template in a wrapper 
  */
-class Home extends Controller {
+class Home extends BaseController {
 	/**
 	 * required function for controllers
 	 */

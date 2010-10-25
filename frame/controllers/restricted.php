@@ -2,7 +2,7 @@
 /**
  * example of a page or set of pages that require login
  */
-class Restricted extends Controller {
+class Restricted extends BaseController {
 	public function execute() {
 
 		# $ldata has the user record
