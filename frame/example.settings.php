@@ -35,4 +35,6 @@ define('DBPW','db password');
 # define('LOGINMODEL','User');
 # object that manages login forms
 # define('LOGINCONTROLLER','Loginform');
+# optional wrapper template for views 
+# define('VIEWWRAPPER','wrapper.tpl');
 
