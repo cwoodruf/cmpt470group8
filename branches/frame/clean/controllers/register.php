@@ -9,55 +9,89 @@ class Register extends Controller {
 	private static $USERNAME = 'email';
 	private static $OLDUSERNAME = 'oldemail'; // for changing a user name
 	private static $PASSWORD = 'password';
-	// see below for customizable checker functions
-
-	public function execute() {
-		$r = new self::$LOGINMODEL;
-
-		$this->schema = $r->schema;
-		$username = $_REQUEST[self::$USERNAME];
-
-		switch ($this->actions[1]) {
-		case 'save':
-			if (!($this->userchecker($username))) {
-				View::assign('errors',"Invalid email entered!");
-				$this->input = $_REQUEST;
-				break;
-			}
-			if (!($this->pwchecker($_REQUEST[self::$PASSWORD]))) {
-				View::assign('errors',"Invalid password entered!");
-				$this->input = $_REQUEST;
-				break;
-			}
-			$_REQUEST[self::$PASSWORD] = Login::encode($_REQUEST[self::$PASSWORD]);
-			if ($_REQUEST[self::$OLDUSERNAME]) {
-				$r->upd($_REQUEST[self::$OLDUSERNAME], $_REQUEST);
-			} else {
-				$r->ins($_REQUEST);
-			}
-			$this->input = $r->getone($username);
-			$this->input[self::$PASSWORD] = '';
-			View::assign('topmsg',"saved ".htmlentities($username));
-			break;
-		case 'edit':
-			$ldata = Login::check();
-			if ($ldata['login'] == $username) {
-				$this->input = Run::me(self::$LOGINMODEL,'getone',$ldata['login']);
-				$this->input[self::$PASSWORD] = '';
-				$this->hidden[self::$OLDUSERNAME] = $ldata['login'];
-			}
-		default:
-		}
-		View::display('tools/register.tpl');
-	}
 
 	// modify these to work with your specific login requirements 
-	public  userchecker($username) {
-		return Check::isemail($username);
+	public function userchecker($username) {
+		return Check::isvar($username) or Check::isemail($username);
 	}
 
-	public pwchecker($password) {
+	public function pwchecker($password) {
 		return Check::validpassword($password);
+	}
+
+	/**
+	 * main function that manages registrations
+	 */
+	public function execute() {
+		$this->schema = $this->r()->schema;
+
+		$this->doable(array(
+			'save' => 'savelogin',
+			'edit' => 'editlogin',
+		));
+		$this->doaction($this->actions[1]);
+
+		View::wrap('tools/register.tpl');
+	}
+
+	/**
+	 * save a login
+	 */
+	protected function savelogin() {
+
+		if (!($this->userchecker($this->username()))) {
+			View::assign('errors',"Invalid email entered!");
+			$this->input = $_REQUEST;
+			return;
+		}
+
+		if (!($this->pwchecker($_REQUEST[self::$PASSWORD]))) {
+			View::assign('errors',"Invalid password entered!");
+			$this->input = $_REQUEST;
+			return;
+		}
+
+		$_REQUEST[self::$PASSWORD] = Login::encode($_REQUEST[self::$PASSWORD]);
+		if ($_REQUEST[self::$OLDUSERNAME]) {
+			$this->r()->upd($_REQUEST[self::$OLDUSERNAME], $_REQUEST);
+		} else {
+			$this->r()->ins($_REQUEST);
+		}
+
+		$this->input = $this->r()->getone($this->username());
+		$this->input[self::$PASSWORD] = '';
+		View::assign('topmsg',"saved ".htmlentities($this->username()));
+
+		// in this case we are going right back to the edit form so this makes sense
+		$this->editlogin();
+	}
+
+        /**
+         * we edit based on who you are logged in as in this case
+         * if you'd want to edit someone else's login you'd have to get that one
+	 */
+	protected function editlogin() {
+		$ldata = Login::check();
+		if ($ldata['login'] == $this->username()) {
+			$this->input = Run::me(self::$LOGINMODEL,'getone',$ldata['login']);
+			$this->input[self::$PASSWORD] = '';
+			$this->hidden[self::$OLDUSERNAME] = $ldata['login'];
+		}
+	}
+
+	public function username() {
+		if (isset($this->username)) return $this->username;
+		$this->username = $_REQUEST[self::$USERNAME];
+		return $this->username;
+	}
+
+	/**
+         * get or create a reference to the login model
+         */
+	protected function r() {
+		if (isset($this->r)) return $this->r;
+		$this->r = new self::$LOGINMODEL;
+		return $this->r;
 	}
 }
 

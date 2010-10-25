@@ -5,7 +5,7 @@ list($controller,$actions) = Controller::init();
 
 # if we are logging in remember our state
 # but go back to the loginform controller
-if ($_SESSION['flags']['login']) {
+if ($_SESSION['flags']['login'] and $controller != strtolower(LOGINCONTROLLER)) {
 
 	$_SESSION['request'] = $_REQUEST;
 	$controller = LOGINCONTROLLER;

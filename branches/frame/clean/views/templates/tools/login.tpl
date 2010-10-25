@@ -1,5 +1,3 @@
-{include file=tools/top.tpl}
-
 <div>
 {literal}
 <form id="form_login" action="index.php" method="get"
@@ -33,5 +31,3 @@ $.get(
 </table>
 </form>
 </div>
-
-{include file=tools/bottom.tpl}
