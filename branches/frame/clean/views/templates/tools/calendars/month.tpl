@@ -1,6 +1,6 @@
 {assign var=dom value=0}
 {if $showevents == ''}
-	{assign var=showevents value=calendars/showevents.tpl}
+	{assign var=showevents value=tools/calendars/showevents.tpl}
 {/if}
 
 <div class="calendar-title">{$month} {$year}</div>
