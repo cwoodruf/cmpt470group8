@@ -49,6 +49,7 @@ class Controller {
 
 	# do a method based on an action
 	public function doaction($action) {
+		if (!$action) $action = 'default';
 		$callback = $this->doable[$action];
 		if (!method_exists($this,$callback)) return;
 		return $this->$callback();
