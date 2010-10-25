@@ -1,5 +1,6 @@
 <?php
 require_once(VIEWDIR.'/smarty/Smarty.class.php');
+if (!defined('VIEWWRAPPER')) define('VIEWWRAPPER','wrapper.tpl');
 
 # base view class
 class View {
@@ -24,6 +25,15 @@ class View {
 	
 	public static function assign($name,$value) {
 		return self::$smarty->assign($name,$value);
+	}
+
+	public static function wrap($tpl,$wrapper=VIEWWRAPPER) {
+		if ($smarty->template_exists($wrapper)) {
+			$smarty->assign('content',$smarty->fetch($tpl));
+			$smarty->display($wrapper);
+		} else {
+			$smarty->display($tpl);
+		}
 	}
 
 	public static function display($tpl) {
