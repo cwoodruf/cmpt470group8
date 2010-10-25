@@ -16,12 +16,8 @@ class Calendars extends Controller {
 			# this will check for date input independently
 			Calendar::showmonth();
 			break;
-		# list of days / events similar to a daytimer
-		case 'list':
-		default:
-			View::assign('topmsg',"ERROR: don't know calendar &quot;".htmlentities($calendar)."&quot;!");
-			View::display(HOMETPL);
-			exit;
+		# add more calendars here
+		default: die("don't know calendar {$this->calendar}");
 		}
 	}
 
