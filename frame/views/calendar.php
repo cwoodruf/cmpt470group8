@@ -20,7 +20,7 @@ class Calendar {
 			$days[++$dow] = $d;
 		}
 		View::assign('days', $days);
-		View::wrap("tools/calendar".self::$calendar);
+		View::wrap("tools/calendars/".self::$calendar);
 	}
 
 	public static function setdates() {

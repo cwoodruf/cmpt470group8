@@ -11,7 +11,6 @@ class Calendars extends BaseController {
 		case 'month':
 			$start = Calendar::startdate();
 			$events = Run::me('numbered','calendar',$start,'note');
-			View::assign('ldata',Login::check());
 			View::assign('events',$events);
 			# this will check for date input independently
 			Calendar::showmonth();
@@ -19,8 +18,9 @@ class Calendars extends BaseController {
 		# list of days / events similar to a daytimer
 		case 'list':
 		default:
-			View::assign('topmsg',"ERROR: don't know calendar &quot;".htmlentities($calendar)."&quot;!");
-			View::display('home.tpl');
+			View::assign('confirm',
+				"ERROR: don't know calendar &quot;".htmlentities($this->calendar)."&quot;!");
+			View::display('tools/confirm.tpl');
 			exit;
 		}
 	}

@@ -51,10 +51,7 @@ class Controller {
 	public function doaction($action) {
 		if (!$action) $action = 'default';
 		$callback = $this->doable[$action];
-		if (!$callback) {
-			if (!QUIET) die("no callback for action $action");
-			return;
-		}
+		if (!$callback) return;
 		if (!method_exists($this,$callback)) {
 			if (!QUIET) die("callback $callback for action $action doesn't exist");
 			return;
