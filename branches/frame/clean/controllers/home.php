@@ -17,8 +17,13 @@ class Home extends Controller {
 	 * required function for controllers
 	 */
 	public function execute() {
-		//todo get me to do something
-		print "<h1>hello</h1>";
+		// you can also just use print statements here
+		// try adding action=home/{some text}
+		View::assign('name',htmlentities($this->actions[1]));
+		// this will insert the contents of home.tpl into wrapper.tpl
+		// you can change the wrapper by adding a template name 
+		// as a second argument to this function
+		View::wrapper('home.tpl');
 	}
 }
 
