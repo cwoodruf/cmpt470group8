@@ -23,7 +23,7 @@ class Home extends Controller {
 		// this will insert the contents of home.tpl into wrapper.tpl
 		// you can change the wrapper by adding a template name 
 		// as a second argument to this function
-		View::wrapper('home.tpl');
+		View::wrap('home.tpl');
 	}
 }
 
