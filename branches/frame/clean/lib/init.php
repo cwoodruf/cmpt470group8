@@ -1,5 +1,5 @@
 <?php
-require_once('.settings.php');
+@include_once('.settings.php');
 
 # change the following in .settings.php (above)
 
