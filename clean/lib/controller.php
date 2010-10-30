@@ -22,8 +22,11 @@ class Controller {
 
 		if (is_array($_REQUEST[ACTION])) {
 			$actions = $_REQUEST[ACTION];
-		} else {
-			$actions = explode("/", $_REQUEST[ACTION]);
+		} else if (isset($_REQUEST['action'])) {
+			$actions = explode('/', $_REQUEST[ACTION]);
+		} else if (isset($_SERVER['PATH_INFO'])) {
+			$actionstr = preg_replace('#^/#','',$_SERVER['PATH_INFO']);
+			$actions = explode('/', $actionstr);
 		}
 		$controller = $actions[0];
 
