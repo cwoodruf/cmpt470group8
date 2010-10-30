@@ -1,0 +1,9 @@
+<FilesMatch  ^\.>
+order Allow,Deny
+Deny from all
+</FilesMatch>
+
+RewriteEngine On
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteRule (.*) ?action=$1 
