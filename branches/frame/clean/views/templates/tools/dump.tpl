@@ -7,7 +7,7 @@
 <b>{$field|@htmlentities}</b>
 </td>
 <td>
-<pre>{$value|@htmlentities}</pre>
+{$value|@htmlentities}
 </td>
 </tr>
 
