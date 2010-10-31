@@ -31,11 +31,12 @@
 <tr class="formgen" valign="top">
 <td class="formgen"><b>{$field}</b></td>
 <td class="formgen">
+{assign var=value value=$this->input($field)}
 
 {if $fdata.auto}
- {if $this->input($field)}
-  {$this->input($field)}
-  <input type="hidden" name="{$field}" value="{$this->input($field)}">
+ {if $value}
+  {$value}
+  <input type="hidden" name="{$field}" value="{$value}">
  {else}
   <i>{$fdata.alt}</i>
  {/if}
@@ -50,10 +51,10 @@
 {include file=$fdata.template field=$field data=$fdata}
 
 {elseif $fdata.type == 'text'}
-<textarea name="{$field}" rows="{$fdata.rows}" cols="{$fdata.cols}">{$this->input($field)}</textarea>
+<textarea name="{$field}" rows="{$fdata.rows}" cols="{$fdata.cols}">{$value}</textarea>
 
 {elseif $fdata.type == 'varchar'}
-<input name="{$field}" size="{$fdata.size}" value="{$this->input($field)}" /> 
+<input name="{$field}" size="{$fdata.size}" value="{$value}" /> 
 
 {elseif $fdata.type == 'select' and $fdata.options}
 <select name="$field"><option></option>
@@ -61,13 +62,13 @@
 </select>
 
 {elseif $fdata.type == 'password'}
-<input type="password" name="{$field}" size="{$fdata.size}" value="{$this->input($field)}" /> 
+<input type="password" name="{$field}" size="{$fdata.size}" value="{$value}" /> 
 
 {elseif $fdata.type == 'hidden'}
-<input type="hidden" name="{$field}" value="{$this->input($field)}" />
+<input type="hidden" name="{$field}" value="{$value}" />
 
 {else}
-<input name="{$field}" value="{$this->input($field)}" /> 
+<input name="{$field}" value="{$value}" /> 
 	
 {/if}
 
