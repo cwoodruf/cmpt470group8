@@ -54,13 +54,15 @@ class View {
 	public static function addCSS($css) {
 		if (!@filetype($css)) $css = "views/css/$css";
 		if (!@filetype($css)) return;
-		self::$css .= "<link rel=stylesheet type=text/css href=\"$css\">\n";
+		$sitedir = Controller::sitedir();
+		self::$css .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$sitedir/$css\">\n";
 	}
 
 	public static function addJS($js) {
 		if (!@filetype($js)) $js = "views/js/$js";
 		if (!@filetype($js)) return;
-		self::$js .= "<script type=text/javascript src=\"$js\" ></script>\n";
+		$sitedir = Controller::sitedir();
+		self::$js .= "<script type=\"text/javascript\" src=\"$sitedir/$js\" ></script>\n";
 	}
 }
 

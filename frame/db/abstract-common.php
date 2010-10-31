@@ -60,6 +60,7 @@ class Entity extends AbstractDB {
 			foreach ($this->schema as $field => $fdata) {
 				if ($this->isauto($fdata)) continue;
 				# if ($field == 'PRIMARY KEY') continue;
+				$this->check($fdata,$data[$field]);
 				if (!isset($data[$field])) continue;
 				$idata[$field] = $this->quote($data[$field],"'");
 			}
@@ -82,6 +83,7 @@ class Entity extends AbstractDB {
 			$udata = array();
 			foreach ($this->schema as $field => $fdata) {
 				if (!isset($data[$field])) continue;
+				$this->check($fdata,$data[$field]);
 				$udata[] = "$field=".$this->quote($data[$field],"'");
 			}
 			$update = "update {$this->table} set ".implode(",", $udata)." where {$this->primary}='%s'";
@@ -177,6 +179,30 @@ class Entity extends AbstractDB {
 			$this->err($e);
 			if (!QUIET) die($this->err());
 			return false;
+		}
+	}
+
+	# check a value before inserting or updating into the database
+	public function check($fdata,$value) {
+		if (!isset($fdata['checker'])) return;
+		if (is_array($fdata['checker'])) {
+			$checkers = $fdata['checker'];
+			foreach ($checkers as $class => $method) {
+				if (method_exists($class,$method)) {
+					if (call_user_func_array(array($class,$method),array($value))) return;
+					else throw new Exception("Invalid value '$value' found by $class::$method!");
+				}
+			}
+			throw new Exception("Could not find valid checker method!");
+		} else {
+			$checker = $fdata['checker'];
+			if (function_exists($checker)) {
+				if (!$checker($value)) {
+					throw new Exception("Invalid value '$value' found by $checker!");
+				}
+			} else {
+				throw new Exception("Could not find checker: $checker.");
+			}
 		}
 	}
 
@@ -296,6 +322,7 @@ class Relation extends Entity {
 			foreach ($this->schema as $field => $fdata) {
 				if ($this->iskey($field,$fdata)) continue;
 				if (!isset($data[$field])) continue;
+				$this->check($fdata,$data[$field]);
 				$set[] = "$field='%s'";
 				$vals[] = $data[$field];
 			}

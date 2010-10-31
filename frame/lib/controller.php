@@ -119,6 +119,10 @@ class Controller {
 		return View::$js;
 	}
 	
+	public function sitedir() {
+		return dirname($_SERVER['SCRIPT_NAME']);
+	}
+
 	public function title($title=null) {
 		if (!empty($title)) $this->title = $title;
 		if (!isset($this->title)) return get_class($this);

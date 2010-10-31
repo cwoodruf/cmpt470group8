@@ -1,12 +1,9 @@
-{include file=tools/top.tpl}
-
-<h3>{$confirm}<h3>
+<h3>{$confirm|htmlentities}<h3>
 
 <form name="confirm" method="post">
 {if $action}
-<input type="hidden" name="action" value="{$action}">
-<input type="submit" value="{$submit}">
+<input type="hidden" name="what" value="{$what|htmlentities}">
+<input type="hidden" name="action" value="{$action|htmlentities}">
+<input type="submit" value="{$submit|default:ok|htmlentities}">
 {/if}
 </form>
-
-{include file=tools/bottom.tpl}
