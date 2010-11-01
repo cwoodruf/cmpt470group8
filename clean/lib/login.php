@@ -84,13 +84,23 @@ class Login {
 		return $pw->encode_pw($newpw);
 	}
 	
-	private static function save_login($this_login,$ldata) {
+	public static function save_login($this_login,$ldata) {
 		unset($ldata['password']);
 		self::$ldata = $ldata;
 		$_SESSION[LOGINSESSION] = $ldata;
 		$_SESSION[LOGINSESSION]['login'] = $this_login;
 		$_SESSION[LOGINSESSION]['time'] = $time = time();
 		return $_SESSION[LOGINSESSION];
+	}
+
+	public static function refresh() {
+		$ldata = self::check();
+		if (!$ldata) return;
+		$newldata = Run::me(LOGINMODEL,'get_login',$ldata['login']);
+		if ($newldata) {
+			Login::save_login($ldata['login'], $newldata);
+		}
+		return $newldata;
 	}
 
 	public static function err($error=null,$refresh=false) {

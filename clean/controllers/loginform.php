@@ -1,5 +1,5 @@
 <?php
-class Loginform extends BaseController {
+class Loginform extends Controller {
 	public function execute () {
 		$ldata = Login::check();
 		# ajaxcheck is the quick check done in the background from the login form

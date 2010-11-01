@@ -11,6 +11,8 @@ class View {
 	public static $smarty;
 	public static $css;
 	public static $js;
+	public static $cssfiles;
+	public static $jsfiles;
 	public static $tplext;
 
 	public static function init($ext='tpl') {
@@ -54,6 +56,8 @@ class View {
 	public static function addCSS($css) {
 		if (!@filetype($css)) $css = "views/css/$css";
 		if (!@filetype($css)) return;
+		if (self::$cssfiles[$css]) return;
+		self::$cssfiles[$css] = true;
 		$sitedir = Controller::sitedir();
 		self::$css .= "<link rel=\"stylesheet\" type=\"text/css\" href=\"$sitedir/$css\">\n";
 	}
@@ -61,6 +65,8 @@ class View {
 	public static function addJS($js) {
 		if (!@filetype($js)) $js = "views/js/$js";
 		if (!@filetype($js)) return;
+		if (self::$jsfiles[$js]) return;
+		self::$jsfiles[$js] = true;
 		$sitedir = Controller::sitedir();
 		self::$js .= "<script type=\"text/javascript\" src=\"$sitedir/$js\" ></script>\n";
 	}
