@@ -1,3 +1,4 @@
+{aryassign ary=$this->input keys='confirm,what,action,submit'}
 <h3>{$confirm|htmlentities}<h3>
 
 <form name="confirm" method="post">
