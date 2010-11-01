@@ -1,5 +1,5 @@
 <?php
-class Loginform extends Controller {
+class Loginform extends BaseController {
 	public function execute () {
 		$ldata = Login::check();
 		# ajaxcheck is the quick check done in the background from the login form
@@ -12,10 +12,10 @@ class Loginform extends Controller {
 				exit;
 			}
 		}
-
-		if ($this->flag('login')) {
-			$this->delflag('login');
-			Controller::redo();
+		if (is_array($ldata)) {
+			$_REQUEST['action'] = '';
+			require('index.php');
+			return;
 		}
 
 		$this->flag('login',true);
