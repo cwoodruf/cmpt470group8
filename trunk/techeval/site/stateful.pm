@@ -42,7 +42,7 @@ $config
 </pre>
 <p>
 The text you enter will be appended to any previous text you entered here.<br>
-One big danger with mod_perl is to maintain control over variables you want <br>
+One big danger with mod_perl is to not cleaning up variables you want <br>
 refreshed on every request and those, such as database handles, that you'd like <br>
 to keep persistent.<br>
 </p>
