@@ -26,10 +26,11 @@ class Login {
 
 	private static function authenticate($pwclass) {
 		# if already logged in then 
-		if (is_array($_SESSION[LOGINSESSION])) return $_SESSION[LOGINSESSION];
+		if (isset($_SESSION[LOGINSESSION]) and is_array($_SESSION[LOGINSESSION])) 
+			return $_SESSION[LOGINSESSION];
 
 		$pw = new $pwclass;
-		$login = $_REQUEST['login'];
+		$login = isset($_REQUEST['login']) ? $_REQUEST['login'] : '';
 		if (!$pw->valid_login($login)) return;
 
 		$password = $_REQUEST['password'];

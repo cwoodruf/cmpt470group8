@@ -16,6 +16,7 @@ class Calendar {
 		self::setdates();
 		View::assign('weeks', range(0,5));
 		# TODO need a better way to generate the days of the week based on locale
+		$dow = 0;
 		foreach (array('Mon','Tue','Wed','Thu','Fri','Sat','Sun') as $d) {
 			$days[++$dow] = $d;
 		}
@@ -43,13 +44,13 @@ class Calendar {
 	}
 
 	public static function startdate() {
-		$date = $_REQUEST['startdate'];
+		$date = Controller::r('startdate');
 		if (!Check::isdate($date)) {
 			$date = sprintf(
 				'%04d-%02d-%02d',
-				$_REQUEST['Date_Year'],
-				$_REQUEST['Date_Month'],
-				$_REQUEST['Date_Day']
+				Controller::r('Date_Year'),
+				Controller::r('Date_Month'),
+				Controller::r('Date_Day')
 			);
 		}
 		if (!Check::isdate($date)) $date = date('Y-m-d');

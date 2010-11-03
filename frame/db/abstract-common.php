@@ -39,7 +39,7 @@ class Entity extends AbstractDB {
 			$this->primary = $this->schema['PRIMARY KEY'];
 			unset($this->schema['PRIMARY KEY']);
 
-		} else if (isset($this->schema[$table.'_id'])) {
+		} else if (isset($table) and isset($this->schema[$table.'_id'])) {
 			$this->primary = $table.'_id';
 
 		} else {
@@ -207,7 +207,7 @@ class Entity extends AbstractDB {
 	}
 
 	public function isauto($fdata) {
-		if ($fdata['auto']) return true;
+		if (isset($fdata['auto']) and $fdata['auto']) return true;
 	}
 
 	public function iskey($field,$fdata) {
@@ -255,7 +255,7 @@ class Entity extends AbstractDB {
 			$criterion = $_SESSION['paged'][$pageid]['criterion'];
 			$_SESSION['paged'][$pageid]['howmany'] = $model->howmany($criterion);
 		}
-		return $_SESSION['paged'][$pageid][$field];
+		return isset($field) ? $_SESSION['paged'][$pageid][$field]: null;
 	}
 
 	public static function delpageid($pageid) {

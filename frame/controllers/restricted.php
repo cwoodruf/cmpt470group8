@@ -9,7 +9,7 @@ class Restricted extends BaseController {
 		# you can use this info to fine tune the response logic
 		# in this case we accept any valid login, if not we display the login form
 		if ($this->ldata = Login::check()) {
-			$this->id = $_REQUEST['numbered_id'];
+			$this->id = Controller::r('numbered_id');
 			$this->n = new Numbered;
 
 			$this->doable(array(
@@ -17,7 +17,7 @@ class Restricted extends BaseController {
 				'confirmdelete' => 'confirmdeletenote',
 				'delete' => 'deletenote',
 			));
-			$this->doaction($this->actions[1]);
+			$this->doaction($this->getaction(1));
 
 			if ($this->id) $this->input = $this->n->getone($this->id);
 			else $this->input['created'] = date('Y-m-d H:i:s');
@@ -49,7 +49,7 @@ class Restricted extends BaseController {
 		View::assign('confirm',"Really delete note?");
 		View::assign('action','restricted/delete');
 		View::assign('submit','delete');
-		View::display("tools/confirm.tpl");
+		View::wrap("tools/confirm.tpl");
 		exit;
 	}
 
@@ -58,7 +58,7 @@ class Restricted extends BaseController {
 		$this->n->del($this->id);
 		Entity::setpageidhowmany('numbered');
 		View::assign('confirm',"Note {$this->id} deleted!");
-		View::display("tools/confirm.tpl");
+		View::wrap("tools/confirm.tpl");
 		exit;
 	}
 }
