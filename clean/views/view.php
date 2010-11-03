@@ -49,7 +49,7 @@ class View {
 	}
 
 	public static function fixname(&$tpl) {
-		if (preg_match("#\.$tplext#",$tpl)) return;
+		if (preg_match("#\.".self::$tplext."#",$tpl)) return;
 		$tpl .= ".".self::$tplext;
 	}
 
