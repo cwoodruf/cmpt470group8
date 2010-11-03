@@ -1,4 +1,4 @@
-package catalyst::Schema::Result::Author;
+package Catalyst::Schema::Result::Author;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -11,11 +11,11 @@ use MooseX::NonMoose;
 use namespace::autoclean;
 extends 'DBIx::Class::Core';
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "EncodedColumn");
 
 =head1 NAME
 
-catalyst::Schema::Result::Author
+Catalyst::Schema::Result::Author
 
 =cut
 
@@ -57,29 +57,22 @@ __PACKAGE__->set_primary_key("id");
 
 Type: has_many
 
-Related object: L<catalyst::Schema::Result::BookAuthor>
+Related object: L<Catalyst::Schema::Result::BookAuthor>
 
 =cut
 
 __PACKAGE__->has_many(
   "book_authors",
-  "catalyst::Schema::Result::BookAuthor",
+  "Catalyst::Schema::Result::BookAuthor",
   { "foreign.author_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-10-04 03:14:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:1zyUgxrs35EfAbxqbyYJrA
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-10-17 11:56:11
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ylS5zf8QidYK8Ac9lI/H1A
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration
-__PACKAGE__->many_to_many(books => 'book_authors', 'book');
 __PACKAGE__->meta->make_immutable;
-
-sub full_name {
-        my ($self) = @_;
-        $self->first_name.' '.$self->last_name;
-}
-
 1;

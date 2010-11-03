@@ -1,4 +1,4 @@
-package catalyst::Schema::Result::BookAuthor;
+package Catalyst::Schema::Result::BookAuthor;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -11,11 +11,11 @@ use MooseX::NonMoose;
 use namespace::autoclean;
 extends 'DBIx::Class::Core';
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "EncodedColumn");
 
 =head1 NAME
 
-catalyst::Schema::Result::BookAuthor
+Catalyst::Schema::Result::BookAuthor
 
 =cut
 
@@ -51,13 +51,13 @@ __PACKAGE__->set_primary_key("book_id", "author_id");
 
 Type: belongs_to
 
-Related object: L<catalyst::Schema::Result::Author>
+Related object: L<Catalyst::Schema::Result::Author>
 
 =cut
 
 __PACKAGE__->belongs_to(
   "author",
-  "catalyst::Schema::Result::Author",
+  "Catalyst::Schema::Result::Author",
   { id => "author_id" },
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
@@ -66,20 +66,20 @@ __PACKAGE__->belongs_to(
 
 Type: belongs_to
 
-Related object: L<catalyst::Schema::Result::Book>
+Related object: L<Catalyst::Schema::Result::Book>
 
 =cut
 
 __PACKAGE__->belongs_to(
   "book",
-  "catalyst::Schema::Result::Book",
+  "Catalyst::Schema::Result::Book",
   { id => "book_id" },
   { is_deferrable => 1, on_delete => "CASCADE", on_update => "CASCADE" },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-10-04 03:14:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:prlz9ZCW/ZSTQdHlSr43yQ
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-10-17 11:56:11
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:3XIp4lzJkH5ahGauDmxM1w
 
 
 # You can replace this text with custom content, and it will be preserved on regeneration
