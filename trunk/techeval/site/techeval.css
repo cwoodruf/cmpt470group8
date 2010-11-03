@@ -32,6 +32,10 @@ blockquote, blockquote p {
 	font-size: 9pt;
 }
 
+p {
+	width: 700px;
+}
+
 p.intro, p.notes {
 	margin-bottom: 5px;
 }
