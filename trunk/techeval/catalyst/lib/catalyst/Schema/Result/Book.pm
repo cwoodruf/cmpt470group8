@@ -1,4 +1,4 @@
-package catalyst::Schema::Result::Book;
+package Catalyst::Schema::Result::Book;
 
 # Created by DBIx::Class::Schema::Loader
 # DO NOT MODIFY THE FIRST PART OF THIS FILE
@@ -11,11 +11,11 @@ use MooseX::NonMoose;
 use namespace::autoclean;
 extends 'DBIx::Class::Core';
 
-__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp");
+__PACKAGE__->load_components("InflateColumn::DateTime", "TimeStamp", "EncodedColumn");
 
 =head1 NAME
 
-catalyst::Schema::Result::Book
+Catalyst::Schema::Result::Book
 
 =cut
 
@@ -71,43 +71,27 @@ __PACKAGE__->set_primary_key("id");
 
 Type: has_many
 
-Related object: L<catalyst::Schema::Result::BookAuthor>
+Related object: L<Catalyst::Schema::Result::BookAuthor>
 
 =cut
 
 __PACKAGE__->has_many(
   "book_authors",
-  "catalyst::Schema::Result::BookAuthor",
+  "Catalyst::Schema::Result::BookAuthor",
   { "foreign.book_id" => "self.id" },
   { cascade_copy => 0, cascade_delete => 0 },
 );
 
 
-# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-10-04 03:14:03
-# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:ugYiZJwoH4c6ioLbXXmpxg
+# Created by DBIx::Class::Schema::Loader v0.07002 @ 2010-10-17 11:56:11
+# DO NOT MODIFY THIS OR ANYTHING ABOVE! md5sum:TaBw51ZxrCiHiUaWVlnKgw
 
+# use model to restrict ability to do something
+sub delete_allowed_by {
+	my ($self, $user) = @_;
+	return $user->has_role('admin');
+}
 
 # You can replace this text with custom content, and it will be preserved on regeneration
-__PACKAGE__->many_to_many(authors => 'book_authors', 'author');
-__PACKAGE__->add_columns(
-	"created", {data_type => 'datetime', set_on_create => 1 },
-	"updated", {data_type => 'datetime', set_on_create => 1, set_on_update => 1},
-);
 __PACKAGE__->meta->make_immutable;
-
-sub author_count {
-	my ($self) = @_;
-	$self->authors->count;
-}
-
-sub author_list {
-	my ($self) = @_;
-	my @names;
-	foreach my $author ($self->authors) {
-		push (@names, $author->full_name);
-	}
-	join ', ', @names;
-}
-
-
 1;
