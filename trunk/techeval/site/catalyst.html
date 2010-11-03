@@ -1,0 +1,62 @@
+<?php include("head.html"); ?>
+<div class="intro">
+<p>
+<a href="http://www.catalystframework.org/">Catalyst</a> is a sophisticated web application framework written in Perl.
+With over 1700 modules available it is one of the most well developed web technologies using perl.
+</p>
+<p>
+You may find <a href="templates-databases-frameworks.ppt">these slides with notes</a> a useful reference.
+</p>
+</div>
+
+<div class="link">
+<a href="/books">A Catalyst book catalog application</a>
+<blockquote><p>logins: test01 / mypass (admin), test02 / mypass (ordinary user)</p></blockquote>
+</div>
+
+<div class="link">
+<a href="http://code.google.com/p/cmpt470group8/source/browse/#svn/trunk/techeval/catalyst">
+The source code for the application</a>
+<blockquote>
+<p>the source for the application can be found in <i>lib</i> (models and controllers) and <i>root</i> (templates)</p>
+</blockquote>
+</div>
+<div class="notes">
+<h4>Catalyst Apache integration</h4>
+<p>
+The <i>/books</i> url does not point to an actual directory on the file system. Instead we use mod_perl to 
+integrate the main module of our book managing application, called <i>catalyst</i>, with apache. 
+</p>
+<p>
+When apache sees the "/books" url it starts up the <i>catalyst.pm</i> module in <i>/var/www/catalyst/lib</i>.
+Apache then provides this module with information such as CGI parameters that permits the <i>catalyst.pm</i> 
+module to produce output.
+</p>
+<p>
+The following code snippet is from the apache configuration file for the website.
+</p>
+<div class="code">
+<pre>
+  <span class="comment"># this directory will be searched for modules when the server starts</span>
+  PerlSwitches -I/var/www/catalyst/lib
+  
+  <span class="comment"># this block is interpreted as perl code, it has much the same function as the previous line</span>
+  &lt;Perl&gt;
+  	use lib qw{ /var/www/catalyst/lib /home/wha/lib };
+  &lt;/Perl&gt;
+  
+  <span class="comment"># this is the instruction that tells apache to compile our book appliction "catalyst" module</span>
+  PerlModule catalyst
+  
+  <span class="comment"># this section tells apache to run the "catalyst" module through mod_perl when the "/books" url is used</span>
+  &lt;Location /books&gt;
+  	SetHandler modperl
+  	PerlResponseHandler catalyst
+  &lt;/Location&gt;
+</pre>
+</div>
+</div>
+
+</body>
+</html>
+
