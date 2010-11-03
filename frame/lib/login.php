@@ -85,7 +85,7 @@ class Login {
 		return $pw->encode_pw($newpw);
 	}
 	
-	private static function save_login($this_login,$ldata) {
+	public static function save_login($this_login,$ldata) {
 		unset($ldata['password']);
 		self::$ldata = $ldata;
 		$_SESSION[LOGINSESSION] = $ldata;
@@ -94,6 +94,16 @@ class Login {
 		return $_SESSION[LOGINSESSION];
 	}
 
+	public static function refresh() {
+		$ldata = self::check();
+		if (!$ldata) return;
+		$newldata = Run::me(LOGINMODEL,'get_login',$ldata['login']);
+		if ($newldata) {
+			Login::save_login($ldata['login'], $newldata);
+		}
+		return $newldata;
+	}
+	
 	public static function err($error=null,$refresh=false) {
 		if ($refresh) self::$errors = array();
 		if (isset($error)) self::$errors[] = $error;

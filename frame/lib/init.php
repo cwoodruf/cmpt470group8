@@ -4,8 +4,7 @@
 # change the following in .settings.php (above)
 
 # debug output
-#error_reporting(E_ALL & ~E_NOTICE);
-error_reporting(E_ALL);
+error_reporting(E_ALL & ~E_NOTICE);
 if (!defined('QUIET')) {
 	if (file_exists('DEBUG') or $_ENV['DEBUG']) {
 		define('QUIET',false);

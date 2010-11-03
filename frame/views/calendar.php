@@ -44,17 +44,21 @@ class Calendar {
 	}
 
 	public static function startdate() {
-		$date = Controller::r('startdate');
+		$date = self::r('startdate');
 		if (!Check::isdate($date)) {
 			$date = sprintf(
 				'%04d-%02d-%02d',
-				Controller::r('Date_Year'),
-				Controller::r('Date_Month'),
-				Controller::r('Date_Day')
+				self::r('Date_Year'),
+				self::r('Date_Month'),
+				self::r('Date_Day')
 			);
 		}
 		if (!Check::isdate($date)) $date = date('Y-m-d');
 		return $date;
+	}
+	# quiet warning messages
+	public static function r($key) {
+		return isset($_REQUEST[$key]) ? $_REQUEST[$key] : null;
 	}
 }
 
