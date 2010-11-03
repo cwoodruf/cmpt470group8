@@ -4,12 +4,14 @@
 # change the following in .settings.php (above)
 
 # debug output
+error_reporting(E_ALL & ~E_NOTICE);
 if (!defined('QUIET')) {
 	if (file_exists('DEBUG') or $_ENV['DEBUG']) {
 		define('QUIET',false);
-		error_reporting(E_ALL & ~E_NOTICE);
 		ini_set('display_errors',true);
 	}
+} else {
+	ini_set('display_errors',false);
 }
 
 # for the Login::encode function
