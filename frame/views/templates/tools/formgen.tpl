@@ -6,6 +6,9 @@
 {if !isset($schema) and isset($this->schema)}
 	{assign var=schema value=$this->schema}
 {/if}
+{if !isset($input) and isset($this->input)}
+	{assign var=input value=$this->input}
+{/if}
 {schema schema=$schema}
 <form id="formgen" action="index.php" method="post">
 <table cellspacing="0" cellpadding="5" border="0" class="formgen">
@@ -31,7 +34,7 @@
 <tr class="formgen" valign="top">
 <td class="formgen"><b>{$field}</b></td>
 <td class="formgen">
-{assign var=value value=$this->input($field)}
+{assign var=value value=$input[$field]}
 
 {if $fdata.auto}
  {if $value}
