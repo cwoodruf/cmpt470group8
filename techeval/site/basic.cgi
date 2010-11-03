@@ -54,6 +54,7 @@ my $config = encode_entities(<<APACHE);
 APACHE
 
 print header,start_html('perl basic cgi demo'),<<HTML,end_html;
+<a href="/techeval/">Home</a>
 <h1>Basic perl cgi demo using the CGI module</h1>
 <p>
 This is a typical perl CGI program. 

@@ -35,7 +35,8 @@ sub handler {
 APACHE
 	my $html = start_html("Somewhat stateful mod_perl example");
 	$html .= <<HTML;
-<h1>Mod perl example</h1>
+<a href="/techeval/">Home</a>
+<h1>Mod perl demo</h1>
 <h4>The following will add text to text you previously input.</h4>
 <form action="/stateful" method="post">
 Enter some text:

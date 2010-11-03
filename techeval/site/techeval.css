@@ -70,6 +70,18 @@ p.intro, p.notes {
 	text-decoration: none;
 }
 
+.menuhome {
+	width: 15%;
+}
+span.demotitle {
+	font-weight: bold;
+	margin-right: 10px;
+}
+
+.menudemo {
+	width: 80%;
+}
+
 .menuitem a:hover, .link a:hover {
 	text-decoration: underline;
 }
@@ -82,7 +94,6 @@ p.intro, p.notes {
 	margin: 0;
 	padding: 0;
 	padding-left: 15px;
-	width: 20%;
 	float: left;
 }
 
