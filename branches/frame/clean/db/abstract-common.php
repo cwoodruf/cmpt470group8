@@ -62,7 +62,9 @@ class Entity extends AbstractDB {
 				# if ($field == 'PRIMARY KEY') continue;
 				$this->check($fdata,$data[$field]);
 				if (!isset($data[$field])) continue;
-				$idata[$field] = $this->quote($data[$field],"'");
+				$idata[$field] = $this->quote(
+						$this->modify($fdata,$data[$field]),"'"
+				);
 			}
 			$this->insert($idata);
 			return $this->result;
@@ -84,7 +86,9 @@ class Entity extends AbstractDB {
 			foreach ($this->schema as $field => $fdata) {
 				if (!isset($data[$field])) continue;
 				$this->check($fdata,$data[$field]);
-				$udata[] = "$field=".$this->quote($data[$field],"'");
+				$udata[] = "$field=".$this->quote(
+						$this->modify($fdata,$data[$field]),"'"
+				);
 			}
 			$update = "update {$this->table} set ".implode(",", $udata)." where {$this->primary}='%s'";
 			$this->run($update,$id);
@@ -179,6 +183,28 @@ class Entity extends AbstractDB {
 			$this->err($e);
 			if (!QUIET) die($this->err());
 			return false;
+		}
+	}
+
+	public function modify($fdata,$value) {
+		if (!isset($fdata['modifier'])) return $value;
+		if (is_array($fdata['modifier'])) {
+			$modifiers = $fdata['modifier'];
+			foreach ($modifiers as $class => $method) {
+				if (method_exists($class,$method)) {
+					$value = call_user_func_array(array($class,$method),array($value));
+					return $value;
+				}
+			}
+			throw new Exception("Could not find valid modifier method!");
+		} else {
+			$modifier = $fdata['modifier'];
+			if (function_exists($modifier)) {
+				$value = $modifier($value);
+				return $value;
+			} else {
+				throw new Exception("Could not find modifier: $modifier.");
+			}
 		}
 	}
 
@@ -324,7 +350,7 @@ class Relation extends Entity {
 				if (!isset($data[$field])) continue;
 				$this->check($fdata,$data[$field]);
 				$set[] = "$field='%s'";
-				$vals[] = $data[$field];
+				$vals[] = $this->modify($fdata,$data[$field]);
 			}
 			$query = "update {$this->table} set ".implode(",", $set)." where $key";
 			$valskeys = array_merge(array($query),$vals,$args);
