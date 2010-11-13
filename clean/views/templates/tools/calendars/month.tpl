@@ -7,13 +7,13 @@
 
 <div class="calendar-form">
 <form name="pickdate">
-<input type="hidden" name="action" value="calendars/month">
+<input type="hidden" name="action" value="{$this->action}">
 <input type="hidden" name="startdate">
 Highlight date: {html_select_date start_year=2009 end_year=2011}
 <input type="submit" value="Go">
 &nbsp;&nbsp;
-<a href="?action=calendars/month&startdate={$prevdate}">&lt; Previous Month</a> &nbsp;&nbsp;
-<a href="?action=calendars/month&startdate={$nextdate}">Next Month &gt;</a>
+<a href="?action={$this->action}&startdate={$prevdate}">&lt; Previous Month</a> &nbsp;&nbsp;
+<a href="?action={$this->action}&startdate={$nextdate}">Next Month &gt;</a>
 </form>
 </div>
 
