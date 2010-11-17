@@ -279,9 +279,9 @@ class Entity extends AbstractDB {
 		if (isset($_SESSION['paged'][$pageid]['model'])) {
 			$model = $_SESSION['paged'][$pageid]['model'];
 			$criterion = $_SESSION['paged'][$pageid]['criterion'];
-			$_SESSION['paged'][$pageid]['howmany'] = self::get_criterion_howmany($model,$criterion);
+			return $_SESSION['paged'][$pageid]['howmany'] = 
+				self::get_criterion_howmany($model,$criterion);
 		}
-		return isset($field) ? $_SESSION['paged'][$pageid][$field]: null;
 	}
 
 	public static function get_criterion_howmany($model,$criterion) {
