@@ -19,8 +19,7 @@ class Regorganization extends Controller {
 	protected $o;
 	public function execute() {
 		$this->o = new Organization;
-		$this->schema = $this->o->schema;
-		
+		$this->schema = $this->o->schema;		
 		
 		$this->doable(array(
                         'save' => 'saveOrgInfo',                        
@@ -28,47 +27,33 @@ class Regorganization extends Controller {
                 ));
                 $this->doaction($this->actions[1]);
 		
-		View::assign('list', $this->o->getall());
-		
-		View::assign('dumpall', View::fetch('tools/dumpall.tpl'));
-		View::assign('name', $_SESSION['regError']);
-		
+		//View::assign('list', $this->o->getall());		
+		//View::assign('dumpall', View::fetch('tools/dumpall.tpl'));
+		View::assign('errors', $_SESSION['regError']);
+		unset($_SESSION['regError']);
 		View::wrap('regorganization.tpl');
 	}
 	
 	protected function saveOrgInfo(){
+		$this->o->ins($_REQUEST);
+			
+		$newOrg = $this->o->getall('where contact_email = \'' . $_REQUEST['contact_email'] .'\'');
+		$_SESSION['organizationID'] = $newOrg['0']['organizationID'];
+		$user = new User;
+		$user->ins(array(
+				'email'=>$_SESSION['email'],
+				'password'=>$_SESSION['password'], 
+				'user_type'=>$_SESSION['type'],
+				'external_key'=>$_SESSION['organizationID'],));
 		
-		//Checks if email already exists
-		$organization = $this->o->run('SELECT * FROM Login WHERE email = \'' . $_SESSION['email'] .'\'');				
-		if($volunteer){
-			$_SESSION['regError'] = 'Email is already in use.';
-		}else{
-			$this->o->ins($_REQUEST);
-			
-			$newOrg = $this->o->getall('where contact_email = \'' . $_REQUEST['contact_email'] .'\'');
-			$_SESSION['organizationID'] = $newOrg['0']['organizationID'];
-			$user = new User;
-			$user->ins(array(
-					'email'=>$_SESSION['email'],
-					'password'=>$_SESSION['password'], 
-					'user_type'=>$_SESSION['type'],
-					'external_key'=>$_SESSION['organizationID'],));
-			
-			unset($_SESSION['organizationID']);
-			unset($_SESSION['email']);
-			unset($_SESSION['password']);
-			unset($_SESSION['regError']);
-		}				
+		unset($_SESSION['organizationID']);
+		unset($_SESSION['email']);
+		unset($_SESSION['password']);
+		unset($_SESSION['regError']);
+		header("Location: index.php?action=home");
 	}
-	
-	
 	
 	protected function scanurl(){
-		View::assign('name',htmlentities($this->actions[1]));
-		View::assign('question',htmlentities($this->actions[2]));
+		View::assign('errors',htmlentities($this->actions[1]));
 	}
-	
-	
-	
 }
-

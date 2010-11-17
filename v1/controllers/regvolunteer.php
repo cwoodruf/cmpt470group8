@@ -17,12 +17,9 @@ class Regvolunteer extends Controller {
 	 * required function for controllers
 	 */
 	protected $v;
-
 	public function execute() {
-		$this->v = new Volunteer;
-		
-		$this->schema = $this->v->schema;
-		
+		$this->v = new Volunteer;		
+		$this->schema = $this->v->schema;		
 		
 		$this->doable(array(
                         'save' => 'saveVolInfo',                        
@@ -31,46 +28,32 @@ class Regvolunteer extends Controller {
                 $this->doaction($this->actions[1]);
 		
 		//View::assign('list', $this->v->getall());		
-		//View::assign('dumpall', View::fetch('tools/dumpall.tpl'));
-		
+		//View::assign('dumpall', View::fetch('tools/dumpall.tpl'));		
 		View::assign('errors', $_SESSION['regError']);
+		unset($_SESSION['regError']);
 		View::wrap('regvolunteer.tpl');	
 	}
 	
 	protected function saveVolInfo(){
+		$_REQUEST['email'] = $_SESSION['email'];		
+		$this->v->ins($_REQUEST);
+			
+		$newVolunteer = $this->v->getall('where email = \'' . $_REQUEST['email'] .'\'');
+		$_SESSION['volunteerID'] = $newVolunteer['0']['volunteerID'];
+		$user = new User;
+		$user->ins(array(
+				'email'=>$_SESSION['email'],
+				'password'=>$_SESSION['password'], 
+				'user_type'=>$_SESSION['type'],
+				'external_key'=>$_SESSION['volunteerID'],));
 		
-		//Checks if email already exists
-		$volunteer = $this->v->run('SELECT * FROM Login WHERE email = \'' . $_REQUEST['email'] .'\'');				
-		if($volunteer){
-			$_SESSION['regError'] = 'Email is already in use.';
-		}else{
-			$REQUEST['email'] = $_SESSION['email'];
-			$this->v->ins($_REQUEST);
-			
-			$newVolunteer = $this->v->getall('where email = \'' . $_REQUEST['email'] .'\'');
-			$_SESSION['volunteerID'] = $newVolunteer['0']['volunteerID'];
-			$user = new User;
-			$user->ins(array(
-					'email'=>$_SESSION['email'],
-					'password'=>$_SESSION['password'], 
-					'user_type'=>$_SESSION['type'],
-					'external_key'=>$_SESSION['volunteerID'],));
-			
-			unset($_SESSION['volunteerID']);
-			unset($_SESSION['email']);
-			unset($_SESSION['password']);
-			unset($_SESSION['regError']);
-		}				
+		unset($_SESSION['volunteerID']);
+		unset($_SESSION['email']);
+		unset($_SESSION['password']);	
+		header("Location: index.php?action=home");		
 	}
-	
-	
 	
 	protected function scanurl(){
-		View::assign('name',htmlentities($this->actions[1]));
-
+		View::assign('errors',htmlentities($this->actions[1]));
 	}
-	
-	
-	
 }
-

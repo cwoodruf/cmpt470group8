@@ -25,8 +25,8 @@ class Regmain extends Controller {
                 ));
                 $this->doaction($this->actions[1]);
 		
-		View::assign('name', $_SESSION['email'] . $_SESSION['password'] . $_SESSION['type']);
-		
+		View::assign('errors', $_SESSION['regError']);
+		unset($_SESSION['regError']);		
 		View::wrap('regmain.tpl');
 	}
 	
@@ -34,18 +34,24 @@ class Regmain extends Controller {
 		$_SESSION['email'] = $_REQUEST['email'];
 		$_SESSION['password'] = $_REQUEST['password'];
 		$_SESSION['type'] = $_REQUEST['type'];
-		if($_SESSION['type'] == 'Volunteer'){
-			header("Location: index.php?action=regvolunteer");
-			return;
-		}
-		elseif($_SESSION['type'] == 'Organization'){
-			header("Location: index.php?action=regorganization");
-                        return;
-		}else{
-			return;
-		}
 		
+		//Checks if email already exists
+		$u = new User;	//to utilize run
+		$newUser = $u->run('SELECT * FROM Login WHERE email = \'' . $_REQUEST['email'] . '\'');		
+		if($newUser['0']){
+			$_SESSION['regError'] = 'Email is already in use.';
+		}else{
+			if($_SESSION['type'] == 'Volunteer'){
+				header("Location: index.php?action=regvolunteer");
 				
+			}
+			elseif($_SESSION['type'] == 'Organization'){
+				header("Location: index.php?action=regorganization");
+		                
+			}else{
+				return;
+			}
+		}				
 	}
 	
 	protected function scanurl(){
