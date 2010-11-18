@@ -1,0 +1,148 @@
+-- MySQL dump 10.13  Distrib 5.1.41, for debian-linux-gnu (i486)
+--
+-- Host: localhost    Database: v1
+-- ------------------------------------------------------
+-- Server version	5.1.41-3ubuntu12.7
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `Admin`
+--
+
+DROP TABLE IF EXISTS `Admin`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Admin` (
+  `adminID` int(11) NOT NULL AUTO_INCREMENT,
+  `permissions` varchar(32) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`adminID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Job`
+--
+
+DROP TABLE IF EXISTS `Job`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Job` (
+  `jobID` int(11) NOT NULL AUTO_INCREMENT,
+  `organizationID` int(11) NOT NULL,
+  `search_text` varchar(255) DEFAULT NULL,
+  `title` varchar(64) DEFAULT NULL,
+  `time` varchar(128) DEFAULT NULL,
+  `street_address` varchar(255) DEFAULT NULL,
+  `city` varchar(64) DEFAULT NULL,
+  `country` varchar(32) DEFAULT NULL,
+  `description` text,
+  `url` varchar(128) DEFAULT NULL,
+  `visibility_status` varchar(32) DEFAULT NULL,
+  `requirements` text,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`jobID`),
+  KEY `FK_Job_Organization` (`organizationID`),
+  CONSTRAINT `FK_Job_Organization` FOREIGN KEY (`organizationID`) REFERENCES `Organization` (`organizationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Login`
+--
+
+DROP TABLE IF EXISTS `Login`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Login` (
+  `email` varchar(128) NOT NULL,
+  `password` varchar(64) NOT NULL,
+  `user_type` varchar(64) NOT NULL,
+  `external_key` int(11) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Organization`
+--
+
+DROP TABLE IF EXISTS `Organization`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Organization` (
+  `organizationID` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(128) NOT NULL,
+  `address` text,
+  `contact_name_first` varchar(64) NOT NULL,
+  `contact_name_last` varchar(64) DEFAULT NULL,
+  `contact_phone` varchar(32) NOT NULL,
+  `contact_email` varchar(128) NOT NULL,
+  `url` varchar(128) NOT NULL,
+  `visibility_status` varchar(32) DEFAULT NULL,
+  `description` text,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`organizationID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Schedule`
+--
+
+DROP TABLE IF EXISTS `Schedule`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Schedule` (
+  `jobID` int(11) NOT NULL,
+  `volunteerID` int(11) NOT NULL,
+  `job_date` datetime NOT NULL,
+  `start` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `hours` int(11) DEFAULT '0',
+  `hours_worked` int(11) DEFAULT NULL,
+  PRIMARY KEY (`jobID`,`volunteerID`,`start`),
+  KEY `FK_Schedule_Volunteer` (`volunteerID`),
+  CONSTRAINT `FK_Schedule_Job` FOREIGN KEY (`jobID`) REFERENCES `Job` (`jobID`),
+  CONSTRAINT `FK_Schedule_Volunteer` FOREIGN KEY (`volunteerID`) REFERENCES `Volunteer` (`volunteerID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `Volunteer`
+--
+
+DROP TABLE IF EXISTS `Volunteer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `Volunteer` (
+  `volunteerID` int(11) NOT NULL AUTO_INCREMENT,
+  `name_first` varchar(64) NOT NULL,
+  `name_last` varchar(63) NOT NULL,
+  `phone` varchar(32) DEFAULT NULL,
+  `email` varchar(128) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`volunteerID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2010-11-17 21:26:45
