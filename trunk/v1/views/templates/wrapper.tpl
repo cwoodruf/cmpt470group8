@@ -4,6 +4,7 @@
 <title>example</title>
 {$this->js()}
 {$this->css()}
+{$header}
 </head>
 <body>
 <a href="index.php">Home</a>
