@@ -24,6 +24,11 @@ class Check {
 		return $emptyok;
 	}
 
+	public static function notempty($s) {
+		if (empty($s)) return false;
+		return true;
+	}
+
 	public static function isvar($s,$emptyok=null) {
 		if (self::emptyok($emptyok)) return preg_match('#^\w*$#', $s);
 		return preg_match('#^\w+$#', $s);
