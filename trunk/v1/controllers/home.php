@@ -18,8 +18,15 @@ class Home extends Controller {
 	 */
 	public function execute() {
 		// you can also just use print statements here
-		// try adding action=home/{some text}
-		View::assign('name',htmlentities($this->actions[1]));
+		if ($ldata = Login::check()) {
+			View::assign('name',htmlentities($this->actions[1]));
+			View::assign('login',true);
+			View::assign('username', $ldata['email']);
+			View::assign('usertype', $ldata['user_type']);
+		}
+		else {
+			View::assign('login',false);
+		}
 		// this will insert the contents of home.tpl into wrapper.tpl
 		// you can change the wrapper by adding a template name 
 		// as a second argument to this function
