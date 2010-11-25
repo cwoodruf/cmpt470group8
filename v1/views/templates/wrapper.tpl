@@ -8,6 +8,19 @@
 </head>
 <body>
 <a href="index.php">Home</a>
+
+{if ($login == false)}
+<a href="?action=regmain">Register</a>
+<a href="?action=loginform">Login</a>
+{/if}
+
+{if $login}
+<a href="?action=logout">Log out</a>
+{/if}
+
+
+
+
 <h3 class="topmsg">{$topmsg}</h3>
 <h3 class="error">{$error}</h3>
 {$content}
