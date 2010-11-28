@@ -29,7 +29,7 @@
 
 <div class="menuitem">
 {if $ldata}
-<a href="?action=logout">Log out</a>
+<a href="javascript: void(0);" onclick="{include file=tools/logoutajax.tpl}">Log out</a>
 {else}
 <a href="javascript: void(0);" id="login_link" >Log in</a>
 <div id="login_form" >
