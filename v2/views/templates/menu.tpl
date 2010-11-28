@@ -25,6 +25,10 @@
 <div class="menuitem">
 <a href="?action=volunteer">Volunteers</a>
 </div>
+<div class="menuitem">
+<a href="?action=search&amp;search=&amp;region=&amp;newsearch=true">Browse Jobs</a> 
+</div>
+
 {/if}
 
 <div class="menuitem">
