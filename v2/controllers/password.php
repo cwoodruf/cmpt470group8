@@ -112,7 +112,6 @@ If you have received this message in error please contact:
 {$this->adminemail}
 
 TXT;
-print "<pre>$email\n$msg</pre>\n";
 		$msg = preg_replace("#\n#","\r\n",$msg);
 		return mail($email,"Message from VolunteerOne", $msg);
 	}
