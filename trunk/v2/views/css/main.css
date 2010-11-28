@@ -1,0 +1,68 @@
+/* this css file is added by default */
+body {
+	background: white;
+	font-family: arial, verdana, sans-serif;
+	font-size: 11pt;
+}
+
+img {
+	border: none;
+}
+
+.bordered {
+	border: 1px black solid;
+}
+.white {
+	background: white;
+	color: black;
+}
+
+.toplevel {
+	border: 1px black solid;
+	margin: 10px;
+	padding: 10px;
+	background: #F8F8F8;
+	width: 800px;
+}
+
+.byline {
+	text-align: right;
+	margin-right: 35px;
+}
+
+div.notenav {
+	text-align: right;
+	margin-right: 35px;
+	margin-bottom: 10px;
+}
+
+li {
+	padding-bottom: 5px;
+}
+
+h4 {
+	font-size: 12pt;
+}
+
+h3 {
+	font-size: 14pt;
+}
+
+h2 {
+	font-size: 16pt;
+}
+
+h1 {
+	font-size: 20pt;
+}
+
+.menu {
+	font-family: arial, sans-serif;
+	margin-bottom: 10px;
+}
+
+.menuitem {
+	padding: 5px;
+	float: left;
+}
+
