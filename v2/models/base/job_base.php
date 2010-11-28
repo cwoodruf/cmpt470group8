@@ -19,6 +19,7 @@ class JobEntity extends Entity {
 				'url' => array ( 'type' => 'varchar', 'size' => 128, ), 
 				'visibility_status' => array ( 'type' => 'varchar', 'size' => 32, ), 
 				'requirements' => array ( 'type' => 'text', ), 
+				'created' => array ( 'type' => 'date', ), 
 			),
 			'Job'
 		);
