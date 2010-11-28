@@ -7,7 +7,7 @@ function smarty_function_login_params($params,&$smarty) {
 	$vars = array_merge($_GET,$_POST);
 	foreach ($vars as $key => $val) {
 		if (preg_match('#^(login|password|cache|app|callback)$#',$key)) continue;
-		$hidden .= "<input type=hidden name=\"$key\" value=\"$val\">\n";
+		$hidden .= "<input type=\"hidden\" name=\"$key\" value=\"$val\" />\n";
 	}
 	$smarty->assign('login',htmlentities($vars['login']));
 	return $hidden;

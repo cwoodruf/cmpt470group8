@@ -13,7 +13,7 @@
 <td>
 {$job.title|strip_tags}
 <br />
-<a href="?action=organization/detail&organizationID={$job.organizationID}&jobID={$job.jobID}">
+<a href="?action=organization/detail&amp;organizationID={$job.organizationID}&amp;jobID={$job.jobID}">
 More about {$job.orgname|default:'this employer'|strip_tags}</a>
 <br />
 

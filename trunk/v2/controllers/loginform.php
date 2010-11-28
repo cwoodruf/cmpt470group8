@@ -22,7 +22,6 @@ class Loginform extends Controller {
 			return;
 		}
 
-		$this->flag('login',true);
 		View::wrap('tools/login.tpl');
 	}
 }

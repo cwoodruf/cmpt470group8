@@ -24,22 +24,23 @@ function smarty_function_pagerlinks($params,&$smarty) {
 	else $action = $_REQUEST[ACTION];
 
 	if (is_array($action)) $action = implode('/',$action);
-	$script = $_SERVER['PHP_SELF']."?action=$action&limit=$limit&";
+	// you have to add the &amp;s to get the w3c validator to work
+	$script = $_SERVER['PHP_SELF']."?action=$action&amp;limit=$limit&amp;";
 	if ($params['pagerid']) $script .= "pagerid=".urlencode($params['pagerid']);
 
 	if (strpos($params['options'],'pages') !== false) {
 		$pages = array();
 		for ($o = 0; $o <= $last; $o += $limit) {
-			$pages[$o] = "$script&offset=$o";
+			$pages[$o] = "$script&amp;offset=$o";
 		}
 	}
 
 	$smarty->assign('pagerlinks', 
 		array(
-			'first' => "$script&offset=0",
-			'last' => "$script&offset=$last",
-			'next' => "$script&offset=$next",
-			'prev' => "$script&offset=$prev",
+			'first' => "$script&amp;offset=0",
+			'last' => "$script&amp;offset=$last",
+			'next' => "$script&amp;offset=$next",
+			'prev' => "$script&amp;offset=$prev",
 			'pages' => $pages,
 		)
 	);

@@ -434,3 +434,11 @@ h4 {
 	background: url('rbtnwhite.jpg') no-repeat;
 }
 
+.searchterm,.regionterm {
+	background: yellow;
+	font-style: italic;
+}
+.jobblurb {
+	border-bottom: 1px dotted black;
+}
+
