@@ -441,4 +441,8 @@ h4 {
 .jobblurb {
 	border-bottom: 1px dotted black;
 }
+.searchtitle {
+	font-weight: bold;
+	color: white;
+}
 
