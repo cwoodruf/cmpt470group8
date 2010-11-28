@@ -11,6 +11,7 @@ class VolunteerModel extends VolunteerEntity {
 		if (!preg_match('#^\d+$#',$id)) {
 			$u = new User;
 			$login = $u->getone($id);
+			unset($login['password']);
 			if (!$login) return false;
 			$email = $id;
 			$id = $login['external_key'];
@@ -18,7 +19,7 @@ class VolunteerModel extends VolunteerEntity {
 		$vol = $this->getone($id);
 		if (!$vol) return false;
 		if ($vol['visibility_status'] != '') return false;
-		return $vol;
+		return array_merge($login,$vol);
 	}
 
 	public function hide($tohide) {
