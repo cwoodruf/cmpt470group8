@@ -34,7 +34,6 @@
 <a href="javascript: void(0);" id="login_link" >Log in</a>
 <div id="login_form" >
 {include file=tools/loginajaxform.tpl}
-    {login_params}
     <div class="login-input">
     <span class="ename"> Email  </span>
     <input type="text" name="login" class="input_box1"/>

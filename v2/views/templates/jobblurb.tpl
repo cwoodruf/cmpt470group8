@@ -4,8 +4,7 @@
 {$job.orgname} &nbsp;
 <i>{$job.city}, {$job.country}</i>
 <br />
-{$job.blurb|strip_tags|htmlentities}</b> ... 
+{$job.blurb|strip_tags|htmlentities} ... 
 
-(<a href="?action=jobs/detail&jobID={$job.jobID}">more</a>)
-
+(<a href="?action=jobs/detail&amp;jobID={$job.jobID}">more</a>)
 </p>

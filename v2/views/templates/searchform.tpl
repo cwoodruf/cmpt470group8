@@ -1,5 +1,6 @@
 <form id="search" action="index.php" method="get" onsubmit="return changed;">
 <div>
+Jobs: 
 {include file=regions.tpl select=$region} &nbsp;
 
 <input size="20" name="search" value="{$search}" id="searchinput{$id}" />

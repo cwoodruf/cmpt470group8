@@ -38,14 +38,14 @@
 <b>Website</b>
 </td>
 <td>
-<a href="{$org.url|fixurl}" target="_blank">{$org.url|fixurl}</a>
+<a href="{$org.url|fixurl}">{$org.url|fixurl}</a>
 </td>
 </tr>
 {/if}
 
 <tr valign="top">
 <td>
-<b><nobr>Mission Statement</nobr></b>
+<b>Mission Statement</b>
 </td>
 <td>
 {$org.description|strip_tags|addbrs}

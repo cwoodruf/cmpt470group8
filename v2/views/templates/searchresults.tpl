@@ -4,19 +4,20 @@
 <h4>
 Jobs
 {if $region}
-for region <i>{$region|htmlentities}</i>
+for region <span class="regionterm">{$region|htmlentities}</span>
 {/if}
 
 {if $search}
-search <i>{$search|htmlentities}</i>
+search <span class="searchterm">{$search|htmlentities}</span>
 {/if}
 
-{$howmany} jobs
+{$howmany}
 </h4>
 
 {foreach from=$jobs key=i item=job}
+<div class="jobblurb">
 {include file=jobblurb.tpl}
-<hr>
+</div>
 {foreachelse}
 No jobs found
 {/foreach}
