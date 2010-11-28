@@ -172,7 +172,7 @@ class Entity extends AbstractDB {
 			if (empty($this->primary)) 
 				throw new Exception("no primary key defined!");
 			if (!preg_match('#^\w+$#', $this->table)) 
-				throw new Exception("missing valid table name in upd!");
+				throw new Exception("missing valid table name in getone!");
 			$fieldstr = self::mk_fieldstr($fields);
 			$this->run("select $fieldstr from {$this->table} where {$this->primary}='%s'", $id);
 			$row = $this->getnext();

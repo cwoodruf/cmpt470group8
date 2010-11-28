@@ -38,6 +38,13 @@ class Check {
 		$s = trim($s);
 		return preg_match('#^\w[\w\.\-]*@\w[\w\.\-]*\.\w+$#', $s);
 	}
+	public static function isphone($s,$emptyok=null) {
+		if (self::emptyok($emptyok) and empty($s)) return true;
+		$s = trim($s);
+		$num = preg_replace('#\D#','', $s);
+		if (strlen($num) < 10) return false;
+		return true;
+	}
 	public static function isdate($s,$emptyok=null) {
 		if (self::emptyok($emptyok) and empty($s)) return true;
 		if (preg_match('#^(\d{4})-(\d{2})-(\d{2})#', $s, $m)) {
