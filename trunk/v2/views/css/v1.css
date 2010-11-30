@@ -119,7 +119,7 @@ div.footer a:hover {
 
 div.footeritem {
 	float: left;
-	margin-left: 125px;
+	margin-left: 138px;
 }
 
 .bod {
@@ -130,6 +130,7 @@ div.footeritem {
 
 .header {  
 	margin:0px;
+	width: 1067px;
 }
 
 .companyname {

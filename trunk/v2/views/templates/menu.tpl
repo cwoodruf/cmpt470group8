@@ -51,6 +51,7 @@
     <div class="login-input">
     <a href="?action=password/recover">Forgot Password?</a> &nbsp;&nbsp;
     <a href="javascript: void(0);" onclick="$('#login_form').hide(); return false;">Close</a>
+    <br />
     <input type="submit" name="submit" value="Log In" class="login_button" />
     </div>
 </form>
