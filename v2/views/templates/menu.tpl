@@ -33,7 +33,7 @@
 
 <div class="menuitem">
 {if $ldata}
-<a href="javascript: void(0);" onclick="{include file=tools/logoutajax.tpl}">Log out</a>
+<a href="?action=logout" >Log out</a>
 {else}
 <a href="javascript: void(0);" id="login_link" >Log in</a>
 <div id="login_form" >
@@ -49,7 +49,8 @@
     </div>
 
     <div class="login-input">
-    <a href="?action=password/recover">Forgot your password?</a> 
+    <a href="?action=password/recover">Forgot Password?</a> &nbsp;&nbsp;
+    <a href="javascript: void(0);" onclick="$('#login_form').hide(); return false;">Close</a>
     <input type="submit" name="submit" value="Log In" class="login_button" />
     </div>
 </form>

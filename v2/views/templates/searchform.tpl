@@ -1,5 +1,5 @@
 <form id="search" action="index.php" method="get" onsubmit="return changed;">
-<div>
+<div class="searchform">
 <span class="searchtitle">Find jobs</span>
 {include file=regions.tpl select=$region} &nbsp;
 
