@@ -3,14 +3,16 @@
 <h1>Schedule for {$this->day}</h1>
 
 <div class="schedule add">
-<h4>{if $action == 'editevent'}Update{else}Add to{/if} Schedule</h4>
+<h4>{if $action == 'editevent'}Update{else}Add to{/if} schedule</h4>
 {include file=eventedit.tpl}
 </div>
 
 <div class="schedule list">
 <h4>Already Scheduled</h4>
 <p>
-<a href="?action=schedule/{$this->day}">Add schedule</a>
+{if $action == 'editevent'}
+<a href="?action=schedule/{$this->day}/add">Add to schedule</a>
+{/if}
 </p>
 {foreach from=$events key=i item=e}
 	{foreach from=$e key=j item=event}
