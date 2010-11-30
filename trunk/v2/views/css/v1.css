@@ -22,7 +22,7 @@
 	color: #CCCCCC;
 }
 div.searchform{
-	height: 15px;
+	height: 0px;
 }
 
 .home.blurb {
@@ -49,7 +49,7 @@ div.searchform{
 
 .menuend {
 	clear: both;
-	margin: 0px;
+	padding-top: 30px;
 }
 
 .job {

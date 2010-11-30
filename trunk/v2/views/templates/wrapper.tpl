@@ -6,6 +6,7 @@
 {$this->css()}
 <link rel="stylesheet" type="text/css" href="views/css/v1.css" />
 <link type="text/css" rel="stylesheet" href="views/css/calendar.css" />
+<!--[if IE]><link type="text/css" rel="stylesheet" href="views/css/ie.css" /><![endif]-->
 </head>
 <body class="bod">
 <div class="header">
