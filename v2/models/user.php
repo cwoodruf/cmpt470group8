@@ -11,6 +11,7 @@ class User extends LoginEntity implements PW {
 		$this->schema['password']['checker']['Check'] = 'validpassword';
 		$this->schema['user_type']['checker']['User'] = 'validtype';
 		$this->schema['external_key']['checker']['Check'] = 'digits';
+		$this->schema['password']['modifier']['Login'] = 'encode';
 	}
 
 	public static function validtype($s) {
@@ -40,7 +41,7 @@ class User extends LoginEntity implements PW {
 		return Check::validpassword($pw);
 	}
 	public function encode_pw($pw) {
-		return $pw;
+		return Login::encode($pw);
 	}
 	public function get_login($id) {
 		$me =  $this->getone($id);
