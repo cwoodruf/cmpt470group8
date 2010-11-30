@@ -4,6 +4,6 @@ class Logout extends Controller {
 		Login::logout();
 		if ($this->actions[1] == 'ajax') return;
 		$c = new Home(array('home'));
-		$c->execute;
+		$c->execute();
 	}
 }

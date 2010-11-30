@@ -1,8 +1,16 @@
 /* volunteer1 styles - will override base styling */
+.content {
+	text-decoration: none;
+	color: black;
+}
 .content a {
 	color: #232323;
 	text-decoration: none;
 	border-bottom: 1px dotted #232323;
+}
+
+.contentinsert {
+	text-decoration: none;
 }
 
 .content a:hover {
@@ -12,6 +20,9 @@
 
 #search {
 	color: #CCCCCC;
+}
+div.searchform{
+	height: 15px;
 }
 
 .home.blurb {
@@ -23,8 +34,8 @@
 
 .menuitem {
 	color: white;
-	margin-bottom: 5px;
-	margin-right: 10px;
+	margin-bottom: 0px;
+	margin-right: 10px; 
 }
 
 .loginemail {
@@ -38,6 +49,7 @@
 
 .menuend {
 	clear: both;
+	margin: 0px;
 }
 
 .job {
@@ -72,12 +84,11 @@ div.organization {
 div.content {
 	clear: both;
 	margin-bottom: 20px;
-	margin-top: 20px;
 	padding: 8px;
 	padding-bottom: 20px;
 	border-left: 1px black solid;
 	border-right: 1px black solid;
-	width: 978px;
+	width: 1048px;
 }
 
 .organization.schedule {
@@ -96,7 +107,7 @@ div.content {
 div.footer, div.footer a {
 	color: white;
 	text-decoration: none;
-	width: 997px;
+	width: 1067px;
 	height: 30px;
 	padding-top: 10px;
 	margin-top: -20px;
@@ -124,13 +135,12 @@ div.footeritem {
 .companyname {
 	background-color:#dc0a0a;
 	width:356px;
-	height: 70px;
+	height: 80px;
 	padding:10px;
-	/* position:absolute; */
 	float: left;
 	text-align:center;
 	border-bottom-style: solid;
-	border-bottom-width: thick;
+	border-bottom-width: 6px;
 	border-bottom-color:#999999;
 }
 
@@ -145,7 +155,7 @@ div.footeritem {
 
 #login_form {
 	width: 270px;
-	height: 124px;
+	height: 134px;
 	padding-left: 14px;
 	background: #333333;
 	border: 1px #CCCCCC solid;
@@ -172,12 +182,12 @@ div.footeritem {
 	float: left;
 	top: 0px; right: 0px;
 	background-color:#333333;
-	width:600px; 
-	height:70px; 
+	width:670px; 
+	height: 80px; 
 	padding:10px;
 	color: #000000;
 	border-bottom-style:solid;
-	border-bottom-width: 5px;
+	border-bottom-width: 6px;
 	border-bottom-color:#999999;
 }
 
