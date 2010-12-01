@@ -6,7 +6,8 @@ class AdminModel extends AdminEntity {
 		foreach ($admins as $aid => $delete) {
 			if (!$delete) continue;
 			if ($aid == $exception) continue;
-			$this->del($aid);
+			$u = new User;
+			$u->del_external_key('admin',$aid);
 		}
 	}
 
