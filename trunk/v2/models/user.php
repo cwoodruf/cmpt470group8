@@ -19,6 +19,24 @@ class User extends LoginEntity implements PW {
 		return false;
 	}
 
+	public function del_external_key($type,$key) {
+		try {
+			if (!self::$user_types[$type]) 
+				throw new Exception("Bad type in del_external_key: $type");
+			if (!Check::digits($key)) 
+				throw new Exception("Bad external key in del_external_key: $key");
+			$this->run(
+				"delete from %s where user_type='%s' and external_key='%u'",
+				$this->table, $type, $key
+			);
+			return true;
+		} catch (Exception $e) {
+			$this->err($e);
+			if (!QUIET) die($this->err().' '.$this->query());
+			return false;
+		}
+	}
+
 	// password recovery functions see constructors/password.php for how this is used
 	public function pwkey($email) {
 		if (!Check::isemail($email)) return false;
