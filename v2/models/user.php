@@ -64,7 +64,7 @@ class User extends LoginEntity implements PW {
 	public function get_login($id) {
 		$me =  $this->getone($id);
 
-		if (!Check::digits($me['external_key'],false)) return $me;
+		if (!Check::digits($me['external_key'],false)) return;
 
 		switch($me['user_type']) {
 		case 'volunteer': 
