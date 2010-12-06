@@ -16,6 +16,23 @@ documentation links on on the site page or you can go to the wiki:
 wiki link: http://cmpt470.csil.sfu.ca:8008/group8wiki/
 
 --------------------------------------------------
+Todo list:
+
+* Search could be much more sophisticated.
+* Admins should be able to log in or at least manage Organization logins
+* Admins should be able to get reports on specific volunteers and jobs 
+  relevant to their organizations
+* the scheduling tool only works with one volunteer at a time which might be slow
+* the scheduling tool only checks the volunteer after they've been entered
+  would be nice to remember volunteers we've seen before and have drop down select to pick them
+* Would be nice to have a forum for volunteers and organizations to meet more informally
+* Would be nice for volunteers be able to save resumees on the site
+* fix problems with trying to show ISO-8859-1 characters on a rigidly UTF-8 site
+  (fix: stop being so rigid)
+
+Probably much more
+
+--------------------------------------------------
 Notes:
 
 The email logic is somewhat turned off. Normally, it would not be
