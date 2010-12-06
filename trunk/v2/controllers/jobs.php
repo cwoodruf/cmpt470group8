@@ -1,4 +1,9 @@
 <?php
+/**
+ * manages adding and changing visibility of jobs
+ * this is the job pages that are accessible from the organization dashboard
+ * also handles displaying job details and job blurbs for the search
+ */
 class Jobs extends BaseController {
 	public $j;
 	public $oid;

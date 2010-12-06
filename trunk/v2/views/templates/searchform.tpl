@@ -1,4 +1,14 @@
-<form id="search" action="index.php" method="get" onsubmit="return changed;">
+<form id="search" action="index.php" method="get" 
+      onsubmit="
+if (
+    $('#searchinput{$id}').val() == '' 
+    && $('#regioninput{$id}').val() == ''
+) {ldelim}
+	alert('please select a region or enter a search term');
+	return false;
+{rdelim}
+return true;
+">
 <div class="searchform">
 <span class="searchtitle">Find jobs</span>
 &nbsp;

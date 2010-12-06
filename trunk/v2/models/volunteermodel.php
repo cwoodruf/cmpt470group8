@@ -1,4 +1,7 @@
 <?php
+/**
+ * model class for the Volunteer table
+ */
 class VolunteerModel extends VolunteerEntity {
 	public function __construct() {
 		parent::__construct();
@@ -7,6 +10,9 @@ class VolunteerModel extends VolunteerEntity {
 		$this->schema['email']['checker']['Check'] = 'isemail';
 	}
 
+	/**
+	 * check if the volunteer can use the site
+	 */
 	public function live($id) {
 		if (!preg_match('#^\d+$#',$id)) {
 			$u = new User;
@@ -22,6 +28,9 @@ class VolunteerModel extends VolunteerEntity {
 		return array_merge($login,$vol);
 	}
 
+	/**
+	 * deactivate the volunteer
+	 */
 	public function hide($tohide) {
 		try {
 			$this->run(
@@ -40,7 +49,10 @@ class VolunteerModel extends VolunteerEntity {
 			return false;
 		}
 	}
-
+	/**
+	 * gets all volunteers with their login data
+	 * joins Volunteer with Login
+	 */
 	public function logins() {
 		return $this->getall(
 			"join Login on (Login.external_key=Volunteer.volunteerID) ".

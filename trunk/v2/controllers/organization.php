@@ -1,4 +1,8 @@
 <?php
+/**
+ * manage organization info also 
+ * hosts the controller code for managing organization specific logins (see the login method below)
+ */
 class Organization extends BaseController {
 	public $o;
 	protected $u;

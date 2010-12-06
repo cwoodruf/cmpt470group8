@@ -36,7 +36,7 @@ class Admin extends BaseController {
 		if ($this->actions[2] == 'save') {
 			$o->hide($_REQUEST['hide']);
 		}
-		$orgs = $o->getall("order by name");
+		$orgs = $o->getall("order by organizationID desc");
 		View::assign('orgs',$orgs);
 		$this->mainpage();
 	}
@@ -47,8 +47,13 @@ class Admin extends BaseController {
 			if (!$this->ldata['details']['permissions'] == 'root') 
 				die("you do not have sufficient access to edit admin data");
 
-			$a->setperms($_REQUEST['perms']);
-			$a->delmany($_REQUEST['delete'],$this->ldata['external_key']);
+			if (!$a->setperms($_REQUEST['perms'])) {
+				View::assign('error',$a->err());
+			} else {
+				if (!$a->delmany($_REQUEST['delete'],$this->ldata['external_key'])) {
+					View::assign('error',$a->err());
+				}
+			}
 
 		} else if ($this->actions[2] == 'create') {
 			if (Check::isemail($_REQUEST['email'])) {

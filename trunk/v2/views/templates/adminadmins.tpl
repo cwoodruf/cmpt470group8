@@ -1,4 +1,10 @@
 <h2>Admins</h2>
+<div class="orginstructions">
+Use this form to make new admins or change the permissions / delete existing admins.<br />
+The "root" admins can add and change other admins. There must be at least one root admin.<br />
+Deleting an admin is permanent. You cannot delete yourself.<br />
+You can also create admins from the command line with the <b>scripts/mkadmin.sh</b> script
+</div>
 <form action="index.php" method="get">
 <input type="hidden" name="action[]" value="admin" />
 <input type="hidden" name="action[]" value="admins" />

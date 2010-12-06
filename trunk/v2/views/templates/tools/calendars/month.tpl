@@ -39,7 +39,7 @@ Highlight date: {html_select_date start_year=2009 end_year=2011}
 	<div class="calendar month dom">
 	{/if}
 		
-		{$day|capitalize}<br>{$date} &nbsp;
+		{$day|capitalize}<br />{$date} &nbsp;
 		{include file=$showevents date=$date events=$events[$date]}
 	</div>
 	{assign var=dom value=`$dom+1`}
@@ -47,7 +47,7 @@ Highlight date: {html_select_date start_year=2009 end_year=2011}
 {else}
 	{* hack to put the correct date in days not in the month in question *}
 	<div class="calendar month">
-		{$day}<br>
+		{$day}<br />
 	{if $dom == 0}
 		{php}
 		if (!$pre) $pre = $this->_tpl_vars['firstdow'] + 1;

@@ -1,4 +1,10 @@
 <h2>Manage organizations</h2>
+<div class="orginstructions">
+Organizations are listed most recent first. <br />
+When organizations sign up they will be hidden.
+Unhide the organization to make it active.<br />
+Logins will not work for inactive/hidden organizations.
+</div>
 <form action="index.php" method="get">
 <table cellpadding="5" cellspacing="0" border="0">
 

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Model for the admin table which contains info on site admins
+ */
 class AdminModel extends AdminEntity {
 
 	public function delmany($admins,$exception) {
@@ -13,6 +16,9 @@ class AdminModel extends AdminEntity {
 
 	public function setperms($perms) {
 		try {
+			if (!is_array($perms) or !count($perms))
+				throw new Exception("Need at least one root admin.");
+
 			foreach ($perms as $aid => $perm) {
 				if ($perm == 'root') $count++;
 			}

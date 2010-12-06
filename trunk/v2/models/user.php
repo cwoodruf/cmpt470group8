@@ -1,4 +1,8 @@
 <?php
+/**
+ * this model handles logins stored in the Login table
+ * the Login table also has fields used in email confirmation links
+ */
 class User extends LoginEntity implements PW {
 	private static $user_types = array(
 		'volunteer' => true,

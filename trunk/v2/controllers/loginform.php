@@ -1,4 +1,9 @@
 <?php
+/**
+ * manages processing the login form
+ * this login form is not in use right now
+ * an embedded form is used instead
+ */
 class Loginform extends Controller {
 	public function execute () {
 		$ldata = Login::check();

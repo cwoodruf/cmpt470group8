@@ -1,6 +1,14 @@
 <?php
+/**
+ * model for the Schedule table
+ * Schedule is only meaningful joined to Organization and Job 
+ */
 class ScheduleModel extends ScheduleRelation {
 
+	/**
+	 * get the schedule for a volunteer - only gets the future schedule
+	 * this is displayed on the volunteer dashboard
+	 */
 	public function getsched($volID) {
 		try {
 			if (!Check::digits($volID)) 
@@ -26,6 +34,11 @@ class ScheduleModel extends ScheduleRelation {
 		}
 	}
 
+	/**
+	 * get the stats for past work done 
+	 * similar to schedule except that it only gets data from the past 
+	 * where there is a record of work done
+	 */
 	public function getstats($volID) {
 		try {
 			if (!Check::digits($volID)) 
@@ -51,11 +64,17 @@ class ScheduleModel extends ScheduleRelation {
 			return false;
 		}
 	}
-
+	/**
+	 * get the events for a given date
+	 * used by the schedule detail page
+	 */
 	public function dayevents($startdate,$oid) {
 		return $this->calendar($startdate,$oid,$details=true,$range='day');
 	}
 
+	/**
+	 * get data to be embedded in the calendar on the Organization Dashboard
+	 */
 	public function calendar($startdate,$oid,$details=false,$range='month') {
 		if (!preg_match('#^(\d{4})-(\d{2})(?:-\d\d|)#',$startdate,$m)) return;
 		if ($details) {

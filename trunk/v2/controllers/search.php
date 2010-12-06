@@ -1,4 +1,7 @@
 <?php
+/**
+ * manage paging search results and processing the search form
+ */
 class Search extends BaseController {
 	public function execute() {
                 # use the remembered state to get the correct page
