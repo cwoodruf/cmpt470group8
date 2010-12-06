@@ -278,6 +278,10 @@ class Organization extends BaseController {
                         return;
                 }
                 if ($this->u->ins($_REQUEST)) {
+			View::assign(
+				'topmsg',
+				'Thank you for signing up. We will contact you shortly with your account activation.'
+			);
                         View::wrap('organization.tpl');
                         return;
                 } else {
