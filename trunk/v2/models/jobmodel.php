@@ -43,7 +43,7 @@ class JobModel extends JobEntity {
 			if ($search or $region) {
 				if ($search) {
 					$search = strtolower($search);
-					$searchpat = preg_replace('#\s+#','|',$search);
+					$searchpat = $search; # or is confusing: # preg_replace('#\s+#','|',$search);
 				}
 				else $searchpat = ".";
 

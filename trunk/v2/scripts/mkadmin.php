@@ -18,7 +18,7 @@ if (($stdin = fopen('php://stdin','r')) !== false) {
 	}
 	while (!($valid=Check::validpassword($password))) {
 		if (isset($password) and !$valid) print "password $password not a valid password!\n";
-		print "enter password for $admin: ";
+		print "enter password for $email: ";
 		$password = fgets($stdin,255);
 		$password = preg_replace('#[\n\r]#','',trim($password));
 	}
@@ -55,7 +55,7 @@ if (($stdin = fopen('php://stdin','r')) !== false) {
 		if (!$a->upd($key, array('permissions' => $perms))) 
 			die("error updating admin record for $email: ".$a->err()."\n");
 
-		if (!$u->upd($email, array('password' => $loginmodel::encode_pw($password))))
+		if (!$u->upd($email, array('password' => $password)))
 			die("error updating password for $email: ".$u->err()."\n");
 
 	} else {
@@ -68,7 +68,7 @@ if (($stdin = fopen('php://stdin','r')) !== false) {
 		$r = $u->ins(
 			array(
 				'email' => $email, 
-				'password' => $loginmodel::encode_pw($password), 
+				'password' => $password, 
 				'user_type' => 'admin',
 				'external_key' => $key
 			)
