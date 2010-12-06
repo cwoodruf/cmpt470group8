@@ -3,8 +3,12 @@
 <h1>Schedule for {$this->day}</h1>
 
 <div class="schedule add">
+{if $jobcount == 0}
+No jobs available: <a href="?action=jobs/list">add jobs</a>.
+{else}
 <h4>{if $action == 'editevent'}Update{else}Add to{/if} schedule</h4>
 {include file=eventedit.tpl}
+{/if}
 </div>
 
 <div class="schedule list">

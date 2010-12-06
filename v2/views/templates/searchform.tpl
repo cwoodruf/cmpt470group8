@@ -16,7 +16,7 @@
       r.options[r.selectedIndex].selected = false; 
       r.options[0].selected = true;
 ">clear</a> &nbsp;
-<a href="?action=search&newsearch=true&search=&region=">browse</a>
+<a href="?action=search&amp;newsearch=true&amp;search=&amp;region=">browse</a>
 </div>
 
 </form>

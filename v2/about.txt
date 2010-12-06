@@ -1,0 +1,47 @@
+Final project group 8 cmpt470 SFU Surrey Fall 2010
+--------------------------------------------------
+Site:
+
+site link: http://cmpt470.csil.sfu.ca:8008/v2/
+
+admin login: root@myv1.admin password: password
+by default all passwords are password if you want to log in as someone else.
+This site works best in FireFox 3.6 but should work fine in other browsers.
+All public facing pages were checked for valid html and css.
+
+--------------------------------------------------
+Documentation:
+
+documentation links on on the site page or you can go to the wiki:
+wiki link: http://cmpt470.csil.sfu.ca:8008/group8wiki/
+
+--------------------------------------------------
+Notes:
+
+The email logic is somewhat turned off. Normally, it would not be
+the case that someone signing up would be able to log in right off the
+bat. Rather volunteers have to click on an email confirmation link and
+organizations need to be vetted by an admin. 
+
+The problem is that mail from mx8 is being selectively rejected by 
+some domains - most notably the sfu.ca domain.
+Mail is known to work to gmail.com.
+
+As a result new signups work right off the bat. You can click the Log in
+link to access your organization or volunteer account.
+
+By default the mail server is set up to send any unknown email to mx8 to
+cwoodruf@gmail.com so if you try and send email to a random organization
+that cwoodruf@gmail.com should receive it. You should also get a copy 
+yourself if the mail isn't rejected en-route.
+
+We have two versions of our site. The /v1/ is a version done by other
+group members and reflects their work. It was not finished enough for us
+to provide it as a final implementation. However, the group members involved
+should be credited for their work. The /v2/ version is a more complete 
+version but reflects - inaccurately - the involvement of the group members.
+Most significantly the database design is by David Zhou and the overall 
+look and feel of the site is by Vik Kumar.
+
+Vik is the author of the User Guide.
+

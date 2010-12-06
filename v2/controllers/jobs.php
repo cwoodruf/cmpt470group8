@@ -23,8 +23,10 @@ class Jobs extends BaseController {
 			'edit' => 'edit',
 			'detail' => 'detail',
 			'contact' => 'contactform',
+			'hide' => 'hide',
 			'confirmdel' => 'confirmdel',
 			'delete' => 'del',
+			'undelete' => 'undel',
 			'default' => 'mainpage',
 		));
 		$this->doaction($this->actions[1]);
@@ -140,7 +142,9 @@ class Jobs extends BaseController {
 			$s->execute();
 		}
 	}
-
+	/**
+	 * delete hides the job from search and scheduling but doesn't delete the job or related data
+	 */
 	protected function confirmdel() {
 		$this->input = array(
 			'confirm' => "Really delete this job?",
@@ -154,6 +158,20 @@ class Jobs extends BaseController {
 	protected function del() {
 		$this->j->upd($_REQUEST['jobID'],array('visibility_status'=>'hidden'));
 		View::assign('topmsg','Job deleted');
+		$this->showjobs();
+	}
+
+	/**
+	 * hide hides the job from search but not from scheduling
+	 */
+	protected function hide() {
+		$this->j->upd($_REQUEST['jobID'],array('visibility_status' => 'private'));
+		$this->showjobs();
+	}
+
+	protected function undel() {
+		$this->j->upd($_REQUEST['jobID'],array('visibility_status'=>''));
+		View::assign('topmsg','Job is now public');
 		$this->showjobs();
 	}
 

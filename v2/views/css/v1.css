@@ -119,7 +119,7 @@ div.footer a:hover {
 
 div.footeritem {
 	float: left;
-	margin-left: 155px;
+	margin-left: 118px;
 }
 
 .bod {
@@ -467,4 +467,20 @@ div.volinstructions, div.orginstructions {
 	font-variant: small-caps;
 	font-size: 20px;
 }
-
+.browserrecommendation {
+	margin-left: 388px;
+	margin-top: 10px;
+	padding-bottom: 1000px;
+}
+.browserrecommendation, .browserrecommendation a {
+	font-size: small;
+	font-style: italic;
+	color: #555555;
+}
+.crossout {
+	text-decoration: line-through;
+	color: #AAAAAA;
+}
+.grayout {
+	color: #AAAAAA;
+}
