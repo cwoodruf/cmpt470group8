@@ -13,8 +13,7 @@
 <td>
 {$job.title|strip_tags}
 <br />
-<a href="?action=organization/detail&amp;organizationID={$job.organizationID}&amp;jobID={$job.jobID}">
-More about {$job.orgname|default:'this employer'|strip_tags}</a>
+<a href="?action=organization/detail&amp;organizationID={$job.organizationID}&amp;jobID={$job.jobID}">More about {$job.orgname|default:'this employer'|strip_tags}</a>
 <br />
 
 {if $ldata}
@@ -50,7 +49,7 @@ More about {$job.orgname|default:'this employer'|strip_tags}</a>
 <b>Description</b>
 </td>
 <td>
-{$job.description|strip_tags|addbrs}
+{$job.description|strip_tags|utf8_encode|addbrs}
 </td>
 </tr>
 <tr valign="top">
@@ -58,7 +57,7 @@ More about {$job.orgname|default:'this employer'|strip_tags}</a>
 <b>Requirements</b>
 </td>
 <td>
-{$job.requirements|strip_tags|addbrs}
+{$job.requirements|strip_tags|utf8_encode|addbrs}
 </td>
 </tr>
 

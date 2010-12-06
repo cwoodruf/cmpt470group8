@@ -8,7 +8,8 @@
 <div class="organization dashboard">
 <div class="organization jobs">
 <a href="?action=jobs/add">Add New Job</a> &nbsp;
-<a href="?action=organization#calendar">Schedule work</a>
+<a href="?action=organization#calendar">Schedule work</a> &nbsp;
+<a href="?action=jobs/list&showall=true">Show deleted jobs</a> &nbsp;
 
 {include file=joblist.tpl}
 

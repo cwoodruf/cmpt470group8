@@ -32,18 +32,18 @@ to identify your volunteer needs.
 </p>
 <p>
 With VolunteerOne:
+</p>
 <ul>
 <li>Advertize jobs instantly</li>
 <li>Easily schedule and manage volunteer work</li>
 </ul>
-</p>
 <p>
 Our features can simplify your life and save you time:
+</p>
 <ul>
 <li>Privacy controls: all volunteers must create a log in. Nobody sees your email addresses.</li>
 <li>Intuitive calendar interface for managing schedules and tracking work done.</li>
 <li>Its easy to add or delete job ads - you will never lose your historical data.</li>
 <li>Create as many log ins as you need with our log in manager.</li>
 </ul>
-</p>
 {/if}

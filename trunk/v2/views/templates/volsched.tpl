@@ -1,4 +1,3 @@
-<a name="volsched" ></a>
 <table cellpadding="5" cellspacing="0" border="0">
 {foreach from=$sched key=i item=job}
 <tr>

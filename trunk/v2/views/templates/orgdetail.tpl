@@ -48,7 +48,7 @@
 <b>Jobs</b>
 </td>
 <td>
-<a href="?action=search&newsearch=true&search={$org.name}&region=">All jobs for {$org.name|strip_tags}</a>
+<a href="?action=search&amp;newsearch=true&amp;search={$org.name}&amp;region=">All jobs for {$org.name|strip_tags}</a>
 </td>
 </tr>
 

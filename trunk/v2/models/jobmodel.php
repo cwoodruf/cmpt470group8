@@ -33,12 +33,12 @@ class JobModel extends JobEntity {
 			$fieldstr = "jobID,Job.title,Organization.name as orgname,created,".
 				"substring(Job.description,1,255) as blurb,city,country ";
 		}
-		$where = "where (Job.visibility_status <> 'hidden' or Job.visibility_status is null) ".
+		$where = "where (Job.visibility_status not in ('hidden','private') or Job.visibility_status is null) ".
 			"and (Organization.visibility_status <> 'hidden' or Organization.visibility_status is null) ";
 		$query = "select distinct $fieldstr ".
 			"from Job join Organization on (Job.organizationID=Organization.organizationID) ".
 			$where;
-		$orderby = "order by city, country, Organization.name, title $limit ";
+		$orderby = "order by created desc, city, country, Organization.name, title $limit ";
 		try {
 			if ($search or $region) {
 				if ($search) {
@@ -91,10 +91,9 @@ class JobModel extends JobEntity {
 	public function ourjobs($oid) {
 		return $this->getall(
 			array(
-				"where visibility_status is null ".
-				"and organizationID=%u order by jobID desc", $oid
+				"where organizationID=%u order by jobID desc", $oid
 			),
-			array('jobID','title')
+			array('jobID','title','visibility_status')
 		);
 	}
 

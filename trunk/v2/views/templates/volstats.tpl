@@ -1,4 +1,3 @@
-<a name="volstats" ></a>
 <table cellpadding="5" cellspacing="0" border="0">
 {foreach from=$stats key=i item=job}
 <tr>
