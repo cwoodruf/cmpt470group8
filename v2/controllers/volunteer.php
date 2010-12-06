@@ -1,5 +1,9 @@
 <?php
 class Volunteer extends BaseController {
+
+        public $adminemail = ADMINEMAIL;
+        public $sitelink = SITELINK;
+
 	public $v;
 	public function execute() {
 		$this->ldata = Login::check();
@@ -7,6 +11,7 @@ class Volunteer extends BaseController {
 
 		$this->doable(array(
 			'signup' => 'signup',
+			'confirm' => 'confirm',
 			'save' => 'signup',
 			'edit' => 'edit',
 			'report' => 'report',
@@ -15,6 +20,20 @@ class Volunteer extends BaseController {
 		$this->doaction($this->actions[1]);
 	}
 	
+	protected function confirm() {
+		$u = new User;
+		if (($login = $u->pwlogin($_REQUEST['key'])) === false) {
+			View::assign('error','Could not find a record for this confirmation key!');
+		} else {
+			if ($this->v->upd($login['external_key'], array('visibility_status'=>''))) {
+				View::assign('topmsg','You account is now active!');
+			} else {
+				View::assign('error','Error activating account: '.$this->v->err());
+			}
+		}
+		$this->mainpage();
+	}
+
 	protected function signup() {
 		if ($this->actions[1] == 'signup') {
 			View::wrap('volunteersignup.tpl');
@@ -42,7 +61,8 @@ class Volunteer extends BaseController {
 		}
 		$u = new User;
 		if ($u->ins($_REQUEST)) {
-			View::assign('topmsg',"Saved new volunteer {$_REQUEST['email']}");
+			$this->sendpwlink($_REQUEST['email']);
+			View::assign('topmsg',"A confirmation email has been sent to {$_REQUEST['email']}.");
 			$this->mainpage();
 			return;
 		} else {
@@ -104,5 +124,26 @@ class Volunteer extends BaseController {
 		}
 		View::wrap('volunteer.tpl');
 	}
+        /**
+         * send a new password link to the user
+         */
+        protected function sendpwlink($email) {
+                $u = new User;
+                $pwkey = $u->pwkey($email);
+                $msg = <<<TXT
+Click on the following link to confirm your account:
+{$this->sitelink}?action=volunteer/confirm&key=$pwkey
+
+Thank you
+
+VolunteerOne
+
+If you have received this message in error please contact:
+{$this->adminemail}
+
+TXT;
+                $msg = preg_replace("#\n#","\r\n",$msg);
+                return mail($email,"Message from VolunteerOne", $msg);
+        }
 }
 

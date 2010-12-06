@@ -1,18 +1,44 @@
 <div class="login wizard">
 <div class="login wizard step">
 <h1>VolunteerOne Volunteer {$action|default:Signup|capitalize}</h1>
+<div class="volinstructions">
+You use your email to log in to VolunteerOne. When you sign up you will receive 
+an email confirmation. Click on the link in this email to complete the sign up 
+process to activate your account.
+</div>
+<div class="volinstructions">
+Fields with a * are required.
+</div>
 </div>
 <div class="login wizard form">
 <form id="formgen" action="index.php" method="post">
 <table class="formgen" border="0" cellpadding="5" cellspacing="0">
 <tr class="formgen" valign="top">
-<td class="formgen"><b>First Name</b></td>
+<td class="formgen"><b>Email*</b></td>
+<td class="formgen">
+<input name="email" size="60" value="{$this->input('email')}" /> 
+</td>
+</tr>
+<tr class="formgen" valign="top">
+<td class="formgen"><b>Password*</b></td>
+<td class="formgen">
+<input name="password" type="password" size="60" value="" /> 
+</td>
+</tr>
+<tr class="formgen" valign="top">
+<td class="formgen"><b>Repeat password*</b></td>
+<td class="formgen">
+<input name="confirm_password" type="password" size="60" value="" /> 
+</td>
+</tr>
+<tr class="formgen" valign="top">
+<td class="formgen"><b>First Name*</b></td>
 <td class="formgen">
 <input name="name_first" size="60" value="{$this->input('name_first')}" /> 
 </td>
 </tr>
 <tr class="formgen" valign="top">
-<td class="formgen"><b>Last Name</b></td>
+<td class="formgen"><b>Last Name*</b></td>
 <td class="formgen">
 <input name="name_last" size="60" value="{$this->input('name_last')}" /> 
 </td>
@@ -21,24 +47,6 @@
 <td class="formgen"><b>Phone</b></td>
 <td class="formgen">
 <input name="phone" size="32" value="{$this->input('phone')}" /> 
-</td>
-</tr>
-<tr class="formgen" valign="top">
-<td class="formgen"><b>Email</b></td>
-<td class="formgen">
-<input name="email" size="60" value="{$this->input('email')}" /> 
-</td>
-</tr>
-<tr class="formgen" valign="top">
-<td class="formgen"><b>Password</b></td>
-<td class="formgen">
-<input name="password" type="password" size="60" value="" /> 
-</td>
-</tr>
-<tr class="formgen" valign="top">
-<td class="formgen"><b>Repeat password</b></td>
-<td class="formgen">
-<input name="confirm_password" type="password" size="60" value="" /> 
 </td>
 </tr>
 <tr class="formgen formbuttons">

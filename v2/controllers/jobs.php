@@ -51,8 +51,30 @@ class Jobs extends BaseController {
 			if ($errors) {
 				View::assign('error',implode("<br>\n",$errors));
 			} else {
-				// normally we'd actually send something at this point
-				View::assign('topmsg',"Sent email");
+				$o = new OrganizationModel;
+				$org = $o->getone($job['organizationID']);
+				if (!$org) {
+					View::assign(
+						'error',
+						'Error: could not find organization for this job! '.$o->err()
+					);
+				} else if (!Check::isemail($org['contact_email'])) {
+					View::assign('error', 'Error: invalid organization contact email!');
+				} else {
+					mail(
+						$org['contact_email'],
+						htmlentities($_REQUEST['subject']),
+						htmlentities($_REQUEST['message']),
+						"From: {$_REQUEST['email']}\r\nReply-to: {$_REQUEST['email']}\r\n"
+					);
+					mail(
+						$_REQUEST['email'],
+						htmlentities("You sent: ".$_REQUEST['subject']),
+						htmlentities($_REQUEST['message']),
+						"From: {$_REQUEST['email']}\r\nReply-to: {$_REQUEST['email']}\r\n"
+					);
+					View::assign('topmsg',"Sent email");
+				} 
 				$this->detail($job);
 				return;
 			}

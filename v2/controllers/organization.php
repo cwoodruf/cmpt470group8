@@ -43,8 +43,19 @@ class Organization extends BaseController {
                         if ($errors) {
                                 View::assign('error',implode("<br>\n",$errors));
                         } else {
-                                // normally we'd actually send something at this point
-                                View::assign('topmsg',"Sent email");
+                                mail(
+					$org['contact_email'],
+					htmlentities($_REQUEST['subject']),
+					htmlentities($_REQUEST['message']),
+					"From: {$_REQUEST['email']}\r\nReply-to: {$_REQUEST['email']}\r\n"
+				);
+                                mail(
+					$_REQUEST['email'],
+					htmlentities("You sent: ".$_REQUEST['subject']),
+					htmlentities($_REQUEST['message']),
+					"From: {$_REQUEST['email']}\r\nReply-to: {$_REQUEST['email']}\r\n"
+				);
+                                View::assign('topmsg',"Email sent");
                                 $this->detail($orgID);
                                 return;
                         }
