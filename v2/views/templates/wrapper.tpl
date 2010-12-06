@@ -1,5 +1,8 @@
 {include file=xmljunk.tpl}
 <head>
+<meta name="description" content="VolunteerOne provides innovative tools to connect non-profit organizations with volunteers" />
+<meta name="keywords" content="volunteer,non-profit,ngo,job,search" />
+<link rel="canonical" href="http://cmpt470.csil.sfu.ca:8008{$smarty.server.SCRIPT_NAME}?{$smarty.server.QUERY_STRING}" />
 <title>VolunteerOne - Helping You Help the World: {$this->title()}</title>
 {$this->js()}
 <script type="text/javascript" src="views/js/ready.js"></script>
