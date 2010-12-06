@@ -1,17 +1,14 @@
 <div class="footer">
 <div class="footeritem">
-<a href="">Legal</a>
+<a href="?action=misc/contactus">Contact Us</a>
 </div>
 <div class="footeritem">
-<a href="">About Us</a>
+<a href="poster">Project Poster</a>
 </div>
 <div class="footeritem">
-<a href="">Contact</a>
+<a href="/group8wiki">Wiki</a>
 </div>
 <div class="footeritem">
-<a href="">Advertise</a>
-</div>
-<div class="footeritem">
-<a href="">Jobs</a>
+<a href="/group8wiki/index.php/VolunteerOne_Manual">Users Guide</a>
 </div>
 </div>
