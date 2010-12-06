@@ -45,6 +45,15 @@
 
 <tr valign="top">
 <td>
+<b>Jobs</b>
+</td>
+<td>
+<a href="?action=search&newsearch=true&search={$org.name}&region=">All jobs for {$org.name|strip_tags}</a>
+</td>
+</tr>
+
+<tr valign="top">
+<td>
 <b>Mission Statement</b>
 </td>
 <td>

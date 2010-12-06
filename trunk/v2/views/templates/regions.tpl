@@ -1,6 +1,6 @@
 {regions}
-Region:
-<select name="region" onchange="changed=true; if ($('#searchinput').val() == 'search') $('#searchinput').val('');" >
+region:
+<select name="region" id="regioninput{$id}" >
 <option value="">any</option>
 {foreach from=$regions key=i item=region}
 {option value=$region}
