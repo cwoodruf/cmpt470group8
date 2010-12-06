@@ -1,8 +1,8 @@
 <h1>Organization sign up</h1>
 <div class="login wizard form">
 <div class="orginstructions">
-Enter your contact information and your organization details.<br>
-We will contact your shortly to confirm your sign up.<br>
+Enter your contact information and your organization details.<br />
+We will contact your shortly to confirm your sign up.<br />
 All fields are required.
 </div>
 <div class="orginstructions">

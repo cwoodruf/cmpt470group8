@@ -1,4 +1,7 @@
 <?php
+/**
+ * volunteer dashboard and signup controller
+ */
 class Volunteer extends BaseController {
 
         public $adminemail = ADMINEMAIL;

@@ -1,4 +1,7 @@
 <?php
+/**
+ * manage the job schedule for a specific organization on a specific day
+ */
 class Schedule extends BaseController {
 	public $s;
 	public $v;

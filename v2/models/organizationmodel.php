@@ -1,4 +1,7 @@
 <?php
+/**
+ * model for the Organization table
+ */
 class OrganizationModel extends OrganizationEntity {
 	public function __construct() {
 		parent::__construct();

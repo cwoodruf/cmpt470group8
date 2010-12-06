@@ -1,4 +1,7 @@
 <?php
+/**
+ * model for the Job table
+ */
 class JobModel extends JobEntity {
 	public function __construct() {
 		parent::__construct();

@@ -1,4 +1,7 @@
 <?php
+/**
+ * clears login data on log out and returns to the home page
+ */
 class Logout extends Controller {
 	public function execute() {
 		Login::logout();
