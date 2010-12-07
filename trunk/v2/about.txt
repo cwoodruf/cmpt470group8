@@ -5,14 +5,23 @@ Site:
 site link: http://cmpt470.csil.sfu.ca:8008/v2/
 
 admin login: v1root@example.com password: password
-by default all passwords are "password" if you want to log in as someone else.
+
+By default all passwords are "password" if you want to log in as someone else.
 This site works best in FireFox 3.6 but should work fine in other browsers.
 All public facing pages were checked for valid html and css.
 
 --------------------------------------------------
+Test Data:
+
+Test data is actual volunteer ads in redacted form from govolunteer.ca
+While their data is most likely not public domain (apart from being publicly available),
+it gives us a much more realistic idea of how a real system might look. 
+This is strictly for testing. In an actual deployment we would not be using it.
+
+--------------------------------------------------
 Documentation:
 
-documentation links on on the site page or you can go to the wiki:
+Documentation links on on the site page or you can go to the wiki:
 wiki link: http://cmpt470.csil.sfu.ca:8008/group8wiki/
 
 --------------------------------------------------
@@ -44,27 +53,25 @@ The problem is that mail from mx8 is being selectively rejected by
 some domains - most notably the sfu.ca domain.
 Mail is known to work to gmail.com.
 
-As a result new volunteer and organization signups work right off the 
-bat. You can click the Log in link to access your organization or 
-volunteer account.
+To remedy this new volunteer and organization signups work right away.
+You can click the Log in link to access your organization or volunteer account.
 
 By default the mail server is set up to send any unknown email to mx8 to
-cwoodruf@gmail.com so if you try and send email to a random organization
+cwoodruf@gmail.com. If you try and send email to a random organization
 that cwoodruf@gmail.com should receive it. You should also get a copy 
 yourself if the mail isn't rejected en-route.
 
 We have two versions of our site. The /v1/ is a version done by other
 group members and reflects their work. It was not finished enough for us
 to provide it as a final implementation. However, the group members involved
-should be credited for their work. The /v2/ version is a more complete 
+should be credited for their work. Version /v2/ by Cal Woodruff is a more complete 
 version but reflects - inaccurately - the involvement of the group members.
 
 Most significantly the database design is by David Zhou and the overall 
-look and feel of the site is by Vik Kumar. Vik is the author of the User Guide.
-Wilson created the original idea for the site and participated in the 
-initial decision making regarding how the site would work as well as doing half 
-of the /v1/ version of the site. In addition every group member went through the 
-full framework tutorial on their own to learn the framework as well as the MVC 
-design pattern. Tutorial link: 
+look and feel of the site is by Vik Kumar. Wilson created the original 
+idea for the site and participated in the initial decision making regarding 
+how the site would work as well as doing half of the /v1/ version of the site. 
+In addition every group member went through the full framework tutorial on 
+their own to learn the framework as well as the MVC design pattern. Tutorial link: 
 http://cmpt470.csil.sfu.ca:8008/group8wiki/index.php/Tutorial
 

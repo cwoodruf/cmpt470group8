@@ -74,9 +74,12 @@ class Organization extends BaseController {
 		if (!$orgID) $orgID = $_REQUEST['organizationID'];
 		$org = $this->o->getone($orgID);
 		if (!$org or $org['visibility_status']) {
-			View::assign('error',"Could not find organization details!");
-			View::wrap('organization.tpl');
-			return;
+			$ldata = Login::check();
+			if ($ldata['user_type'] != 'admin' or !$org) {
+				View::assign('error',"Could not find organization details!");
+				View::wrap('organization.tpl');
+				return;
+			} 
 		} 
 		$_SESSION['organizationID'] = $org['organizationID'];
 		View::assign('org',$org);

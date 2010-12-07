@@ -15,7 +15,7 @@ right opportunity.
 Some of our innovative features for <b>Organizations</b> include:
 <ul>
 <li>Effective privacy controls</li>
-<li>Easy to use interfaces for managing jobs and schedules and volunteers</li>
+<li>Easy to use interfaces for managing jobs, schedules and volunteers</li>
 <li>Easy to use log in manager</li>
 <li>Real-time reporting of work done</li>
 </ul>
