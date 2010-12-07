@@ -60,6 +60,13 @@
 {$org.description|strip_tags|addbrs}
 </td>
 </tr>
+{if $ldata.details.organizationID == $org.organizationID or $ldata.user_type == admin}
+<tr><td>Address</td><td>{$org.address|strip_tags}</td></tr>
+<tr><td>Contact Name</td><td>{$org.contact_name_first|strip_tags} {$org.contact_name_last|strip_tags}</td></tr>
+<tr><td>Contact Phone</td><td>{$org.contact_phone|strip_tags}</td></tr>
+<tr><td>Contact Email</td><td>{$org.contact_email|strip_tags}</td></tr>
+<tr><td>Visibility</td><td>{$org.visibility_status|strip_tags}</td></tr>
+{/if}
 </table>
 </div>
 
