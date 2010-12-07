@@ -260,7 +260,6 @@ class Organization extends BaseController {
 
 	protected function signup() {
                 if ($this->actions[1] == 'signup') {
-						View::assign('action','signup');
                         View::wrap('organizationsignup.tpl');
                         return;
                 }
