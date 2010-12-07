@@ -1,9 +1,0 @@
-Group 8 Technology Evaluation: Perl
-
-Our technology evaluation site:
-http://cmpt470.csil.sfu.ca:8008/techeval
-
-All examples have links to their source code. 
-The source for the site itself can be found here:
-http://code.google.com/p/cmpt470group8/source/browse/#svn/trunk/techeval/site
-
