@@ -29,7 +29,7 @@ class Volunteer extends BaseController {
 			View::assign('error','Could not find a record for this confirmation key!');
 		} else {
 			if ($this->v->upd($login['external_key'], array('visibility_status'=>''))) {
-				View::assign('topmsg','You account is now active!');
+				View::assign('topmsg','Your account is now active!');
 			} else {
 				View::assign('error','Error activating account: '.$this->v->err());
 			}
