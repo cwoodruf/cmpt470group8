@@ -18,6 +18,7 @@
     <p><input type="submit" value="" name="signup_submit" id="sub_btn2" />	
     <input type="submit" value="" name="signup_reset" id="reset_btn2" />	</p>
 <p>&nbsp;</p>
-	</div>
+	
+    </div>
 
 </div>
