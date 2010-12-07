@@ -2,6 +2,9 @@
 {$smarty.capture.nav}
 
 <h4>
+
+{$howmany}
+
 Jobs
 {if $region}
 for region <span class="regionterm">{$region|htmlentities}</span>
@@ -11,7 +14,7 @@ for region <span class="regionterm">{$region|htmlentities}</span>
 search <span class="searchterm">{$search|htmlentities}</span>
 {/if}
 
-{$howmany}
+Found
 </h4>
 
 {foreach from=$jobs key=i item=job}

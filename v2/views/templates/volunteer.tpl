@@ -3,7 +3,9 @@
 {if $ldata.user_type == 'volunteer'}
 <div class="volunteer login">
 
-<span class="volmenu">{$ldata.details.name_first} {$ldata.email|htmlentities}</span>
+<h4>
+{$ldata.details.name_first} {$ldata.details.name_last} ({$ldata.email|htmlentities})
+</h4>
 <span class="volmenu"><a href="?action=volunteer/edit">My Profile</a></span>
 <span class="volmenu"><a href="#volsched">My Schedule</a></span>
 <span class="volmenu"><a href="#volstats">My Stats</a></span>
