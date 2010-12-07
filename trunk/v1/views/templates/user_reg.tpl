@@ -14,6 +14,7 @@ Re-Enter <br />Password:<input type="password" name="password" id="signup_input3
 </p>
 </p>
 
+
 <div class="regbtn">
 <input type="submit" value="" name="signup_submit" id="sub_btn" />	
 <input type="submit" value="" name="signup_reset" id="reset_btn" />	
