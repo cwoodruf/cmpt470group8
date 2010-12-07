@@ -249,7 +249,7 @@ class Organization extends BaseController {
                 }
 
                 View::assign('action','edit');
-		View::assign('ldata',Login::refresh($_REQUEST['contact_email']));
+				View::assign('ldata',Login::refresh($_REQUEST['contact_email']));
                 $this->input = $this->o->getone($ldata['external_key']);
                 View::wrap('organizationsignup.tpl');
 
@@ -257,6 +257,7 @@ class Organization extends BaseController {
 
 	protected function signup() {
                 if ($this->actions[1] == 'signup') {
+						View::assign('action','signup');
                         View::wrap('organizationsignup.tpl');
                         return;
                 }
