@@ -484,3 +484,27 @@ div.volinstructions, div.orginstructions {
 .grayout {
 	color: #AAAAAA;
 }
+.featureshome p {
+	text-align: center;
+}
+
+.featureshome {
+	width: 44%;
+	height: 240px;
+	float: left;
+	margin: 10px;
+	padding: 5px;
+	border: 1px black solid;
+}
+#orgfeatureshome {
+	margin-left: 39px;
+}
+.featureshomeend {
+	clear: both;
+}
+#recentjobsframe {
+	height: 30px;
+}
+#recentjobs {
+	margin-left: 20px;
+}

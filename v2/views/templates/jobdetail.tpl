@@ -1,6 +1,8 @@
 <div class="jobs">
 {if $ldata.user_type == 'organization'}
 <a href="?action=jobs">Back to Job Manager</a>
+{elseif $smarty.get.return == 'home'}
+<a href="?">Back to home page</a>
 {else}
 <a href="?action=search">Back to search results</a>
 {/if}

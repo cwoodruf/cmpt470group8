@@ -1,8 +1,8 @@
 <p>
+<i>{$job.city}, {$job.country}</i> &nbsp;
 {$job.created}
 <b>{$job.title}</b>
-{$job.orgname} &nbsp;
-<i>{$job.city}, {$job.country}</i>
+{$job.orgname} 
 <br />
 {$job.blurb|strip_tags|utf8_encode} ... 
 

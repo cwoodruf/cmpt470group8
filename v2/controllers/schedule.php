@@ -148,7 +148,8 @@ class Schedule extends BaseController {
 		View::assign(
 			'jobcount',
 			$this->j->howmany(array(
-				"where organizationID='%u' and visibility_status not in ('hidden')",
+				"where organizationID='%u' ".
+				"and visibility_status not in ('hidden')",
 				$this->ldata['details']['organizationID']
 			))
 		);
