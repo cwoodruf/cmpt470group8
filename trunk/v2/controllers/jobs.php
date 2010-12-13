@@ -15,6 +15,7 @@ class Jobs extends BaseController {
 		if ( 
 			!preg_match('#^(?:contact|detail|)$#',$this->actions[1]) 
 			and $this->ldata['user_type'] != 'organization'
+			and $this->actions[1] != 'recentjobs'
 		) { 
 			die("you cannot schedule jobs");
 		}
@@ -32,6 +33,7 @@ class Jobs extends BaseController {
 			'confirmdel' => 'confirmdel',
 			'delete' => 'del',
 			'undelete' => 'undel',
+			'recentjobs' => 'recentjobs',
 			'default' => 'mainpage',
 		));
 		$this->doaction($this->actions[1]);
@@ -178,6 +180,16 @@ class Jobs extends BaseController {
 		$this->j->upd($_REQUEST['jobID'],array('visibility_status'=>''));
 		View::assign('topmsg','Job is now public');
 		$this->showjobs();
+	}
+
+	protected function recentjobs() {
+		$jobs = $this->j->getall(
+			"join Organization on (Organization.organizationID=Job.organizationID) ".
+			"where created <= now() ".
+			"order by created desc limit 10 ",
+			array('title','name','created','Job.jobID as jobID','city','country')
+		);
+		print json_encode($jobs);
 	}
 
 	protected function mainpage() {
