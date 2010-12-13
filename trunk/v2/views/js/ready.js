@@ -8,14 +8,15 @@ $(document).ready(function () {
 
 	$('#login_form').hide();
 	$('#login_link').click(function(e) {
-	    $('#login_form').show();
-            e.stopPropagation();
+		if (e.which != 1) return;
+		$('#login_form').show();
+		e.stopPropagation();
 	});
-        $(document).click(function() {
-            $('#login_form').hide();
+        $(document).click(function(e) {
+		if (e.which == 1) $('#login_form').hide();
         });
 	$('#login_form').click(function(e) {
-            e.stopPropagation();
+		if (e.which == 1) e.stopPropagation();
         });
 	fill_recentjobs();
 	setInterval('rotate_recentjobs()', 5000);
