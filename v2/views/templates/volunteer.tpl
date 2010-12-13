@@ -30,7 +30,7 @@
 </div>
 <h1>Benefits of Volunteering</h1>
 <p>
-Some of the reasons to volunteer today:
+Some of the reasons to <b>volunteer today:</b>
 </p>
 <ul>
 <li>Get the skills and experience you need</li>
@@ -40,7 +40,7 @@ Some of the reasons to volunteer today:
 </ul>
 
 <p>
-Our innovative features:
+Our innovative <b>features:</b>
 </p>
 <ul>
 <li>Intuitive search helps you find jobs in your area quickly</li>

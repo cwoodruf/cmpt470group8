@@ -31,14 +31,14 @@ volunteers you need. Our scheduling and work management tools make it easy
 to identify your volunteer needs. 
 </p>
 <p>
-With VolunteerOne:
+With <b>VolunteerOne:</b>
 </p>
 <ul>
-<li>Advertize jobs instantly</li>
+<li>Advertise jobs instantly</li>
 <li>Easily schedule and manage volunteer work</li>
 </ul>
 <p>
-Our features can simplify your life and save you time:
+Our <b>features</b> can simplify your life and save you time:
 </p>
 <ul>
 <li>Privacy controls: all volunteers must create a log in. Nobody sees your email addresses.</li>
