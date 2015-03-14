@@ -1,0 +1,1 @@
+This is the project hosting for the technology evaluation and final project for group 8 for cmpt470 sfu surrey fall 2010.
